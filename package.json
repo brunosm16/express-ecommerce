@@ -1,45 +1,53 @@
 {
-  "name": "express-ecommerce",
-  "version": "1.0.0",
-  "main": "src/main.js",
-  "license": "MIT",
-  "description": "E-commerce built with JavaScript / Express / Sequelize",
-  "author": "Bruno Moraes",
-  "keywords": [
-    "sequelize",
-    "javascript",
-    "express",
-    "jest",
-    "node"
-  ],
-  "scripts": {
-    "start:dev": "nodemon src/main.js --ignore __tests__",
-    "test": "npm run db:migrate:test && cross-env NODE_ENV=test jest",
-    "test:post-test": "node _tests/utils/delete-db-file.js",
-    "db:migrate:test": "cross-env NODE_ENV=test sequelize db:migrate"
-  },
-  "dependencies": {
-    "bcrypt": "^5.1.0",
-    "celebrate": "^15.0.1",
-    "cors": "^2.8.5",
-    "cross-env": "^7.0.3",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "mysql2": "^3.2.0",
-    "sequelize": "^6.30.0"
-  },
-  "devDependencies": {
-    "@types/express": "^4.17.17",
-    "@types/jest": "^29.5.0",
-    "eslint": "^8.37.0",
-    "eslint-plugin-jest": "^27.2.1",
-    "factory-girl": "^5.0.4",
-    "faker": "^6.6.6",
-    "jest": "^29.5.0",
-    "nodemon": "^2.0.22",
-    "sequelize-cli": "^6.6.0",
-    "sqlite3": "^5.1.6",
-    "supertest": "^6.3.3"
-  }
+    "name": "express-ecommerce",
+    "version": "1.0.0",
+    "main": "src/main.js",
+    "license": "MIT",
+    "description": "E-commerce built with JavaScript / Express / Sequelize",
+    "author": "Bruno Moraes",
+    "keywords": [
+        "sequelize",
+        "javascript",
+        "express",
+        "jest",
+        "node"
+    ],
+    "private": false,
+    "scripts": {
+        "start:dev": "nodemon src/main.js --ignore __tests__",
+        "test": "npm run db:migrate:test && cross-env NODE_ENV=test jest",
+        "test:post-test": "node _tests/utils/delete-db-file.js",
+        "db:migrate:test": "cross-env NODE_ENV=test sequelize db:migrate",
+        "prettier:check": "npx prettier --check .",
+        "prettier:fix": "npx prettier --write .",
+        "eslint:fix": "npx eslint ."
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.0",
+        "celebrate": "^15.0.1",
+        "cors": "^2.8.5",
+        "cross-env": "^7.0.3",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "jsonwebtoken": "^9.0.0",
+        "mysql2": "^3.2.0",
+        "sequelize": "^6.30.0"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.17",
+        "@types/jest": "^29.5.0",
+        "eslint": "^8.2.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-import": "^2.25.2",
+        "eslint-plugin-jest": "^27.2.1",
+        "factory-girl": "^5.0.4",
+        "faker": "^6.6.6",
+        "jest": "^29.5.0",
+        "nodemon": "^2.0.22",
+        "prettier": "^2.8.7",
+        "sequelize-cli": "^6.6.0",
+        "sqlite3": "^5.1.6",
+        "supertest": "^6.3.3"
+    }
 }
