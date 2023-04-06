@@ -17,6 +17,7 @@
 		"start:dev": "nodemon src/main.js --ignore __tests__",
 		"test": "npm run db:migrate:test && cross-env NODE_ENV=test jest",
 		"test:post-test": "node _tests/utils/delete-db-file.js",
+		"db:migrate:dev": "cross-env NODE_ENV=test sequelize db:migrate",
 		"db:migrate:test": "cross-env NODE_ENV=test sequelize db:migrate",
 		"prettier:check": "npx prettier --check .",
 		"prettier:fix": "npx prettier --write .",
