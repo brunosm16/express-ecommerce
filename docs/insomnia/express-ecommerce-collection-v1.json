@@ -1,0 +1,98 @@
+{
+	"_type": "export",
+	"__export_format": 4,
+	"__export_date": "2023-04-06T14:21:30.722Z",
+	"__export_source": "insomnia.desktop.app:v2023.1.0",
+	"resources": [
+		{
+			"_id": "req_fb59735323104929846c1ccd18c4a2cc",
+			"parentId": "fld_fae52ebcf9704f2cabffff6a848bd5a7",
+			"modified": 1680790841066,
+			"created": 1680790788440,
+			"url": "{{ _.host }}/create",
+			"name": "New Request",
+			"description": "",
+			"method": "POST",
+			"body": {},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1680790788440,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_fae52ebcf9704f2cabffff6a848bd5a7",
+			"parentId": "wrk_08dae5c59f8b42049153250f7d09cee6",
+			"modified": 1680790785491,
+			"created": 1680790785491,
+			"name": "Users",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1680790785491,
+			"_type": "request_group"
+		},
+		{
+			"_id": "wrk_08dae5c59f8b42049153250f7d09cee6",
+			"parentId": null,
+			"modified": 1680790777981,
+			"created": 1680790777981,
+			"name": "Express Ecommerce",
+			"description": "",
+			"scope": "collection",
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_52c46a11a7bd4b481039aee5528c639c5b96c2e6",
+			"parentId": "wrk_08dae5c59f8b42049153250f7d09cee6",
+			"modified": 1680790795515,
+			"created": 1680790777987,
+			"name": "Base Environment",
+			"data": {},
+			"dataPropertyOrder": {},
+			"color": null,
+			"isPrivate": false,
+			"metaSortKey": 1680790777987,
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_52c46a11a7bd4b481039aee5528c639c5b96c2e6",
+			"parentId": "wrk_08dae5c59f8b42049153250f7d09cee6",
+			"modified": 1680790777988,
+			"created": 1680790777988,
+			"name": "Default Jar",
+			"cookies": [],
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "spc_3b7ad808bdf24fe297a9149f6b03bd0a",
+			"parentId": "wrk_08dae5c59f8b42049153250f7d09cee6",
+			"modified": 1680790777983,
+			"created": 1680790777983,
+			"fileName": "Express Ecommerce",
+			"contents": "",
+			"contentType": "yaml",
+			"_type": "api_spec"
+		},
+		{
+			"_id": "env_b0d45c7b74744533a377489c54790c3f",
+			"parentId": "env_52c46a11a7bd4b481039aee5528c639c5b96c2e6",
+			"modified": 1680790826394,
+			"created": 1680790797978,
+			"name": "Development",
+			"data": { "host": "http://localhost:6000" },
+			"dataPropertyOrder": { "&": ["host"] },
+			"color": null,
+			"isPrivate": false,
+			"metaSortKey": 1680790797978,
+			"_type": "environment"
+		}
+	]
+}

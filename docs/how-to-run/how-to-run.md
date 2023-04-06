@@ -28,9 +28,11 @@
 ### Running in Development 
 
  1. Clone this project with `git clone`
- 2. Install all dependencies with `yarn install` 
- 3. Run migrations with `yarn db:migrate:dev`
- 4. Run on terminal the command `yarn start:dev` to run application in development node
+ 2. Before running the api first request [insomnia-collection](../insomnia/express-ecommerce-collection-v1.json)
+ 3. Install all dependencies with `yarn install` 
+ 4. Run migrations with `yarn db:migrate:dev`
+ 5. Run on terminal the command `yarn start:dev` to run application in development node
+ 6. Access routes provided in insomnia-collection 
 
 ### Running Tests
 
