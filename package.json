@@ -1,7 +1,7 @@
 {
 	"name": "express-ecommerce",
 	"version": "1.0.0",
-	"main": "src/main.js",
+	"main": "src/main/server.js",
 	"license": "MIT",
 	"description": "E-commerce built with JavaScript / Express / Sequelize",
 	"author": "Bruno Moraes",
@@ -14,7 +14,7 @@
 	],
 	"private": false,
 	"scripts": {
-		"start:dev": "nodemon src/main.js --ignore __tests__",
+		"start:dev": "nodemon src/main/server.js --ignore __tests__",
 		"test": "npm run db:migrate:test && cross-env NODE_ENV=test jest",
 		"test:post-test": "node _tests/utils/delete-db-file.js",
 		"db:migrate:dev": "cross-env NODE_ENV=test sequelize db:migrate",
