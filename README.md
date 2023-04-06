@@ -32,7 +32,7 @@ This project has the purpose to implement REST API's with Relational Databases a
 
  1. How to run this application
  2. Requirements
- 3. Architecture
+ 3. Entity Relationship Diagram
 
 ---
 Thank you 💜
