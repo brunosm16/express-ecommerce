@@ -26,6 +26,6 @@ module.exports = {
 		});
 	},
 	async down(queryInterface) {
-		await queryInterface.dropTable('CategoryModels');
+		await queryInterface.dropTable('categories');
 	},
 };

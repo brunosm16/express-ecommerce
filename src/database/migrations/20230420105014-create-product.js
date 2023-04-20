@@ -74,6 +74,6 @@ module.exports = {
 		});
 	},
 	async down(queryInterface) {
-		await queryInterface.dropTable('Products');
+		await queryInterface.dropTable('products');
 	},
 };
