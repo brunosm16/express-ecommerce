@@ -14,15 +14,15 @@ module.exports = {
 			district: { type: Sequelize.STRING, allowNull: false },
 			zipcode: { type: Sequelize.STRING, allowNull: false },
 			number: { type: Sequelize.INTEGER, allowNull: false },
-			createdAt: {
+			created_at: {
 				allowNull: false,
 				type: Sequelize.DATE,
 			},
-			updatedAt: {
+			updated_at: {
 				allowNull: false,
 				type: Sequelize.DATE,
 			},
-			deletedAt: {
+			deleted_at: {
 				allowNull: false,
 				type: Sequelize.DATE,
 			},

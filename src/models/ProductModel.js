@@ -16,9 +16,6 @@ class ProductModel extends Model {
 				height: DataTypes.DECIMAL,
 				length: DataTypes.DECIMAL,
 				sku: DataTypes.STRING,
-				createdAt: DataTypes.DATE,
-				updatedAt: DataTypes.DATE,
-				deletedAt: DataTypes.DATE,
 			},
 			{
 				sequelize: connection,

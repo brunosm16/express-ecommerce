@@ -24,6 +24,10 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: true,
 			},
+			date_of_birth: {
+				type: Sequelize.DATE,
+				allowNull: false,
+			},
 			password_hash: {
 				type: Sequelize.STRING,
 				allowNull: false,
@@ -41,13 +45,19 @@ module.exports = {
 				allowNull: false,
 				defaultValue: false,
 			},
-			createdAt: {
-				allowNull: false,
+			created_at: {
 				type: Sequelize.DATE,
+				allowNull: false,
+				defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
 			},
-			updatedAt: {
-				allowNull: false,
+			updated_at: {
 				type: Sequelize.DATE,
+				allowNull: false,
+				defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+			},
+			deleted_at: {
+				type: Sequelize.DATE,
+				allowNull: false,
 			},
 		});
 	},
