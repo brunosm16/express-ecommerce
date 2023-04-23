@@ -10,6 +10,7 @@ const {
 	DB_PASSWORD,
 	DB_URL,
 	CORS_ORIGIN_URL,
+	JWT_SECRET,
 } = process.env;
 
 module.exports = Object.freeze({
@@ -22,4 +23,5 @@ module.exports = Object.freeze({
 	DB_PASSWORD,
 	DB_URL,
 	CORS_ORIGIN_URL,
+	JWT_SECRET,
 });
