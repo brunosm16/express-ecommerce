@@ -1,7 +1,6 @@
 const {
 	REQUIRED_AUTHORIZATION_ERROR,
 	INVALID_TOKEN_CREDENTIAL,
-	INTERNAL_SERVER_ERROR,
 	NOT_ALLOWED,
 } = require('../constants/error-messages');
 const { makeBadRequest, makeInternalServerError } = require('../errors/errors-factory');
@@ -41,7 +40,7 @@ const adminAuth = async (req, res, next) => {
 
 		return next();
 	} catch (err) {
-		return sendExpressResponse(res, makeInternalServerError(INTERNAL_SERVER_ERROR));
+		return sendExpressResponse(res, makeInternalServerError(err?.message));
 	}
 };
 
