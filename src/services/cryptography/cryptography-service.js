@@ -17,8 +17,13 @@ const generateTokenByParams = (payload) => {
 	return jwt.sign({ payload }, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
 };
 
+const comparePasswords = async (password, hashPassword) => {
+	return bcrypt.compare(password, hashPassword);
+};
+
 module.exports = {
 	encrypt,
 	generateTokenByParams,
 	generateUUID,
+	comparePasswords,
 };
