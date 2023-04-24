@@ -10,7 +10,7 @@ require('../database/sequelize/connection');
 
 setCors(app);
 setJson(app);
-setErrors(app);
 setRouter(app);
+setErrors(app);
 
 module.exports = server;

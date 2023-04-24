@@ -1,7 +1,7 @@
 const { errors } = require('celebrate');
 
 const setErrors = (app) => {
-	app.set(errors());
+	app.use(errors());
 };
 
 module.exports = setErrors;
