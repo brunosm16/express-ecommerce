@@ -2,8 +2,8 @@ const express = require('express');
 
 const usersRouter = express.Router();
 
-usersRouter.get('/', (req, res) => {
-	res.status(200).json({ message: 'inside users router' });
-});
+const usersController = require('../../controllers/users');
+
+usersRouter.post('/', usersController.create);
 
 module.exports = usersRouter;
