@@ -37,11 +37,8 @@ const validateToken = (token) => {
 };
 
 const validateUserExists = async ({ first_name, last_name, primary_email }) => {
-	const user = findUserService.findUserByParams({ first_name, last_name, primary_email });
-
-	if (user) {
-		throw Error(ENTITY_EXISTS);
-	}
+	const user = await findUserService.findUserByParams(first_name, last_name, primary_email);
+	if (user) throw Error(ENTITY_EXISTS);
 };
 
 const persistUser = async (body) => {
