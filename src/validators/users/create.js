@@ -8,5 +8,6 @@ module.exports = celebrate({
 		secondary_email: Joi.string().email().required(),
 		date_of_birth: Joi.string().isoDate().required(),
 		password: Joi.string().required().min(8),
+		admin: Joi.boolean().required(),
 	}),
 });

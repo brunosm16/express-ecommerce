@@ -19,13 +19,13 @@ const authIsNotBearer = (authorization) => {
 const getAuthError = (authorization) => {
 	if (!authorization) return makeBadRequest(REQUIRED_AUTHORIZATION_ERROR);
 
-	if (authIsNotBearer) return makeBadRequest(INVALID_TOKEN_CREDENTIAL);
+	if (authIsNotBearer(authorization)) return makeBadRequest(INVALID_TOKEN_CREDENTIAL);
 
 	return null;
 };
 
 const getBearerTokenDecoded = (authorization) => {
-	const [bearerToken] = authorization.split(' ');
+	const bearerToken = authorization.split(' ')[1];
 	return decodeToken(bearerToken);
 };
 
@@ -35,7 +35,7 @@ const adminAuth = async (req, res, next) => {
 	if (authError) return sendExpressResponse(res, authError);
 
 	try {
-		const { admin } = getBearerTokenDecoded();
+		const { admin } = getBearerTokenDecoded(authorization);
 
 		if (!admin) sendExpressResponse(res, makeBadRequest(NOT_ALLOWED));
 

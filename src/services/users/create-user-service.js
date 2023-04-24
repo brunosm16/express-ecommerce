@@ -10,7 +10,8 @@ const cryptographyService = require('../cryptography/cryptography-service');
 const findUserService = require('./find-user-service');
 
 const getUserParams = async (body) => {
-	const { first_name, last_name, primary_email, secondary_email, date_of_birth, password } = body;
+	const { first_name, last_name, primary_email, secondary_email, date_of_birth, password, admin } =
+		body;
 
 	const password_hash = await cryptographyService.encrypt(password);
 	const id = cryptographyService.generateUUID();
@@ -23,11 +24,12 @@ const getUserParams = async (body) => {
 		secondary_email,
 		date_of_birth,
 		password_hash,
+		admin,
 	};
 };
 
 const getUserToken = ({ id, admin }) => {
-	return cryptographyService.generateTokenByParams(id, admin);
+	return cryptographyService.generateTokenByParams({ id, admin });
 };
 
 const validateToken = (token) => {

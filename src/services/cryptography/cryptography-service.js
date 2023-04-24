@@ -14,14 +14,14 @@ const generateUUID = () => {
 };
 
 const generateTokenByParams = (payload) => {
-	return jwt.sign({ payload }, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
+	return jwt.sign({ ...payload }, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
 };
 
 const comparePasswords = async (password, hashPassword) => {
 	return bcrypt.compare(password, hashPassword);
 };
 
-const decodeToken = async (token) => {
+const decodeToken = (token) => {
 	return jwt.verify(token, JWT_SECRET);
 };
 
