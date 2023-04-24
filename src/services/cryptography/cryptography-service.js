@@ -21,9 +21,14 @@ const comparePasswords = async (password, hashPassword) => {
 	return bcrypt.compare(password, hashPassword);
 };
 
+const decodeToken = async (token) => {
+	return jwt.verify(token, JWT_SECRET);
+};
+
 module.exports = {
 	encrypt,
 	generateTokenByParams,
 	generateUUID,
 	comparePasswords,
+	decodeToken,
 };
