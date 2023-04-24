@@ -1,8 +1,10 @@
 const {
 	REQUIRED_AUTHORIZATION_ERROR,
 	INVALID_TOKEN_CREDENTIAL,
+	INTERNAL_SERVER_ERROR,
+	NOT_ALLOWED,
 } = require('../constants/error-messages');
-const { makeBadRequest } = require('../errors/errors-factory');
+const { makeBadRequest, makeInternalServerError } = require('../errors/errors-factory');
 const { decodeToken } = require('../services/cryptography/cryptography-service');
 const { sendExpressResponse } = require('../utils/send-express-response');
 
@@ -22,21 +24,39 @@ const getAuthError = (authorization) => {
 	return null;
 };
 
+const getBearerTokenDecoded = (authorization) => {
+	const [bearerToken] = authorization.split(' ');
+	return decodeToken(bearerToken);
+};
+
+const adminAuth = async (req, res, next) => {
+	const { authorization } = req.headers;
+	const authError = getAuthError(authorization);
+	if (authError) return sendExpressResponse(res, authError);
+
+	try {
+		const { admin } = getBearerTokenDecoded();
+
+		if (!admin) sendExpressResponse(res, makeBadRequest(NOT_ALLOWED));
+
+		return next();
+	} catch (err) {
+		return sendExpressResponse(res, makeInternalServerError(INTERNAL_SERVER_ERROR));
+	}
+};
+
 const auth = async (req, res, next) => {
 	const { authorization } = req.headers;
 	const authError = getAuthError(authorization);
 	if (authError) return sendExpressResponse(res, authError);
 
 	try {
-		const [bearerToken] = authorization.split(' ');
-		const { admin } = decodeToken(bearerToken);
-
+		const { admin } = getBearerTokenDecoded();
 		req.isAdmin = admin;
-
 		return next();
 	} catch (err) {
 		return sendExpressResponse(res, makeBadRequest(INVALID_TOKEN_CREDENTIAL));
 	}
 };
 
-module.exports = { auth };
+module.exports = { auth, adminAuth };
