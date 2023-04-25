@@ -7,4 +7,4 @@ class EntityExistsError extends Error {
 	}
 }
 
-module.exports = { EntityExistsError };
+module.exports = EntityExistsError;

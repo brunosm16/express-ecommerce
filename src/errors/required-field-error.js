@@ -5,4 +5,4 @@ class RequiredFieldError extends Error {
 	}
 }
 
-module.exports = { RequiredFieldError };
+module.exports = RequiredFieldError;

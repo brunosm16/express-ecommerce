@@ -7,4 +7,4 @@ class InvalidCredentialsError extends Error {
 	}
 }
 
-module.exports = { InvalidCredentialsError };
+module.exports = InvalidCredentialsError;
