@@ -1,7 +1,7 @@
 const UserModel = require('../../models/UserModel');
 const sequelizeConnection = require('../../database/sequelize/connection');
 const cryptographyService = require('../cryptography/cryptography-service');
-const { validateUserService } = require('./validate-user-service');
+const validateUserService = require('./validate-user-service');
 const { InternalServerError } = require('../../errors');
 
 const getUserParams = async (body) => {
