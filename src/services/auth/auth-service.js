@@ -1,5 +1,5 @@
 const { INVALID_TOKEN_CREDENTIAL } = require('../../constants/error-messages');
-const { RequiredFieldError, InvalidCredentialsError } = require('../../errors');
+const { RequiredFieldError, InvalidCredentialsError } = require('../../errors/errors-types');
 
 const authorizationIsNotBearer = (authorization) => {
 	const split = authorization.split(' ');

@@ -1,4 +1,4 @@
-const { NOT_ALLOWED } = require('../constants/error-messages');
+const { NOT_ALLOWED } = require('../../constants/error-messages');
 
 class NotAllowedError extends Error {
 	constructor(message = NOT_ALLOWED) {

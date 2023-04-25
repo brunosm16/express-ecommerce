@@ -1,4 +1,4 @@
-const { NotAllowedError } = require('../errors');
+const { NotAllowedError } = require('../errors/errors-types');
 const { makeResponseByError } = require('../http/http-responses');
 const { validateAuthorization } = require('../services/auth/auth-service');
 const { decodeToken } = require('../services/cryptography/cryptography-service');

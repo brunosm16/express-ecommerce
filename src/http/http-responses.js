@@ -1,5 +1,5 @@
 const { INTERNAL_SERVER_ERROR } = require('../constants/error-messages');
-const { EntityExistsError, NotFoundError } = require('../errors');
+const { EntityExistsError, NotFoundError } = require('../errors/errors-types');
 
 const sendResponse = (res, statusCode, message) => res.status(statusCode).json({ message });
 

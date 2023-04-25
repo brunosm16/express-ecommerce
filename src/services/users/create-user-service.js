@@ -2,7 +2,7 @@ const UserModel = require('../../models/UserModel');
 const sequelizeConnection = require('../../database/sequelize/connection');
 const cryptographyService = require('../cryptography/cryptography-service');
 const validateUserService = require('./validate-user-service');
-const { InternalServerError } = require('../../errors');
+const { InternalServerError } = require('../../errors/errors-types');
 
 const getUserParams = async (body) => {
 	const { first_name, last_name, primary_email, secondary_email, date_of_birth, password, admin } =

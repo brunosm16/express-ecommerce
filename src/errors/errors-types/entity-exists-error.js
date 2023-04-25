@@ -1,4 +1,4 @@
-const { ENTITY_EXISTS } = require('../constants/error-messages');
+const { ENTITY_EXISTS } = require('../../constants/error-messages');
 
 class EntityExistsError extends Error {
 	constructor(message = ENTITY_EXISTS) {

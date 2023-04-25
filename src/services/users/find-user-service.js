@@ -1,4 +1,4 @@
-const { InternalServerError } = require('../../errors');
+const { InternalServerError } = require('../../errors/errors-types');
 const UserModel = require('../../models/UserModel');
 
 const findUserByParams = async (first_name, last_name, primary_email) => {
