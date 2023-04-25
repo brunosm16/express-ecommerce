@@ -1,14 +1,11 @@
-const { makeInternalServerError } = require('../../errors/errors-factory');
-
+const { makeOkResponse, makeResponseByError } = require('../../http/http-responses');
 const createUserService = require('../../services/users/create-user-service');
 
 module.exports = async (req, res) => {
 	try {
-		const { statusCode, message } = await createUserService.createUser(req.body);
-
-		res.status(statusCode).json({ message });
+		const userCreated = await createUserService.createUser(req.body);
+		return makeOkResponse(res, userCreated);
 	} catch (err) {
-		const { statusCode, message } = makeInternalServerError(err?.message);
-		res.status(statusCode).json({ message });
+		return makeResponseByError(res, err);
 	}
 };
