@@ -1,6 +1,5 @@
 const { TOKEN_ERROR } = require('../../constants/error-messages');
-const { EntityExistsError } = require('../../errors/entity-exists-error');
-const { InternalServerError } = require('../../errors/internal-server-error');
+const { EntityExistsError, InternalServerError } = require('../../errors');
 const findUserService = require('./find-user-service');
 
 const validateUserExists = async ({ first_name, last_name, primary_email }) => {

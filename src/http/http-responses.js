@@ -1,5 +1,4 @@
-const { EntityExistsError } = require('../errors/entity-exists-error');
-const { NotFoundError } = require('../errors/not-found-error');
+const { EntityExistsError, NotFoundError } = require('../errors');
 
 const sendResponse = (res, statusCode, message) => res.status(statusCode).json({ message });
 
