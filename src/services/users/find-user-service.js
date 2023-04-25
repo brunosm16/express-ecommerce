@@ -9,17 +9,15 @@ const findUserByParams = async (first_name, last_name, primary_email) => {
 	}
 };
 
-// const findAllUsers = async () => {
-// 	try {
-// 		const users = await UserModel.findAll({ attributes: { exclude: ['password_hash'] } });
-
-// 		return makeOkRequest(users);
-// 	} catch (err) {
-// 		return makeInternalServerError(err?.message);
-// 	}
-// };
+const findAllUsers = async () => {
+	try {
+		return await UserModel.findAll({ attributes: { exclude: ['password_hash'] } });
+	} catch (err) {
+		throw new InternalServerError(err?.message);
+	}
+};
 
 module.exports = {
 	findUserByParams,
-	// findAllUsers,
+	findAllUsers,
 };

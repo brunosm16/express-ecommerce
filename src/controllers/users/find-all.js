@@ -1,12 +1,11 @@
-const { makeInternalServerError } = require('../../errors/errors-factory');
+const { makeOkResponse, makeResponseByError } = require('../../http/http-responses');
 const findUserService = require('../../services/users/find-user-service');
-const { sendExpressResponse } = require('../../utils/send-express-response');
 
 module.exports = async (req, res) => {
 	try {
-		const usersResult = await findUserService.findAllUsers();
-		return sendExpressResponse(res, usersResult);
+		const users = await findUserService.findAllUsers();
+		return makeOkResponse(res, users);
 	} catch (err) {
-		return sendExpressResponse(res, makeInternalServerError(err?.message));
+		return makeResponseByError(res, err);
 	}
 };

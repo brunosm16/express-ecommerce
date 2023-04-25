@@ -20,7 +20,7 @@ const adminAuth = async (req, res, next) => {
 
 		return next();
 	} catch (err) {
-		return makeResponseByError(err);
+		return makeResponseByError(res, err);
 	}
 };
 
