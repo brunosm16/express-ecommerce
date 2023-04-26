@@ -1,5 +1,5 @@
 const { STATUS_CODE_400, STATUS_CODE_500 } = require('../../constants/http-status-codes');
-const { isBadRequestError } = require('./index');
+const { isBadRequestError } = require('./is-bad-request-error');
 
 const makeHttpResponse = (statusCode, message) => ({ statusCode, message });
 
@@ -7,7 +7,7 @@ const makeBadRequestMessage = (message) => makeHttpResponse(STATUS_CODE_400, mes
 
 const makeInternalServerErrorMessage = (message) => makeHttpResponse(STATUS_CODE_500, message);
 
-const createError = (err) => {
+const createErrorMessage = (err) => {
 	const { message } = err;
 
 	if (isBadRequestError(err)) {
@@ -17,4 +17,4 @@ const createError = (err) => {
 	return makeInternalServerErrorMessage(err?.message);
 };
 
-module.exports = { createError };
+module.exports = { createErrorMessage };

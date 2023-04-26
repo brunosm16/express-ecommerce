@@ -3,7 +3,8 @@ const {
 	STATUS_CODE_400,
 	STATUS_CODE_500,
 } = require('../constants/http-status-codes');
-const { createError } = require('../errors/errors-helpers');
+
+const { createErrorMessage } = require('../errors/errors-helpers');
 
 const sendResponse = (res, statusCode, message) => res.status(statusCode).json({ message });
 const makeOkResponse = (res, message) => sendResponse(res, STATUS_CODE_200, message);
@@ -12,7 +13,7 @@ const makeInternalServerErrorResponse = (res, message) =>
 	sendResponse(res, STATUS_CODE_500, message);
 
 const makeResponseByError = (res, err) => {
-	const { statusCode, message } = createError(err);
+	const { statusCode, message } = createErrorMessage(err);
 
 	return sendResponse(res, statusCode, message);
 };

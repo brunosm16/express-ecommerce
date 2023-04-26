@@ -9,7 +9,7 @@ const isBadRequestError = (err) => {
 		(errorInstance) => err instanceof errorInstance
 	);
 
-	const hasErrorType = badRequestErrorsTypes.some((errorType) => err?.message.includes(errorType));
+	const hasErrorType = badRequestErrorsTypes.some((errorType) => err?.stack.includes(errorType));
 
 	return hasErrorInstance || hasErrorType;
 };

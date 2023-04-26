@@ -1,7 +1,7 @@
 const isBadRequestError = require('./is-bad-request-error');
-const createError = require('./create-error');
+const { createErrorMessage } = require('./create-error');
 
 module.exports = {
 	isBadRequestError,
-	createError,
+	createErrorMessage,
 };
