@@ -9,11 +9,11 @@ const getBearerTokenDecoded = (authorization) => {
 };
 
 const adminAuth = async (req, res, next) => {
-	const { authorization } = req.headers;
-
-	validateAuthorization(authorization);
-
 	try {
+		const { authorization } = req.headers;
+
+		validateAuthorization(authorization);
+
 		const { admin } = getBearerTokenDecoded(authorization);
 
 		if (!admin) throw new NotAllowedError();
