@@ -3,7 +3,9 @@ const {
 	EntityExistsError,
 	InternalServerError,
 	EntityNotExistsError,
+	WrongPasswordError,
 } = require('../../errors/errors-types');
+const { comparePasswords } = require('../cryptography/cryptography-service');
 const findUserService = require('./find-user-service');
 
 const validateUserExists = async ({ primary_email, secondary_email }) => {
@@ -20,4 +22,21 @@ const validateToken = (token) => {
 	if (!token) throw new InternalServerError(TOKEN_ERROR);
 };
 
-module.exports = { validateUserExists, validateToken, validateNonExistingUserById };
+const validateUserExistsByEmail = async (email) => {
+	const user = await findUserService.findUserByEmail(email);
+	if (!user) throw new EntityNotExistsError('No user found with this email');
+};
+
+const validateInputPasswordWithHash = async (password, hash) => {
+	const isEqual = await comparePasswords(password, hash);
+
+	if (!isEqual) throw new WrongPasswordError();
+};
+
+module.exports = {
+	validateUserExists,
+	validateToken,
+	validateNonExistingUserById,
+	validateUserExistsByEmail,
+	validateInputPasswordWithHash,
+};

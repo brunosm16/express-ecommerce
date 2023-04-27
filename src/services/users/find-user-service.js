@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { InternalServerError } = require('../../errors/errors-types');
 const UserModel = require('../../models/UserModel');
 
@@ -25,8 +26,21 @@ const findUserById = async (id) => {
 	}
 };
 
+const findUserByEmail = async (email) => {
+	try {
+		return await UserModel.findOne({
+			where: {
+				[Op.or]: [{ primary_email: email }, { secondary_email: email }],
+			},
+		});
+	} catch (err) {
+		throw new InternalServerError(err?.message);
+	}
+};
+
 module.exports = {
 	findUserByParams,
 	findAllUsers,
 	findUserById,
+	findUserByEmail,
 };
