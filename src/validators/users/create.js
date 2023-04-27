@@ -12,4 +12,9 @@ module.exports = celebrate({
 		password: Joi.string().required().min(8),
 		admin: Joi.boolean().required(),
 	}),
+	[Segments.HEADERS]: Joi.object()
+		.keys({
+			authorization: Joi.string().required(),
+		})
+		.unknown(),
 });
