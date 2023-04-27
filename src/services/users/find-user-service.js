@@ -1,9 +1,9 @@
 const { InternalServerError } = require('../../errors/errors-types');
 const UserModel = require('../../models/UserModel');
 
-const findUserByParams = async (first_name, last_name, primary_email) => {
+const findUserByParams = async (primary_email, secondary_email) => {
 	try {
-		return await UserModel.findOne({ where: { first_name, last_name, primary_email } });
+		return await UserModel.findOne({ where: { primary_email, secondary_email } });
 	} catch (err) {
 		throw new InternalServerError(err?.message);
 	}

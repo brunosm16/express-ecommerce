@@ -6,8 +6,8 @@ const {
 } = require('../../errors/errors-types');
 const findUserService = require('./find-user-service');
 
-const validateUserExists = async ({ first_name, last_name, primary_email }) => {
-	const user = await findUserService.findUserByParams(first_name, last_name, primary_email);
+const validateUserExists = async ({ primary_email, secondary_email }) => {
+	const user = await findUserService.findUserByParams(primary_email, secondary_email);
 	if (user) throw new EntityExistsError();
 };
 
