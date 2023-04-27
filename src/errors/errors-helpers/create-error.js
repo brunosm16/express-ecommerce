@@ -8,7 +8,7 @@ const makeBadRequestMessage = (message) => makeHttpResponse(STATUS_CODE_400, mes
 const makeInternalServerErrorMessage = (message) => makeHttpResponse(STATUS_CODE_500, message);
 
 const createErrorMessage = (err) => {
-	const { message } = err;
+	const message = err?.message || err;
 
 	if (isBadRequestError(err)) {
 		return makeBadRequestMessage(message);
