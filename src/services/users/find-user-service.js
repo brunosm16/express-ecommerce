@@ -1,41 +1,24 @@
 const { Op } = require('sequelize');
-const { InternalServerError } = require('../../errors/errors-types');
 const UserModel = require('../../models/UserModel');
 
 const findUserByParams = async (primary_email, secondary_email) => {
-	try {
-		return await UserModel.findOne({ where: { primary_email, secondary_email } });
-	} catch (err) {
-		throw new InternalServerError(err?.message);
-	}
+	return UserModel.findOne({ where: { primary_email, secondary_email } });
 };
 
 const findAllUsers = async () => {
-	try {
-		return await UserModel.findAll({ attributes: { exclude: ['password_hash'] } });
-	} catch (err) {
-		throw new InternalServerError(err?.message);
-	}
+	return UserModel.findAll({ attributes: { exclude: ['password_hash'] } });
 };
 
 const findUserById = async (id) => {
-	try {
-		return await UserModel.findByPk(id);
-	} catch (err) {
-		throw new InternalServerError(err?.message);
-	}
+	return UserModel.findByPk(id);
 };
 
 const findUserByEmail = async (email) => {
-	try {
-		return await UserModel.findOne({
-			where: {
-				[Op.or]: [{ primary_email: email }, { secondary_email: email }],
-			},
-		});
-	} catch (err) {
-		throw new InternalServerError(err?.message);
-	}
+	return UserModel.findOne({
+		where: {
+			[Op.or]: [{ primary_email: email }, { secondary_email: email }],
+		},
+	});
 };
 
 module.exports = {

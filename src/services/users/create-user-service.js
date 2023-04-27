@@ -2,7 +2,6 @@ const UserModel = require('../../models/UserModel');
 const sequelizeConnection = require('../../database/sequelize/connection');
 const cryptographyService = require('../cryptography/cryptography-service');
 const validateUserService = require('./validate-user-service');
-const { InternalServerError } = require('../../errors/errors-types');
 
 const getUserParams = async (body) => {
 	const { first_name, last_name, primary_email, secondary_email, date_of_birth, password, admin } =
@@ -26,20 +25,16 @@ const getUserParams = async (body) => {
 const persistUser = async (body) => {
 	const transaction = await sequelizeConnection.transaction();
 	const userParams = await getUserParams(body);
-	try {
-		const userCreated = await UserModel.create({ ...userParams }, { transaction });
+	const userCreated = await UserModel.create({ ...userParams }, { transaction });
 
-		const { id, admin } = userCreated;
-		const userToken = cryptographyService.generateTokenByParams({ id, admin });
+	const { id, admin } = userCreated;
+	const userToken = cryptographyService.generateTokenByParams({ id, admin });
 
-		validateUserService.validateToken(userToken);
+	validateUserService.validateToken(userToken);
 
-		await transaction.commit();
+	await transaction.commit();
 
-		return { userCreated, userToken };
-	} catch (err) {
-		throw new InternalServerError(err?.message);
-	}
+	return { userCreated, userToken };
 };
 
 const createUser = async (body) => {
