@@ -4,6 +4,7 @@ const EntityExistsError = require('./entity-exists-error');
 const InvalidCredentialsError = require('./invalid-credentials-error');
 const RequiredFieldError = require('./required-field-error');
 const NotAllowedError = require('./not-allowed-error');
+const EntityNotExistsError = require('./entity-not-exists-error');
 
 module.exports = {
 	InternalServerError,
@@ -12,4 +13,5 @@ module.exports = {
 	InvalidCredentialsError,
 	RequiredFieldError,
 	NotAllowedError,
+	EntityNotExistsError,
 };

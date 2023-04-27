@@ -1,6 +1,6 @@
-const { NotFoundError, EntityExistsError } = require('../errors-types');
+const { NotFoundError, EntityExistsError, EntityNotExistsError } = require('../errors-types');
 
-const badRequestErrorsInstances = [EntityExistsError, NotFoundError];
+const badRequestErrorsInstances = [EntityExistsError, NotFoundError, EntityNotExistsError];
 
 const badRequestErrorsTypes = ['TokenExpiredError'];
 
