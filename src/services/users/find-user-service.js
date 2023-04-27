@@ -17,7 +17,16 @@ const findAllUsers = async () => {
 	}
 };
 
+const findUserById = async (id) => {
+	try {
+		return await UserModel.findByPk(id);
+	} catch (err) {
+		throw new InternalServerError(err?.message);
+	}
+};
+
 module.exports = {
 	findUserByParams,
 	findAllUsers,
+	findUserById,
 };

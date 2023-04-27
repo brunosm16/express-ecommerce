@@ -1,5 +1,9 @@
 const { TOKEN_ERROR } = require('../../constants/error-messages');
-const { EntityExistsError, InternalServerError } = require('../../errors/errors-types');
+const {
+	EntityExistsError,
+	InternalServerError,
+	EntityNotExistsError,
+} = require('../../errors/errors-types');
 const findUserService = require('./find-user-service');
 
 const validateUserExists = async ({ first_name, last_name, primary_email }) => {
@@ -7,8 +11,13 @@ const validateUserExists = async ({ first_name, last_name, primary_email }) => {
 	if (user) throw new EntityExistsError();
 };
 
-const validateToken = (token) => {
-	if (!token) throw new InternalServerError(TOKEN_ERROR);
+const validateNonExistingUserById = async (id) => {
+	const user = await findUserService.findUserById(id);
+	if (!user) throw new EntityNotExistsError();
 };
 
-module.exports = { validateUserExists, validateToken };
+const validateToken = (token) => {
+	if (token) throw new InternalServerError(TOKEN_ERROR);
+};
+
+module.exports = { validateUserExists, validateToken, validateNonExistingUserById };
