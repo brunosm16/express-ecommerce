@@ -17,7 +17,7 @@ const validateNonExistingUserById = async (id) => {
 };
 
 const validateToken = (token) => {
-	if (token) throw new InternalServerError(TOKEN_ERROR);
+	if (!token) throw new InternalServerError(TOKEN_ERROR);
 };
 
 module.exports = { validateUserExists, validateToken, validateNonExistingUserById };
