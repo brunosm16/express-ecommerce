@@ -5,6 +5,14 @@ const findUserByParams = async (primary_email, secondary_email) => {
 	return UserModel.findOne({ where: { primary_email, secondary_email } });
 };
 
+const findUserByEmails = async (primary_email, secondary_email) => {
+	return UserModel.findOne({
+		where: {
+			[Op.or]: [{ primary_email }, { secondary_email }],
+		},
+	});
+};
+
 const findAllUsers = async () => {
 	return UserModel.findAll({ attributes: { exclude: ['password_hash'] } });
 };
@@ -26,4 +34,5 @@ module.exports = {
 	findAllUsers,
 	findUserById,
 	findUserByEmail,
+	findUserByEmails,
 };

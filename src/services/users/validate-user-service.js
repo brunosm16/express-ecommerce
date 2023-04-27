@@ -9,7 +9,7 @@ const { comparePasswords } = require('../cryptography/cryptography-service');
 const findUserService = require('./find-user-service');
 
 const validateUserExists = async ({ primary_email, secondary_email }) => {
-	const user = await findUserService.findUserByEmail(primary_email, secondary_email);
+	const user = await findUserService.findUserByEmails(primary_email, secondary_email);
 	if (user) throw new EntityExistsError();
 };
 
