@@ -9,4 +9,5 @@ module.exports = Object.freeze({
 	SOMETHING_WRONG: 'Something wrong happened. Please try again later',
 	ENTITY_DELETED: 'Entity was successfully deleted',
 	NOT_ALLOWED: 'You are not allowed to access this information',
+	WRONG_PASSWORD: 'Wrong password',
 });
