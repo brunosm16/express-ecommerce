@@ -42,18 +42,23 @@ const formatBodyParams = async (body) => {
 const persistUser = async (user, body) => {
 	const transaction = await sequelizeConnection.transaction();
 
-	const formattedParams = await formatBodyParams(body);
+	try {
+		const formattedParams = await formatBodyParams(body);
 
-	const userResult = await user.update({ ...formattedParams }, { transaction });
+		const userResult = await user.update({ ...formattedParams }, { transaction });
 
-	const { id, admin } = userResult;
-	const userToken = cryptographyService.generateTokenByParams({ id, admin });
+		const { id, admin } = userResult;
+		const userToken = cryptographyService.generateTokenByParams({ id, admin });
 
-	validateUserService.validateToken(userToken);
+		validateUserService.validateToken(userToken);
 
-	await transaction.commit();
+		await transaction.commit();
 
-	return { userResult, userToken };
+		return { userResult, userToken };
+	} catch (err) {
+		await transaction.rollback();
+		throw err;
+	}
 };
 
 const update = async (id, body) => {

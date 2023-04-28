@@ -24,17 +24,22 @@ const getUserParams = async (body) => {
 
 const persistUser = async (body) => {
 	const transaction = await sequelizeConnection.transaction();
-	const userParams = await getUserParams(body);
-	const userCreated = await UserModel.create({ ...userParams }, { transaction });
+	try {
+		const userParams = await getUserParams(body);
+		const userCreated = await UserModel.create({ ...userParams }, { transaction });
 
-	const { id, admin } = userCreated;
-	const userToken = cryptographyService.generateTokenByParams({ id, admin });
+		const { id, admin } = userCreated;
+		const userToken = cryptographyService.generateTokenByParams({ id, admin });
 
-	validateUserService.validateToken(userToken);
+		validateUserService.validateToken(userToken);
 
-	await transaction.commit();
+		await transaction.commit();
 
-	return { userCreated, userToken };
+		return { userCreated, userToken };
+	} catch (err) {
+		await transaction.rollback();
+		throw err;
+	}
 };
 
 const createUser = async (body) => {
