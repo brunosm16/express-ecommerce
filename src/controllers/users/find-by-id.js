@@ -12,6 +12,6 @@ module.exports = async (req, res) => {
 
 		return makeOkResponse(res, user);
 	} catch (err) {
-		return makeResponseByError(err);
+		return makeResponseByError(res, err);
 	}
 };
