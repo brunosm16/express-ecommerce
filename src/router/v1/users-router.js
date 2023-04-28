@@ -7,6 +7,8 @@ const { adminAuth } = require('../../middlewares/jwt-auth');
 
 usersRouter.get('/', userValidator.findAll, adminAuth, usersController.findAll);
 
+usersRouter.get('/:id', userValidator.findById, adminAuth, usersController.findById);
+
 usersRouter.post('/', userValidator.create, adminAuth, usersController.create);
 
 usersRouter.post('/login', userValidator.login, usersController.login);
