@@ -6,6 +6,7 @@ const RequiredFieldError = require('./required-field-error');
 const NotAllowedError = require('./not-allowed-error');
 const EntityNotExistsError = require('./entity-not-exists-error');
 const WrongPasswordError = require('./wrong-password-error');
+const EmptyBodyError = require('./empty-body-error');
 
 module.exports = {
 	InternalServerError,
@@ -16,4 +17,5 @@ module.exports = {
 	NotAllowedError,
 	EntityNotExistsError,
 	WrongPasswordError,
+	EmptyBodyError,
 };
