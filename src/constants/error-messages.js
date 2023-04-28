@@ -10,4 +10,5 @@ module.exports = Object.freeze({
 	ENTITY_DELETED: 'Entity was successfully deleted',
 	NOT_ALLOWED: 'You are not allowed to access this information',
 	WRONG_PASSWORD: 'Wrong password',
+	EMPTY_BODY: 'Empty body on request',
 });
