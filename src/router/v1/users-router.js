@@ -15,4 +15,6 @@ usersRouter.post('/login', userValidator.login, usersController.login);
 
 usersRouter.delete('/:id', userValidator.deleteById, adminAuth, usersController.deleteById);
 
+usersRouter.put('/:id', userValidator.update, adminAuth, usersController.update);
+
 module.exports = usersRouter;
