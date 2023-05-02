@@ -1,3 +1,5 @@
+const { EmptyBodyError } = require('../errors/errors-types');
+
 // eslint-disable-next-line no-unused-vars
 const nonNullObjectValues = (obj) => Object.entries(obj).filter(([key, value]) => !!value);
 
@@ -10,4 +12,8 @@ const filterObjByKeys = (obj, keys) => {
 	return Object.fromEntries(filteredEntriesByKeys);
 };
 
-module.exports = { filterNullValuesFromObj, filterObjByKeys };
+const emptyBody = (body) => {
+	if (!body || !Object.keys(body)?.length) throw new EmptyBodyError();
+};
+
+module.exports = { filterNullValuesFromObj, filterObjByKeys, emptyBody };

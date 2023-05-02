@@ -15,4 +15,6 @@ addressesRouter.delete(
 	addressesController.deleteById
 );
 
+addressesRouter.put('/:id', addressesValidator.update, adminAuth, addressesController.update);
+
 module.exports = addressesRouter;
