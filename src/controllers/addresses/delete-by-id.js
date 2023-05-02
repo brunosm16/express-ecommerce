@@ -10,6 +10,6 @@ module.exports = async (req, res) => {
 
 		return makeDeleteResponse(deletedAddress, res);
 	} catch (err) {
-		return makeResponseByError(err);
+		return makeResponseByError(res, err);
 	}
 };
