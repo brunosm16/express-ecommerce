@@ -9,4 +9,13 @@ const USER_PARAMS_TO_UPDATE = Object.freeze([
 	'admin',
 ]);
 
-module.exports = { USER_PARAMS_TO_UPDATE };
+const ADDRESS_PARAMS_TO_CREATE_UPDATE = Object.freeze([
+	'city',
+	'state',
+	'street',
+	'district',
+	'zipcode',
+	'number',
+]);
+
+module.exports = { USER_PARAMS_TO_UPDATE, ADDRESS_PARAMS_TO_CREATE_UPDATE };
