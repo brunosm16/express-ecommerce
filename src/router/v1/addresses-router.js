@@ -6,6 +6,7 @@ const { auth, adminAuth } = require('../../middlewares/jwt-auth');
 const addressesRouter = express.Router();
 
 addressesRouter.get('/', addressesValidator.findAll, auth, addressesController.findAll);
+addressesRouter.get('/:id', addressesValidator.findById, auth, addressesController.findById);
 addressesRouter.post('/', addressesValidator.create, adminAuth, addressesController.create);
 
 module.exports = addressesRouter;

@@ -4,4 +4,8 @@ const findAll = () => {
 	return AddressModel.findAll();
 };
 
-module.exports = { findAll };
+const findById = (id) => {
+	return AddressModel.findByPk(id);
+};
+
+module.exports = { findAll, findById };
