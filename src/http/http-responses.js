@@ -1,3 +1,4 @@
+const { SOMETHING_WRONG, ENTITY_DELETED } = require('../constants/error-messages');
 const {
 	STATUS_CODE_200,
 	STATUS_CODE_400,
@@ -12,6 +13,19 @@ const makeBadRequestResponse = (res, message) => sendResponse(res, STATUS_CODE_4
 const makeInternalServerErrorResponse = (res, message) =>
 	sendResponse(res, STATUS_CODE_500, message);
 
+const makeDeleteResponse = (deletedCode, res) => {
+	const OPERATION_ERROR_CODE = 0;
+	const OPERATION_ERROR_SUCCESS = 1;
+
+	const responsesByCode = {
+		[OPERATION_ERROR_CODE]: (response) =>
+			makeInternalServerErrorResponse(response, SOMETHING_WRONG),
+		[OPERATION_ERROR_SUCCESS]: (response) => makeOkResponse(response, ENTITY_DELETED),
+	};
+
+	return responsesByCode[deletedCode](res);
+};
+
 const makeResponseByError = (res, err) => {
 	const { statusCode, message } = createErrorMessage(err);
 
@@ -23,4 +37,5 @@ module.exports = {
 	makeBadRequestResponse,
 	makeInternalServerErrorResponse,
 	makeResponseByError,
+	makeDeleteResponse,
 };
