@@ -4,6 +4,7 @@ const addressesController = require('../../controllers/addresses');
 
 const addressesRouter = express.Router();
 
+addressesRouter.get('/', addressesValidator.findAll, addressesController.findAll);
 addressesRouter.post('/', addressesValidator.create, addressesController.create);
 
 module.exports = addressesRouter;
