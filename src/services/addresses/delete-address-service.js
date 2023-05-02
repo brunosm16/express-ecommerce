@@ -1,7 +1,7 @@
-const UserModel = require('../../models/UserModel');
+const AddressModel = require('../../models/AddressModel');
 
 const deleteAddressById = async (id) => {
-	const deleted = await UserModel.destroy({ where: { id } });
+	const deleted = await AddressModel.destroy({ where: { id } });
 
 	return deleted;
 };
