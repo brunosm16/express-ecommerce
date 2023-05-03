@@ -18,4 +18,10 @@ const ADDRESS_PARAMS_TO_CREATE_UPDATE = Object.freeze([
 	'number',
 ]);
 
-module.exports = { USER_PARAMS_TO_UPDATE, ADDRESS_PARAMS_TO_CREATE_UPDATE };
+const CATEGORY_PARAMS_TO_CREATE_UPDATE = Object.freeze(['name', 'product_id']);
+
+module.exports = {
+	USER_PARAMS_TO_UPDATE,
+	ADDRESS_PARAMS_TO_CREATE_UPDATE,
+	CATEGORY_PARAMS_TO_CREATE_UPDATE,
+};

@@ -8,5 +8,6 @@ categoriesRouter.post('/', categoriesValidator.create, categoriesController.crea
 categoriesRouter.delete('/:id', categoriesValidator.deleteById, categoriesController.deleteById);
 categoriesRouter.get('/', categoriesValidator.findAll, categoriesController.findAll);
 categoriesRouter.get('/:id', categoriesValidator.findById, categoriesController.findById);
+categoriesRouter.put('/:id', categoriesValidator.update, categoriesController.update);
 
 module.exports = categoriesRouter;

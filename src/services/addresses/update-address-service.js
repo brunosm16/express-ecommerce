@@ -2,11 +2,11 @@ const { ADDRESS_PARAMS_TO_CREATE_UPDATE } = require('../../constants/allowed-par
 const { EntityNotExistsError } = require('../../errors/errors-types');
 const AddressModel = require('../../models/AddressModel');
 const { formatBodyParams } = require('../../utils/format-body-params');
-const { emptyBody } = require('../../utils/object-utils');
+const { validateEmptyBody } = require('../../utils/object-utils');
 
 const validateAddress = (address, body) => {
 	if (!address) throw new EntityNotExistsError();
-	emptyBody(body);
+	validateEmptyBody(body);
 };
 
 const update = async (id, body) => {

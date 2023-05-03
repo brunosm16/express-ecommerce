@@ -12,8 +12,8 @@ const filterObjByKeys = (obj, keys) => {
 	return Object.fromEntries(filteredEntriesByKeys);
 };
 
-const emptyBody = (body) => {
+const validateEmptyBody = (body) => {
 	if (!body || !Object.keys(body)?.length) throw new EmptyBodyError();
 };
 
-module.exports = { filterNullValuesFromObj, filterObjByKeys, emptyBody };
+module.exports = { filterNullValuesFromObj, filterObjByKeys, validateEmptyBody };
