@@ -6,6 +6,6 @@ module.exports = async (req, res) => {
 		const order = await createOrderService.create(req.body);
 		return makeOkResponse(res, order);
 	} catch (err) {
-		return makeResponseByError(err);
+		return makeResponseByError(res, err);
 	}
 };
