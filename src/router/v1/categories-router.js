@@ -5,5 +5,6 @@ const categoriesController = require('../../controllers/categories');
 const categoriesRouter = express.Router();
 
 categoriesRouter.post('/', categoriesValidator.create, categoriesController.create);
+categoriesRouter.delete('/:id', categoriesValidator.deleteById, categoriesController.deleteById);
 
 module.exports = categoriesRouter;
