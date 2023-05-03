@@ -6,5 +6,6 @@ const categoriesRouter = express.Router();
 
 categoriesRouter.post('/', categoriesValidator.create, categoriesController.create);
 categoriesRouter.delete('/:id', categoriesValidator.deleteById, categoriesController.deleteById);
+categoriesRouter.get('/', categoriesValidator.findAll, categoriesController.findAll);
 
 module.exports = categoriesRouter;
