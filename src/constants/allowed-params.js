@@ -20,8 +20,11 @@ const ADDRESS_PARAMS_TO_CREATE_UPDATE = Object.freeze([
 
 const CATEGORY_PARAMS_TO_CREATE_UPDATE = Object.freeze(['name', 'product_id']);
 
+const ORDER_PARAMS_TO_CREATE_UPDATE = Object.freeze(['total_price', 'status']);
+
 module.exports = {
 	USER_PARAMS_TO_UPDATE,
 	ADDRESS_PARAMS_TO_CREATE_UPDATE,
 	CATEGORY_PARAMS_TO_CREATE_UPDATE,
+	ORDER_PARAMS_TO_CREATE_UPDATE,
 };
