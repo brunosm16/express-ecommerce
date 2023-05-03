@@ -7,7 +7,7 @@ class CategoryModel extends Model {
 				name: DataTypes.STRING,
 				product_id: DataTypes.UUID,
 			},
-			{ sequelize: connection, table: 'categories' }
+			{ sequelize: connection, tableName: 'categories' }
 		);
 	}
 }
