@@ -10,5 +10,6 @@ ordersRouter.post('/', ordersValidator.create, adminAuth, ordersController.creat
 ordersRouter.delete('/:id', ordersValidator.deleteById, adminAuth, ordersController.deleteById);
 ordersRouter.get('/', ordersValidator.findAll, adminAuth, ordersController.findAll);
 ordersRouter.get('/:id', ordersValidator.findById, adminAuth, ordersController.findById);
+ordersRouter.put('/:id', ordersValidator.update, adminAuth, ordersController.update);
 
 module.exports = ordersRouter;
