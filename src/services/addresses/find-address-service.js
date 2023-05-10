@@ -1,7 +1,7 @@
 const AddressModel = require('../../models/AddressModel');
 const { validateEntityNotExistsByPk } = require('../entities/validate-entity');
 
-const findAll = () => {
+const findAll = async () => {
 	return AddressModel.findAll();
 };
 
