@@ -6,6 +6,6 @@ module.exports = async (req, res) => {
 		const orders = await findOrderService.findAll();
 		return makeOkResponse(res, orders);
 	} catch (err) {
-		return makeResponseByError(err);
+		return makeResponseByError(res, err);
 	}
 };
