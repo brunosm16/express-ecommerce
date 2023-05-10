@@ -14,5 +14,6 @@ productsRouter.delete(
 	productsController.deleteById
 );
 productsRouter.get('/', productsValidator.findAll, adminAuth, productsController.findAll);
+productsRouter.get('/:id', productsValidator.findById, adminAuth, productsController.findById);
 
 module.exports = productsRouter;
