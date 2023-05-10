@@ -1,193 +1,9 @@
 {
 	"_type": "export",
 	"__export_format": 4,
-	"__export_date": "2023-05-10T13:43:05.797Z",
+	"__export_date": "2023-05-10T17:36:32.847Z",
 	"__export_source": "insomnia.desktop.app:v2023.2.0",
 	"resources": [
-		{
-			"_id": "req_8fb46292a7074bfc8b091bfbac60dfdb",
-			"parentId": "fld_4029afc5d0b24f7ea28c69b5f519760e",
-			"modified": 1683722190303,
-			"created": 1683722146768,
-			"url": "{{ _.host }}/orders",
-			"name": "Get All Orders",
-			"description": "",
-			"method": "GET",
-			"body": {},
-			"parameters": [],
-			"headers": [
-				{
-					"id": "pair_49e2b2822bb94fafa09bf942b4459211",
-					"name": "Authorization",
-					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjIxODQsImV4cCI6MTY4Mzc2NTM4NH0.e63QCFR0LIRIUi1mwQOXIvY3JOFXhs0Rjpjj_ObP_ww",
-					"description": ""
-				}
-			],
-			"authentication": {},
-			"metaSortKey": -1683722146768,
-			"isPrivate": false,
-			"settingStoreCookies": true,
-			"settingSendCookies": true,
-			"settingDisableRenderRequestBody": false,
-			"settingEncodeUrl": true,
-			"settingRebuildPath": true,
-			"settingFollowRedirects": "global",
-			"_type": "request"
-		},
-		{
-			"_id": "fld_4029afc5d0b24f7ea28c69b5f519760e",
-			"parentId": "wrk_08dae5c59f8b42049153250f7d09cee6",
-			"modified": 1683131744845,
-			"created": 1683131744845,
-			"name": "Orders",
-			"description": "",
-			"environment": {},
-			"environmentPropertyOrder": null,
-			"metaSortKey": -1683131744845,
-			"_type": "request_group"
-		},
-		{
-			"_id": "wrk_08dae5c59f8b42049153250f7d09cee6",
-			"parentId": null,
-			"modified": 1680790777981,
-			"created": 1680790777981,
-			"name": "Express Ecommerce",
-			"description": "",
-			"scope": "collection",
-			"_type": "workspace"
-		},
-		{
-			"_id": "req_e36b676820154caa8b61881eff7fdac6",
-			"parentId": "fld_4029afc5d0b24f7ea28c69b5f519760e",
-			"modified": 1683722685740,
-			"created": 1683722661838,
-			"url": "{{ _.host }}/orders/235b0ab7-bb4b-4486-a9c6-2caf04d6512a",
-			"name": "Get Order By Id",
-			"description": "",
-			"method": "GET",
-			"body": {},
-			"parameters": [],
-			"headers": [
-				{
-					"id": "pair_eca07b966da24618ad569bc6bf4eedaf",
-					"name": "Authorization",
-					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjIxODQsImV4cCI6MTY4Mzc2NTM4NH0.e63QCFR0LIRIUi1mwQOXIvY3JOFXhs0Rjpjj_ObP_ww",
-					"description": ""
-				}
-			],
-			"authentication": {},
-			"metaSortKey": -1683426949109,
-			"isPrivate": false,
-			"settingStoreCookies": true,
-			"settingSendCookies": true,
-			"settingDisableRenderRequestBody": false,
-			"settingEncodeUrl": true,
-			"settingRebuildPath": true,
-			"settingFollowRedirects": "global",
-			"_type": "request"
-		},
-		{
-			"_id": "req_b440d5b56f1f4809833993643ad17f11",
-			"parentId": "fld_4029afc5d0b24f7ea28c69b5f519760e",
-			"modified": 1683722193414,
-			"created": 1683131751450,
-			"url": "{{ _.host }}/orders",
-			"name": "Create Order",
-			"description": "",
-			"method": "POST",
-			"body": {
-				"mimeType": "application/json",
-				"text": "{\n\t\"total_price\": \"150.35\",\n\t\"status\": \"Payment accepted\"\n}"
-			},
-			"parameters": [],
-			"headers": [
-				{
-					"id": "pair_2fe2114d86344738a59f6aaff0f9c645",
-					"name": "Authorization",
-					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjIxODQsImV4cCI6MTY4Mzc2NTM4NH0.e63QCFR0LIRIUi1mwQOXIvY3JOFXhs0Rjpjj_ObP_ww",
-					"description": ""
-				},
-				{
-					"name": "Content-Type",
-					"value": "application/json",
-					"id": "pair_a2075e0683184c308085dea16923cca9"
-				}
-			],
-			"authentication": {},
-			"metaSortKey": -1683131751450,
-			"isPrivate": false,
-			"settingStoreCookies": true,
-			"settingSendCookies": true,
-			"settingDisableRenderRequestBody": false,
-			"settingEncodeUrl": true,
-			"settingRebuildPath": true,
-			"settingFollowRedirects": "global",
-			"_type": "request"
-		},
-		{
-			"_id": "req_774da03286ac4e3383c8938a49a44a37",
-			"parentId": "fld_4029afc5d0b24f7ea28c69b5f519760e",
-			"modified": 1683723825446,
-			"created": 1683723502328,
-			"url": "{{ _.host }}/orders/235b0ab7-bb4b-4486-a9c6-2caf04d6512a",
-			"name": "Update Order By Id",
-			"description": "",
-			"method": "PUT",
-			"body": {
-				"mimeType": "application/json",
-				"text": "{\n\t\"total_price\": \"500.00\",\n\t\"status\": \"Closed\"\n}"
-			},
-			"parameters": [],
-			"headers": [
-				{
-					"id": "pair_d0d23a345aaf45d39d789b16612706ca",
-					"name": "Authorization",
-					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjIxODQsImV4cCI6MTY4Mzc2NTM4NH0.e63QCFR0LIRIUi1mwQOXIvY3JOFXhs0Rjpjj_ObP_ww",
-					"description": ""
-				},
-				{ "name": "Content-Type", "value": "application/json" }
-			],
-			"authentication": {},
-			"metaSortKey": -1683131751425,
-			"isPrivate": false,
-			"settingStoreCookies": true,
-			"settingSendCookies": true,
-			"settingDisableRenderRequestBody": false,
-			"settingEncodeUrl": true,
-			"settingRebuildPath": true,
-			"settingFollowRedirects": "global",
-			"_type": "request"
-		},
-		{
-			"_id": "req_43b882dc8a034bddaff8c55944e06738",
-			"parentId": "fld_4029afc5d0b24f7ea28c69b5f519760e",
-			"modified": 1683721316921,
-			"created": 1683721028321,
-			"url": "{{ _.host }}/orders/03e320e5-1764-4b71-9112-9d497741c924",
-			"name": "Delete User By Id",
-			"description": "",
-			"method": "DELETE",
-			"body": {},
-			"parameters": [],
-			"headers": [
-				{
-					"id": "pair_d5b8ddca6e18447b96374c80af78d9ab",
-					"name": "Authorization",
-					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjEyMjIsImV4cCI6MTY4Mzc2NDQyMn0.PEXNqK_ZzcJgOqf79Frpt1mNIc7YaRIj7bn7Nqf6S4Y",
-					"description": ""
-				}
-			],
-			"authentication": {},
-			"metaSortKey": -1683131751400,
-			"isPrivate": false,
-			"settingStoreCookies": true,
-			"settingSendCookies": true,
-			"settingDisableRenderRequestBody": false,
-			"settingEncodeUrl": true,
-			"settingRebuildPath": true,
-			"settingFollowRedirects": "global",
-			"_type": "request"
-		},
 		{
 			"_id": "req_c02f8f3ff5a7449ab787f2f2caffc973",
 			"parentId": "fld_fae52ebcf9704f2cabffff6a848bd5a7",
@@ -217,14 +33,24 @@
 		{
 			"_id": "fld_fae52ebcf9704f2cabffff6a848bd5a7",
 			"parentId": "wrk_08dae5c59f8b42049153250f7d09cee6",
-			"modified": 1683131747542,
+			"modified": 1683726337032,
 			"created": 1680790785491,
 			"name": "Users",
 			"description": "",
 			"environment": {},
 			"environmentPropertyOrder": null,
-			"metaSortKey": -1683109391460,
+			"metaSortKey": -1683114979806.25,
 			"_type": "request_group"
+		},
+		{
+			"_id": "wrk_08dae5c59f8b42049153250f7d09cee6",
+			"parentId": null,
+			"modified": 1680790777981,
+			"created": 1680790777981,
+			"name": "Express Ecommerce",
+			"description": "",
+			"scope": "collection",
+			"_type": "workspace"
 		},
 		{
 			"_id": "req_e2389e555a1a46f084887ed370d81808",
@@ -402,6 +228,351 @@
 			],
 			"authentication": {},
 			"metaSortKey": -1682513271578,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6dced2825aa347649dd58be1dfc6e470",
+			"parentId": "fld_dc5b21ecafaa48e5803fc8ffc2159bc9",
+			"modified": 1683738785414,
+			"created": 1683738475621,
+			"url": "{{ _.host }}/products",
+			"name": "Get All Products",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_6b5a1a4697464714bda41750af4de837",
+					"name": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjIxODQsImV4cCI6MTY4Mzc2NTM4NH0.e63QCFR0LIRIUi1mwQOXIvY3JOFXhs0Rjpjj_ObP_ww",
+					"description": ""
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1683735530283.75,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_dc5b21ecafaa48e5803fc8ffc2159bc9",
+			"parentId": "wrk_08dae5c59f8b42049153250f7d09cee6",
+			"modified": 1683726340649,
+			"created": 1683726307838,
+			"name": "Products",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1683095433247.125,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_77fd851a645043bf8b42d7ec8f650209",
+			"parentId": "fld_dc5b21ecafaa48e5803fc8ffc2159bc9",
+			"modified": 1683738856929,
+			"created": 1683738759249,
+			"url": "  {{ _.host }}/products/092aa81a-1afb-4363-807b-b36b324c7e3e",
+			"name": "Get Product By Id",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_20a1f7ef3de244cb91d6f3d64294f33e",
+					"name": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjIxODQsImV4cCI6MTY4Mzc2NTM4NH0.e63QCFR0LIRIUi1mwQOXIvY3JOFXhs0Rjpjj_ObP_ww",
+					"description": ""
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1683733915801.125,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_155e64d5aa1c4c21b4ba46693f41c038",
+			"parentId": "fld_dc5b21ecafaa48e5803fc8ffc2159bc9",
+			"modified": 1683738223805,
+			"created": 1683726387519,
+			"url": "{{ _.host }}/products",
+			"name": "Create Product",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"Jewelry Gadget\",\n  \"description\": \"Mauris vel tincidunt risus\",\n    \"price\": \"118\",\n    \"quantity_in_stock\": \"28793\",\n    \"quantity_sold\": \"30552\",\n    \"discount_percent\": \"2.71\",\n    \"discount_start_date\": \"2018-04-04\",\n    \"discount_end_date\": \"2018-04-24\",\n    \"width\": \"26\",\n    \"height\": \"25\",\n    \"length\": \"6921\",\n    \"sku\": \"28bfce40-4e61-16de-bd18-b5b3fe252032\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_6a2dbf6cad4948dc8dd86dc182fb2481",
+					"name": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjIxODQsImV4cCI6MTY4Mzc2NTM4NH0.e63QCFR0LIRIUi1mwQOXIvY3JOFXhs0Rjpjj_ObP_ww",
+					"description": ""
+				},
+				{ "name": "Content-Type", "value": "application/json" }
+			],
+			"authentication": {},
+			"metaSortKey": -1683732301318.5,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c3bf0745279a4f4c8935ce11a010445d",
+			"parentId": "fld_dc5b21ecafaa48e5803fc8ffc2159bc9",
+			"modified": 1683739282328,
+			"created": 1683739107326,
+			"url": "{{ _.host }}/products/092aa81a-1afb-4363-807b-b36b324c7e3e",
+			"name": "Update Product By Id",
+			"description": "",
+			"method": "PUT",
+			"body": { "mimeType": "application/json", "text": "{\n\t\"name\": \"Dining Equipment\"\n}" },
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_8d590094d5b04618b534dc000605198c"
+				},
+				{
+					"id": "pair_980b2cde2aa646908e276a25e46947df",
+					"name": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjIxODQsImV4cCI6MTY4Mzc2NTM4NH0.e63QCFR0LIRIUi1mwQOXIvY3JOFXhs0Rjpjj_ObP_ww",
+					"description": ""
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1683732301293.5,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_82b13b9712104c1994caf1eae06b7dd2",
+			"parentId": "fld_dc5b21ecafaa48e5803fc8ffc2159bc9",
+			"modified": 1683738290480,
+			"created": 1683738215118,
+			"url": "{{ _.host }}/products/082c3085-cecb-47c0-be65-d6cfb5660bab",
+			"name": "Delete Product By Id",
+			"description": "",
+			"method": "DELETE",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_ad2e4a69cb9247f39bb17808a82bdc7e",
+					"name": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjIxODQsImV4cCI6MTY4Mzc2NTM4NH0.e63QCFR0LIRIUi1mwQOXIvY3JOFXhs0Rjpjj_ObP_ww",
+					"description": ""
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1683732301268.5,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_8fb46292a7074bfc8b091bfbac60dfdb",
+			"parentId": "fld_4029afc5d0b24f7ea28c69b5f519760e",
+			"modified": 1683722190303,
+			"created": 1683722146768,
+			"url": "{{ _.host }}/orders",
+			"name": "Get All Orders",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_49e2b2822bb94fafa09bf942b4459211",
+					"name": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjIxODQsImV4cCI6MTY4Mzc2NTM4NH0.e63QCFR0LIRIUi1mwQOXIvY3JOFXhs0Rjpjj_ObP_ww",
+					"description": ""
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1683722146768,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_4029afc5d0b24f7ea28c69b5f519760e",
+			"parentId": "wrk_08dae5c59f8b42049153250f7d09cee6",
+			"modified": 1683726332083,
+			"created": 1683131744845,
+			"name": "Orders",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1683075886688,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_e36b676820154caa8b61881eff7fdac6",
+			"parentId": "fld_4029afc5d0b24f7ea28c69b5f519760e",
+			"modified": 1683722685740,
+			"created": 1683722661838,
+			"url": "{{ _.host }}/orders/235b0ab7-bb4b-4486-a9c6-2caf04d6512a",
+			"name": "Get Order By Id",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_eca07b966da24618ad569bc6bf4eedaf",
+					"name": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjIxODQsImV4cCI6MTY4Mzc2NTM4NH0.e63QCFR0LIRIUi1mwQOXIvY3JOFXhs0Rjpjj_ObP_ww",
+					"description": ""
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1683426949109,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b440d5b56f1f4809833993643ad17f11",
+			"parentId": "fld_4029afc5d0b24f7ea28c69b5f519760e",
+			"modified": 1683722193414,
+			"created": 1683131751450,
+			"url": "{{ _.host }}/orders",
+			"name": "Create Order",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"total_price\": \"150.35\",\n\t\"status\": \"Payment accepted\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_2fe2114d86344738a59f6aaff0f9c645",
+					"name": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjIxODQsImV4cCI6MTY4Mzc2NTM4NH0.e63QCFR0LIRIUi1mwQOXIvY3JOFXhs0Rjpjj_ObP_ww",
+					"description": ""
+				},
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_a2075e0683184c308085dea16923cca9"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1683131751450,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_774da03286ac4e3383c8938a49a44a37",
+			"parentId": "fld_4029afc5d0b24f7ea28c69b5f519760e",
+			"modified": 1683723825446,
+			"created": 1683723502328,
+			"url": "{{ _.host }}/orders/235b0ab7-bb4b-4486-a9c6-2caf04d6512a",
+			"name": "Update Order By Id",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"total_price\": \"500.00\",\n\t\"status\": \"Closed\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_d0d23a345aaf45d39d789b16612706ca",
+					"name": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjIxODQsImV4cCI6MTY4Mzc2NTM4NH0.e63QCFR0LIRIUi1mwQOXIvY3JOFXhs0Rjpjj_ObP_ww",
+					"description": ""
+				},
+				{ "name": "Content-Type", "value": "application/json" }
+			],
+			"authentication": {},
+			"metaSortKey": -1683131751425,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_43b882dc8a034bddaff8c55944e06738",
+			"parentId": "fld_4029afc5d0b24f7ea28c69b5f519760e",
+			"modified": 1683721316921,
+			"created": 1683721028321,
+			"url": "{{ _.host }}/orders/03e320e5-1764-4b71-9112-9d497741c924",
+			"name": "Delete User By Id",
+			"description": "",
+			"method": "DELETE",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"id": "pair_d5b8ddca6e18447b96374c80af78d9ab",
+					"name": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZmEwOWY3LWZmOTUtNDRhYy04ZTFhLTI0NGRkMWNmMDg5ZSIsImFkbWluIjp0cnVlLCJpYXQiOjE2ODM3MjEyMjIsImV4cCI6MTY4Mzc2NDQyMn0.PEXNqK_ZzcJgOqf79Frpt1mNIc7YaRIj7bn7Nqf6S4Y",
+					"description": ""
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1683131751400,
 			"isPrivate": false,
 			"settingStoreCookies": true,
 			"settingSendCookies": true,
