@@ -7,5 +7,11 @@ const productsController = require('../../controllers/products');
 const productsRouter = express.Router();
 
 productsRouter.post('/', productsValidator.create, adminAuth, productsController.create);
+productsRouter.delete(
+	'/:id',
+	productsValidator.deleteById,
+	adminAuth,
+	productsController.deleteById
+);
 
 module.exports = productsRouter;
