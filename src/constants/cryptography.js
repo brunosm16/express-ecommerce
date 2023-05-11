@@ -1,4 +1,6 @@
 module.exports = Object.freeze({
 	PASSWORD_SALT: 10,
 	TOKEN_EXPIRATION: '12h',
+	RANDOM_CRYPTO_BYTES: 36,
+	RESET_TOKEN_MINUTES_TO_EXPIRE: 60,
 });
