@@ -1,5 +1,5 @@
-const create = require('./create');
+const createToken = require('./create-token');
 
 module.exports = {
-	create,
+	createToken,
 };

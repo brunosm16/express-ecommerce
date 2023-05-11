@@ -7,7 +7,7 @@ const resetUserPasswordRouter = express.Router();
 
 resetUserPasswordRouter.post(
 	'/',
-	resetUserPasswordValidator.create,
+	resetUserPasswordValidator.createToken,
 	resetUserPasswordController.createResetToken
 );
 
