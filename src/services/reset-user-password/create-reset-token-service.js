@@ -5,10 +5,17 @@ const {
 	generateTokenExpirationDate,
 } = require('../cryptography/cryptography-service');
 const { findUserByEmail } = require('../users/find-user-service');
+const { validateTokenExists } = require('./validate-reset-token-service');
+
+const validateUserToken = ({ reset_password_token, reset_password_expire_date }) => {
+	validateTokenExists(reset_password_token, reset_password_expire_date);
+};
 
 const getUser = async (email) => {
 	const user = await findUserByEmail(email);
 	if (!user) throw new EntityNotExistsError('No user found with this email');
+
+	validateUserToken(user);
 
 	return user;
 };

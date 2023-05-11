@@ -25,7 +25,7 @@ const generateTokenByParams = (payload) => {
 const generateTokenExpirationDate = () => {
 	const current = new Date();
 
-	current.setHours(current.getMinutes() + RESET_TOKEN_MINUTES_TO_EXPIRE);
+	current.setMinutes(current.getMinutes() + RESET_TOKEN_MINUTES_TO_EXPIRE);
 
 	return current.toISOString();
 };

@@ -11,4 +11,5 @@ module.exports = Object.freeze({
 	NOT_ALLOWED: 'You are not allowed to access this information',
 	WRONG_PASSWORD: 'Wrong password',
 	EMPTY_BODY: 'Empty body on request',
+	VALID_TOKEN_EXISTS: 'Valid token already exists',
 });
