@@ -20,6 +20,13 @@ class UserModel extends Model {
 			}
 		);
 	}
+
+	static associate({ AddressModel }) {
+		this.hasMany(AddressModel, {
+			foreignKey: 'customer_id',
+			as: 'addresses',
+		});
+	}
 }
 
 module.exports = UserModel;
