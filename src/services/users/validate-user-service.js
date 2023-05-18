@@ -1,4 +1,4 @@
-const { TOKEN_ERROR } = require('../../constants/error-messages');
+const { TOKEN_ERROR, USER_NOT_FOUND } = require('../../constants/error-messages');
 const {
 	EntityExistsError,
 	InternalServerError,
@@ -15,7 +15,7 @@ const validateUserExists = async ({ primary_email, secondary_email }) => {
 
 const validateNonExistingUserById = async (id) => {
 	const user = await findUserService.findUserById(id);
-	if (!user) throw new EntityNotExistsError();
+	if (!user) throw new EntityNotExistsError(USER_NOT_FOUND);
 };
 
 const validateToken = (token) => {

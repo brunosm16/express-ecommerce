@@ -16,6 +16,7 @@ const ADDRESS_PARAMS_TO_CREATE_UPDATE = Object.freeze([
 	'district',
 	'zipcode',
 	'number',
+	'customer_id',
 ]);
 
 const CATEGORY_PARAMS_TO_CREATE_UPDATE = Object.freeze(['name', 'product_id']);

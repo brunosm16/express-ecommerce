@@ -21,8 +21,8 @@ class UserModel extends Model {
 		);
 	}
 
-	static associate({ AddressModel }) {
-		this.hasMany(AddressModel, {
+	static associate({ AddressModel, UserModel: ThisModel }) {
+		ThisModel.hasMany(AddressModel, {
 			foreignKey: 'customer_id',
 			as: 'addresses',
 		});

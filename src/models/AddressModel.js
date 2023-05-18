@@ -19,8 +19,8 @@ class AddressModel extends Model {
 		);
 	}
 
-	static associate({ UserModel }) {
-		this.belongsTo(UserModel, {
+	static associate({ UserModel, AddressModel: ThisModel }) {
+		ThisModel.belongsTo(UserModel, {
 			foreignKey: 'customer_id',
 			as: 'customer',
 		});

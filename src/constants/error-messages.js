@@ -13,4 +13,5 @@ module.exports = Object.freeze({
 	WRONG_PASSWORD: 'Wrong password',
 	EMPTY_BODY: 'Empty body on request',
 	VALID_TOKEN_EXISTS: 'Valid token already exists',
+	USER_NOT_FOUND: 'User not found',
 });

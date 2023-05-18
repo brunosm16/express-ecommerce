@@ -14,5 +14,6 @@ module.exports = celebrate({
 		district: Joi.string().required(),
 		zipcode: Joi.string().required(),
 		number: Joi.string().required(),
+		customer_id: Joi.string().required(),
 	}),
 });
