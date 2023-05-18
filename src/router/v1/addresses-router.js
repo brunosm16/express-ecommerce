@@ -5,8 +5,12 @@ const { auth, adminAuth } = require('../../middlewares/jwt-auth');
 
 const addressesRouter = express.Router();
 
-addressesRouter.get('/', addressesValidator.findAll, auth, addressesController.findAll);
-addressesRouter.get('/:id', addressesValidator.findById, auth, addressesController.findById);
+addressesRouter.get(
+	'/:userId',
+	addressesValidator.findByUserId,
+	auth,
+	addressesController.findByUserId
+);
 addressesRouter.post('/', addressesValidator.create, adminAuth, addressesController.create);
 addressesRouter.delete(
 	'/:id',

@@ -3,8 +3,9 @@ const findAddressService = require('../../services/addresses/find-address-servic
 
 module.exports = async (req, res) => {
 	try {
-		const addresses = await findAddressService.findAll();
-		return makeOkResponse(res, addresses);
+		const { userId } = req.params;
+		const address = await findAddressService.findAddressByUserId(userId);
+		return makeOkResponse(res, address);
 	} catch (err) {
 		return makeResponseByError(res, err);
 	}
