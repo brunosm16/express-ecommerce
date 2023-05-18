@@ -26,6 +26,19 @@ const makeDeleteResponse = (deletedCode, res) => {
 	return responsesByCode[deletedCode](res);
 };
 
+const makeResponseByOperationCode = (code, message, res) => {
+	const OPERATION_ERROR_CODE = 0;
+	const OPERATION_ERROR_SUCCESS = 1;
+
+	const responsesByCode = {
+		[OPERATION_ERROR_CODE]: (response) =>
+			makeInternalServerErrorResponse(response, SOMETHING_WRONG),
+		[OPERATION_ERROR_SUCCESS]: (response) => makeOkResponse(response, message),
+	};
+
+	return responsesByCode[code](res);
+};
+
 const makeResponseByError = (res, err) => {
 	const { statusCode, message } = createErrorMessage(err);
 
@@ -38,4 +51,5 @@ module.exports = {
 	makeInternalServerErrorResponse,
 	makeResponseByError,
 	makeDeleteResponse,
+	makeResponseByOperationCode,
 };

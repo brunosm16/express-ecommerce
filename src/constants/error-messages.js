@@ -15,4 +15,5 @@ module.exports = Object.freeze({
 	VALID_TOKEN_EXISTS: 'Valid token already exists',
 	USER_NOT_FOUND: 'User not found',
 	ADDRESS_NOT_FOUND: 'Address not found',
+	ENTITY_UPDATED: 'Entity was successfully updated',
 });
