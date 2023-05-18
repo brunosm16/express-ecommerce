@@ -11,4 +11,10 @@ resetUserPasswordRouter.post(
 	resetUserPasswordController.createResetToken
 );
 
+resetUserPasswordRouter.put(
+	'/',
+	resetUserPasswordValidator.resetPassword,
+	resetUserPasswordController.resetPassword
+);
+
 module.exports = resetUserPasswordRouter;

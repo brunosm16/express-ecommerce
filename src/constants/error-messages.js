@@ -5,6 +5,7 @@ module.exports = Object.freeze({
 	ENTITY_NOT_EXISTS: 'Entity not exists',
 	REQUIRED_AUTHORIZATION_ERROR: 'Authorization is required',
 	INVALID_TOKEN_CREDENTIAL: 'Invalid token credential',
+	TOKEN_EXPIRED: 'Token expired',
 	INTERNAL_SERVER_ERROR: 'Internal Server Error',
 	SOMETHING_WRONG: 'Something wrong happened. Please try again later',
 	ENTITY_DELETED: 'Entity was successfully deleted',
