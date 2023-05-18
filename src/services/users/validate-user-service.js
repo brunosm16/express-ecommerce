@@ -1,4 +1,8 @@
-const { TOKEN_ERROR, USER_NOT_FOUND } = require('../../constants/error-messages');
+const {
+	TOKEN_ERROR,
+	USER_NOT_FOUND,
+	ADDRESS_NOT_FOUND,
+} = require('../../constants/error-messages');
 const {
 	EntityExistsError,
 	InternalServerError,
@@ -33,10 +37,23 @@ const validateInputPasswordWithHash = async (password, hash) => {
 	if (!isEqual) throw new WrongPasswordError();
 };
 
+const validateUserAddressRelation = async (addressId, userId) => {
+	const user = await findUserService.findUserByAssociation(userId, addressId, 'addresses');
+
+	if (!user) {
+		throw new EntityNotExistsError(USER_NOT_FOUND);
+	}
+
+	if (!user?.addresses?.length) {
+		throw new EntityNotExistsError(ADDRESS_NOT_FOUND);
+	}
+};
+
 module.exports = {
 	validateUserExists,
 	validateToken,
 	validateNonExistingUserById,
 	validateUserExistsByEmail,
 	validateInputPasswordWithHash,
+	validateUserAddressRelation,
 };

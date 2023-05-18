@@ -29,10 +29,23 @@ const findUserByEmail = async (email) => {
 	});
 };
 
+const findUserByAssociation = async (userId, associationId, association) => {
+	return UserModel.findByPk(userId, {
+		include: {
+			association,
+			where: {
+				id: associationId,
+			},
+			required: false,
+		},
+	});
+};
+
 module.exports = {
 	findUserByParams,
 	findAllUsers,
 	findUserById,
 	findUserByEmail,
 	findUserByEmails,
+	findUserByAssociation,
 };

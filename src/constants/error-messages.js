@@ -14,4 +14,5 @@ module.exports = Object.freeze({
 	EMPTY_BODY: 'Empty body on request',
 	VALID_TOKEN_EXISTS: 'Valid token already exists',
 	USER_NOT_FOUND: 'User not found',
+	ADDRESS_NOT_FOUND: 'Address not found',
 });

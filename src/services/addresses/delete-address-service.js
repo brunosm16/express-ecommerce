@@ -1,8 +1,8 @@
 const AddressModel = require('../../models/AddressModel');
-const { validateEntityNotExistsByPk } = require('../entities/validate-entity');
+const { validateUserAddressRelation } = require('../users/validate-user-service');
 
-const deleteAddressById = async (id) => {
-	await validateEntityNotExistsByPk(id, AddressModel);
+const deleteAddressById = async (id, userId) => {
+	await validateUserAddressRelation(id, userId);
 
 	const deleted = await AddressModel.destroy({ where: { id } });
 

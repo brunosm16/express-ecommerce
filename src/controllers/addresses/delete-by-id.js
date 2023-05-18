@@ -6,7 +6,9 @@ module.exports = async (req, res) => {
 	try {
 		const { id } = req.params;
 
-		const deletedAddress = await deleteAddress.deleteAddressById(id);
+		const { customer_id } = req.body;
+
+		const deletedAddress = await deleteAddress.deleteAddressById(id, customer_id);
 
 		return makeDeleteResponse(deletedAddress, res);
 	} catch (err) {
