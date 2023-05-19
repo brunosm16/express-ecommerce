@@ -10,6 +10,10 @@ class CategoryModel extends Model {
 			{ sequelize: connection, tableName: 'categories' }
 		);
 	}
+
+	static associate({ CategoryModel: ThisModel, ProductModel }) {
+		ThisModel.hasMany(ProductModel, { foreignKey: 'category_id', as: 'product' });
+	}
 }
 
 module.exports = CategoryModel;

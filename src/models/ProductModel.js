@@ -23,6 +23,10 @@ class ProductModel extends Model {
 			}
 		);
 	}
+
+	static associate({ ProductModel: ThisModel, CategoryModel }) {
+		ThisModel.belongsTo(CategoryModel, { foreignKey: 'category_id', as: 'categories' });
+	}
 }
 
 module.exports = ProductModel;
