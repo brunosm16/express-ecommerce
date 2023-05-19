@@ -16,4 +16,5 @@ module.exports = Object.freeze({
 	USER_NOT_FOUND: 'User not found',
 	ADDRESS_NOT_FOUND: 'Address not found',
 	ENTITY_UPDATED: 'Entity was successfully updated',
+	BAD_REQUEST: 'Bad Request',
 });
