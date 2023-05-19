@@ -10,6 +10,18 @@ class OrderModel extends Model {
 			{ sequelize: connection, tableName: 'orders' }
 		);
 	}
+
+	static associate({ OrderModel: ThisModel, UserModel, AddressModel }) {
+		ThisModel.belongsTo(UserModel, {
+			foreignKey: 'user_id',
+			as: 'user',
+		});
+
+		ThisModel.belongsTo(AddressModel, {
+			foreignKey: 'address_id',
+			as: 'address',
+		});
+	}
 }
 
 module.exports = OrderModel;
