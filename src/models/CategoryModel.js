@@ -5,7 +5,7 @@ class CategoryModel extends Model {
 		super.init(
 			{
 				name: DataTypes.STRING,
-				product_id: DataTypes.UUID,
+				parent_category_id: DataTypes.UUID,
 			},
 			{ sequelize: connection, tableName: 'categories' }
 		);
