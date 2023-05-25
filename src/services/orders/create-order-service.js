@@ -29,12 +29,13 @@ const getProductsByPayload = async (payload) => {
 
 	const products = await Promise.all(promises);
 
+	validateNotFoundProducts(products);
+
 	const uniqueProducts = products.filter((current, index, arr) => {
 		const firstIndex = arr.findIndex(({ id }) => current.id === id);
 		return firstIndex === index;
 	});
 
-	validateNotFoundProducts(uniqueProducts);
 	return uniqueProducts;
 };
 
