@@ -25,7 +25,12 @@ const CATEGORY_PARAMS_TO_CREATE_UPDATE = Object.freeze([
 	'parent_category_id',
 ]);
 
-const ORDER_PARAMS_TO_CREATE_UPDATE = Object.freeze(['total_price', 'status']);
+const ORDER_PARAMS_TO_CREATE_UPDATE = Object.freeze([
+	'total_price',
+	'status',
+	'user_id',
+	'address_id',
+]);
 
 const PRODUCTS_PARAMS_TO_CREATE_UPDATE = Object.freeze([
 	'name',

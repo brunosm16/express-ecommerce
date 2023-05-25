@@ -7,7 +7,14 @@ module.exports = celebrate({
 		})
 		.unknown(),
 	[Segments.BODY]: Joi.object().keys({
-		total_price: Joi.string().required(),
 		status: Joi.string().required(),
+		user_id: Joi.string().required(),
+		address_id: Joi.string().required(),
+		products_payload: Joi.array()
+			.items({
+				quantity_bought: Joi.number().required(),
+				product_id: Joi.string().required(),
+			})
+			.required(),
 	}),
 });

@@ -17,4 +17,5 @@ module.exports = Object.freeze({
 	ADDRESS_NOT_FOUND: 'Address not found',
 	ENTITY_UPDATED: 'Entity was successfully updated',
 	BAD_REQUEST: 'Bad Request',
+	PRODUCT_NOT_EXISTS: 'One or more products does not exists',
 });
