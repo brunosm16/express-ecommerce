@@ -1,9 +1,15 @@
+const { EntityNotExistsError, BadRequestError } = require('../../errors/errors-types');
 const OrderModel = require('../../models/OrderModel');
-const { validateEntityNotExistsByPk } = require('../entities/validate-entity');
 
 const deleteOrder = async (id) => {
-	await validateEntityNotExistsByPk(id, OrderModel);
-	return OrderModel.destroy({ where: { id } });
+	const order = await OrderModel.findByPk(id);
+
+	if (!order) throw new EntityNotExistsError('Order not exists');
+	if (order?.canceled) throw new BadRequestError('Order already canceled');
+
+	order.status = 'canceled';
+
+	return order.save();
 };
 
 module.exports = { deleteOrder };
