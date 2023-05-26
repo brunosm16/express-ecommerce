@@ -2,6 +2,9 @@ const { EntityNotExistsError } = require('../../errors/errors-types');
 const OrderModel = require('../../models/OrderModel');
 const { validateNonExistingUserById } = require('../users/validate-user-service');
 
+const orderAttrsToExclude = ['createdAt', 'updatedAt', 'user_id'];
+const addressAttrsToExclude = ['createdAt', 'updatedAt', 'deletedAt', 'customer_id', 'id'];
+
 const findAll = async (req) => {
 	const { query } = req;
 	const { limit = 10, offset = 0 } = query;
@@ -25,6 +28,18 @@ const findOrderById = async (id) => {
 	return order;
 };
 
+const excludeAttrs = (attrs) => ({
+	exclude: [...attrs],
+});
+
+const getAssociations = () => [
+	{
+		association: 'address',
+		attributes: excludeAttrs(addressAttrsToExclude),
+		required: false,
+	},
+];
+
 const findOrdersByUserId = async (req) => {
 	const { query, params } = req;
 	const { id: user_id } = params;
@@ -39,6 +54,8 @@ const findOrdersByUserId = async (req) => {
 		},
 		limit,
 		offset,
+		attributes: excludeAttrs(orderAttrsToExclude),
+		include: getAssociations(),
 	});
 
 	return { orders, count: orders?.length };
