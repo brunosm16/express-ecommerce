@@ -3,9 +3,8 @@ const findOrderService = require('../../services/orders/find-order-service');
 
 module.exports = async (req, res) => {
 	try {
-		const { id } = req.params;
-		const order = await findOrderService.findOrderById(id);
-		return makeOkResponse(res, order);
+		const orders = await findOrderService.findOrdersByUserId(req);
+		return makeOkResponse(res, orders);
 	} catch (err) {
 		return makeResponseByError(res, err);
 	}

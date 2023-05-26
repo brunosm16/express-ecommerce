@@ -1,5 +1,6 @@
 const { EntityNotExistsError } = require('../../errors/errors-types');
 const OrderModel = require('../../models/OrderModel');
+const { validateNonExistingUserById } = require('../users/validate-user-service');
 
 const findAll = async (req) => {
 	const { query } = req;
@@ -24,4 +25,23 @@ const findOrderById = async (id) => {
 	return order;
 };
 
-module.exports = { findAll, findOrderById };
+const findOrdersByUserId = async (req) => {
+	const { query, params } = req;
+	const { id: user_id } = params;
+	const { limit = 10, offset = 0 } = query;
+
+	await validateNonExistingUserById(user_id);
+
+	const orders = await OrderModel.findAll({
+		order: [['id', 'DESC']],
+		where: {
+			user_id,
+		},
+		limit,
+		offset,
+	});
+
+	return { orders, count: orders?.length };
+};
+
+module.exports = { findAll, findOrderById, findOrdersByUserId };
