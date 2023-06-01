@@ -11,7 +11,13 @@ class OrderModel extends Model {
 		);
 	}
 
-	static associate({ OrderModel: ThisModel, UserModel, AddressModel }) {
+	static associate({
+		OrderModel: ThisModel,
+		UserModel,
+		AddressModel,
+		ProductModel,
+		OrdersProductModel,
+	}) {
 		ThisModel.belongsTo(UserModel, {
 			foreignKey: 'user_id',
 			as: 'user',
@@ -20,6 +26,12 @@ class OrderModel extends Model {
 		ThisModel.belongsTo(AddressModel, {
 			foreignKey: 'address_id',
 			as: 'address',
+		});
+
+		ThisModel.belongsToMany(ProductModel, {
+			through: OrdersProductModel,
+			foreignKey: 'order_id',
+			as: 'products',
 		});
 	}
 }

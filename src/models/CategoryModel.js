@@ -12,7 +12,7 @@ class CategoryModel extends Model {
 	}
 
 	static associate({ CategoryModel: ThisModel, ProductModel }) {
-		ThisModel.hasMany(ProductModel, { foreignKey: 'category_id', as: 'product' });
+		ThisModel.hasMany(ProductModel, { foreignKey: 'category_id', as: 'products' });
 	}
 }
 
