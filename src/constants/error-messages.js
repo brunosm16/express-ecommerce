@@ -19,4 +19,7 @@ module.exports = Object.freeze({
 	BAD_REQUEST: 'Bad Request',
 	PRODUCT_NOT_EXISTS: 'One or more products does not exists',
 	ROUTE_NOT_FOUND: 'Route not found',
+	NOT_FOUND: 'Not found',
+	UNAUTHORIZED: 'You are not authorized to access this information',
+	REQUIRED_FIELD: 'A required field is missing',
 });
