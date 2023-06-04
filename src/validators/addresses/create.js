@@ -1,12 +1,8 @@
 const { celebrate, Segments, Joi } = require('celebrate');
+const { requiredAuthorizationHeader } = require('../base-validators/authorization');
 
 module.exports = celebrate({
-	[Segments.HEADERS]: Joi.object()
-		.keys({
-			authorization: Joi.string().required(),
-		})
-		.unknown(),
-
+	...requiredAuthorizationHeader,
 	[Segments.BODY]: Joi.object().keys({
 		city: Joi.string().required(),
 		state: Joi.string().required(),
@@ -14,6 +10,6 @@ module.exports = celebrate({
 		district: Joi.string().required(),
 		zipcode: Joi.string().required(),
 		number: Joi.string().required(),
-		customer_id: Joi.string().required(),
+		user_id: Joi.string().required(),
 	}),
 });
