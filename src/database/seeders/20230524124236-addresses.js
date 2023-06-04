@@ -1,26 +1,15 @@
-const { bulkInsertTables } = require('./helpers/bulk-insert-tables');
-const { dropTables } = require('./helpers/drop-tables');
-
 /* eslint-disable no-unused-vars */
-const tables = ['users', 'addresses'];
+const { mockAddresses } = require('../mocks/mock-addresses');
 
-const tablesAndRelations = {
-	table: 'addresses',
-	relations: [
-		{
-			foreign_key: 'customer_id',
-			table: 'users',
-		},
-	],
-};
+const FIXED_MOCK_ADDRESSES_LENGTH = 15;
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		return bulkInsertTables(tablesAndRelations, queryInterface);
+		return queryInterface.bulkInsert('addresses', mockAddresses(FIXED_MOCK_ADDRESSES_LENGTH));
 	},
 
 	async down(queryInterface, Sequelize) {
-		await dropTables(tablesAndRelations, queryInterface);
+		await queryInterface.bulkDelete('addresses', null, {});
 	},
 };

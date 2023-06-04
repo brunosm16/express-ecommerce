@@ -18,6 +18,7 @@
 		"db:migrate:up": "sequelize db:migrate",
 		"db:migrate:down": "sequelize db:migrate:undo",
 		"db:migration": "sequelize db:migration",
+		"db:seed:all": "sequelize db:seed:all",
 		"prettier:check": "npx prettier --check .",
 		"prettier:fix": "npx prettier --write .",
 		"lint": "npx eslint .",
