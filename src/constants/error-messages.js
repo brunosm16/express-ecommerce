@@ -22,4 +22,6 @@ module.exports = Object.freeze({
 	NOT_FOUND: 'Not found',
 	UNAUTHORIZED: 'You are not authorized to access this information',
 	REQUIRED_FIELD: 'A required field is missing',
+	OPERATION_FAILED: 'Operation failed. Please try again later',
+	OPERATION_SUCCEEDED: 'Operation succeeded',
 });
