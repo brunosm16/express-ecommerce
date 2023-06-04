@@ -18,4 +18,5 @@ module.exports = Object.freeze({
 	ENTITY_UPDATED: 'Entity was successfully updated',
 	BAD_REQUEST: 'Bad Request',
 	PRODUCT_NOT_EXISTS: 'One or more products does not exists',
+	ROUTE_NOT_FOUND: 'Route not found',
 });
