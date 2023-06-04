@@ -57,7 +57,10 @@ const mapQuantityBoughtInProducts = (products, bought) => {
 		const { id } = product;
 		const quantity_bought = bought[id] ?? 0;
 
-		return { ...product, quantity_bought };
+		// eslint-disable-next-line no-param-reassign
+		product.quantity_sold = quantity_bought;
+
+		return product;
 	});
 };
 
@@ -71,12 +74,12 @@ const validateProductsQuantityBought = (products) => {
 
 const getOrderTotalPrice = (products) =>
 	products.reduce((acc, current) => {
-		const { quantity_bought } = current;
+		const { quantity_sold } = current;
 		const price = Number(current?.dataValues?.price);
 
 		if (!price) throw new Error('Invalid price');
 
-		const total = price * quantity_bought;
+		const total = price * quantity_sold;
 
 		return acc + total;
 	}, 0);
@@ -89,6 +92,14 @@ const getMappedProducts = async (payload) => {
 	return finalProducts;
 };
 
+const setRelationshipOrderProducts = (createdOrder, products) => {
+	const ordersProducts = products.map((product) => {
+		return createdOrder.addProduct(product);
+	});
+
+	return Promise.all(ordersProducts);
+};
+
 const create = async (body) => {
 	const { products_payload, user_id, address_id } = body;
 
@@ -98,10 +109,14 @@ const create = async (body) => {
 	const total_price = getOrderTotalPrice(products);
 	const params = { ...body, total_price };
 
-	return OrderModel.create({
+	const createdOrder = await OrderModel.create({
 		id: generateUUID(),
 		...formatBodyParams(params, ORDER_PARAMS_TO_CREATE_UPDATE),
 	});
+
+	await setRelationshipOrderProducts(createdOrder, products);
+
+	return createdOrder;
 };
 
 module.exports = { create };

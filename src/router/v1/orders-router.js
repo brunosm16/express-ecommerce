@@ -6,7 +6,7 @@ const ordersController = require('../../controllers/orders');
 
 const ordersRouter = express.Router();
 
-ordersRouter.post('/', ordersValidator.create, adminAuth, ordersController.create);
+ordersRouter.post('/', ordersValidator.create, ordersController.create);
 ordersRouter.delete('/:id', ordersValidator.deleteById, adminAuth, ordersController.deleteById);
 ordersRouter.get('/', ordersValidator.findAll, adminAuth, ordersController.findAll);
 ordersRouter.get(

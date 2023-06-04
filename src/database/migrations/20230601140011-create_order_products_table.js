@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 
+const { DataTypes } = require('sequelize');
+const { generateUUID } = require('../../services/cryptography/cryptography-service');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
@@ -7,6 +10,7 @@ module.exports = {
 			id: {
 				type: Sequelize.UUID,
 				defaultValue: Sequelize.UUIDV4,
+				primaryKey: true,
 				allowNull: false,
 			},
 
@@ -24,6 +28,22 @@ module.exports = {
 				allowNull: false,
 				onUpdate: 'CASCADE',
 				onDelete: 'CASCADE',
+			},
+
+			created_at: {
+				allowNull: false,
+				type: Sequelize.DATE,
+				defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+			},
+
+			updated_at: {
+				allowNull: true,
+				type: Sequelize.DATE,
+			},
+
+			deleted_at: {
+				type: Sequelize.DATE,
+				allowNull: true,
 			},
 		});
 	},

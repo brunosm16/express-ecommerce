@@ -24,10 +24,10 @@ class ProductModel extends Model {
 		);
 	}
 
-	static associate({ ProductModel: ThisModel, CategoryModel, OrdersProductModel }) {
+	static associate({ ProductModel: ThisModel, CategoryModel, OrdersProductModel, OrderModel }) {
 		ThisModel.belongsTo(CategoryModel, { foreignKey: 'category_id', as: 'categories' });
 
-		ThisModel.belongsToMany(OrdersProductModel, {
+		ThisModel.belongsToMany(OrderModel, {
 			through: OrdersProductModel,
 			foreignKey: 'product_id',
 			as: 'orders',
