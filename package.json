@@ -15,6 +15,9 @@
 	"private": false,
 	"scripts": {
 		"start:dev": "nodemon src/main/server.js --ignore __tests__",
+		"db:migrate:up": "sequelize db:migrate",
+		"db:migrate:down": "sequelize db:migrate:undo",
+		"db:migration": "sequelize db:migration",
 		"prettier:check": "npx prettier --check .",
 		"prettier:fix": "npx prettier --write .",
 		"lint": "npx eslint .",
