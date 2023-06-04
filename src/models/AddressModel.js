@@ -4,12 +4,14 @@ class AddressModel extends Model {
 	static init(connection) {
 		super.init(
 			{
+				building_number: DataTypes.INTEGER,
 				city: DataTypes.STRING,
 				state: DataTypes.STRING,
 				street: DataTypes.STRING,
-				district: DataTypes.STRING,
-				zipcode: DataTypes.STRING,
-				number: DataTypes.INTEGER,
+				zip_code: DataTypes.STRING,
+				created_at: DataTypes.DATE,
+				updated_at: DataTypes.DATE,
+				deleted_at: DataTypes.DATE,
 			},
 			{
 				sequelize: connection,
@@ -17,18 +19,6 @@ class AddressModel extends Model {
 				paranoid: true,
 			}
 		);
-	}
-
-	static associate({ UserModel, AddressModel: ThisModel, OrderModel }) {
-		ThisModel.belongsTo(UserModel, {
-			foreignKey: 'customer_id',
-			as: 'customer',
-		});
-
-		ThisModel.hasMany(OrderModel, {
-			foreignKey: 'address_id',
-			as: 'orders',
-		});
 	}
 }
 
