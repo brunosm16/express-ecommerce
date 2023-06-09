@@ -17,6 +17,7 @@ class AddressModel extends Model {
 				sequelize: connection,
 				tableName: 'addresses',
 				paranoid: true,
+				updatedAt: false,
 			}
 		);
 	}
