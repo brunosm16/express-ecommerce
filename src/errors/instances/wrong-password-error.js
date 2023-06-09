@@ -1,5 +1,5 @@
 const { WRONG_PASSWORD } = require('../../constants/error-messages');
-const UnauthorizedError = require('./unauthorized-error');
+const UnauthorizedError = require('./base/unauthorized-error');
 
 class WrongPasswordError extends UnauthorizedError {
 	constructor(message = WRONG_PASSWORD) {

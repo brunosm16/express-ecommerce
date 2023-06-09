@@ -1,5 +1,5 @@
 const { ENTITY_EXISTS } = require('../../constants/error-messages');
-const BadRequestError = require('./bad-request-error');
+const BadRequestError = require('./base/bad-request-error');
 
 class EntityExistsError extends BadRequestError {
 	constructor(message = ENTITY_EXISTS) {

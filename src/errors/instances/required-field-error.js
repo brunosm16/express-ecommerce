@@ -1,5 +1,5 @@
 const { REQUIRED_FIELD } = require('../../constants/error-messages');
-const BadRequestError = require('./bad-request-error');
+const BadRequestError = require('./base/bad-request-error');
 
 class RequiredFieldError extends BadRequestError {
 	constructor(message = REQUIRED_FIELD) {

@@ -1,5 +1,5 @@
 const { EMPTY_BODY } = require('../../constants/error-messages');
-const BadRequestError = require('./bad-request-error');
+const BadRequestError = require('./base/bad-request-error');
 
 class EmptyBodyError extends BadRequestError {
 	constructor(message = EMPTY_BODY) {
