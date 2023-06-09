@@ -10,13 +10,11 @@ const USER_PARAMS_TO_UPDATE = Object.freeze([
 ]);
 
 const ADDRESS_PARAMS_TO_CREATE_UPDATE = Object.freeze([
+	'building_number',
 	'city',
 	'state',
 	'street',
-	'district',
-	'zipcode',
-	'number',
-	'customer_id',
+	'zip_code',
 ]);
 
 const CATEGORY_PARAMS_TO_CREATE_UPDATE = Object.freeze([

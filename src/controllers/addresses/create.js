@@ -1,6 +1,3 @@
-const createAddressService = require('../../services/addresses/create-address-service');
+const { createAddress } = require('../../services/addresses/create-address');
 
-module.exports = async (req) => {
-	const address = await createAddressService.createAddress(req.body);
-	return address;
-};
+module.exports = async (req) => createAddress(req);
