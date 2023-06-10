@@ -1,5 +1,6 @@
 const { SOMETHING_WRONG, OPERATION_SUCCEEDED } = require('../constants/error-messages');
 const { STATUS_CODE_500, STATUS_CODE_200 } = require('../constants/http-status-codes');
+const ParanoidTableOperation = require('../database/instances/paranoid-table-operation');
 const { formatErrorMessage } = require('./http-format-error-message');
 const { OPERATION_ERROR_CODE, OPERATION_SUCCESS_CODE } = require('./operation-errors-codes');
 
@@ -10,14 +11,14 @@ const makeInternalServerErrorResponse = (res, message) =>
 
 const makeOkResponse = (res, message) => sendResponse(res, STATUS_CODE_200, message);
 
-const makeResponseByOperationCode = (res, code) => {
+const makeResponseByOperationCode = (res, { operationCode }) => {
 	const responsesByCode = {
 		[OPERATION_ERROR_CODE]: (response) =>
 			makeInternalServerErrorResponse(response, SOMETHING_WRONG),
 		[OPERATION_SUCCESS_CODE]: (response) => makeOkResponse(response, OPERATION_SUCCEEDED),
 	};
 
-	return responsesByCode[code](res);
+	return responsesByCode[operationCode](res);
 };
 
 const makeAPIResponseError = (res, err) => {
@@ -26,7 +27,7 @@ const makeAPIResponseError = (res, err) => {
 };
 
 const makeAPIResponse = (res, data) => {
-	const dataIsOperationCode = Number.isInteger(data) && (data >= 0 || data <= 1);
+	const dataIsOperationCode = data instanceof ParanoidTableOperation;
 	if (dataIsOperationCode) return makeResponseByOperationCode(res, data);
 
 	return makeOkResponse(res, data);
