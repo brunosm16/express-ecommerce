@@ -1,4 +1,8 @@
+const { TableRelations } = require('../../instances');
+
 const validateTablesAndRelations = (tablesAndRelations) => {
+	if (!(tablesAndRelations instanceof TableRelations))
+		throw new Error(`TableRelations provided is not valid`);
 	if (!tablesAndRelations?.table) throw new Error(`Table not provided`);
 	if (!tablesAndRelations.relations?.length) throw new Error(`Relations not provided`);
 

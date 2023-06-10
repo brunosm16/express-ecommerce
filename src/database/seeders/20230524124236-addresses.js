@@ -1,12 +1,19 @@
 /* eslint-disable no-unused-vars */
-const { mockAddresses } = require('../mocks/mock-addresses');
 
-const FIXED_MOCK_ADDRESSES_LENGTH = 15;
+const { TableRelations, RelationTable } = require('../instances');
+const { bulkInsertTablesWithRelations } = require('./helpers/bulk-insert-tables-with-relations');
+
+const makeRelationsArray = () => {
+	const users = new RelationTable('user_id', 'users');
+
+	return [users];
+};
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		return queryInterface.bulkInsert('addresses', mockAddresses(FIXED_MOCK_ADDRESSES_LENGTH));
+		const addressesWithRelations = new TableRelations('addresses', makeRelationsArray());
+		return bulkInsertTablesWithRelations(addressesWithRelations, queryInterface);
 	},
 
 	async down(queryInterface, Sequelize) {
