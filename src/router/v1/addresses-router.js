@@ -8,7 +8,7 @@ const addressesRouter = express.Router();
 addressesRouter.post('/', addressesValidator.create, expressHandler(addressesController.create));
 addressesRouter.delete(
 	'/:id',
-	addressesValidator.deleteById,
+	addressesValidator.remove,
 	expressHandler(addressesController.remove)
 );
 addressesRouter.put('/:id', addressesValidator.update, expressHandler(addressesController.update));

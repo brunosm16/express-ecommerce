@@ -1,9 +1,9 @@
 const create = require('./create');
-const deleteById = require('./delete-by-id');
+const remove = require('./remove');
 const update = require('./update');
 
 module.exports = {
 	create,
-	deleteById,
+	remove,
 	update,
 };
