@@ -31,7 +31,7 @@ const auth = async (req, res, next) => {
 		validateAuthorization(authorization);
 
 		const { admin } = getBearerTokenDecoded(authorization);
-		req.isAdmin = admin;
+		req.is_admin = admin;
 		return next();
 	} catch (err) {
 		return makeResponseByError(res, err);

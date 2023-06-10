@@ -8,10 +8,17 @@ const validateUser = async (user_id) => {
 	await validateEntity.entityExistsByPk(user_id, UserModel, message);
 };
 
+const validateAddress = async (address_id) => {
+	const message = 'Address not found';
+	await validateEntity.entityExistsByPk(address_id, AddressModel, message);
+};
+
 const removeAddressById = async (req) => {
 	const { address_id, user_id } = extractUserAndAddressIds(req);
 
 	await validateUser(user_id);
+
+	await validateAddress(address_id);
 
 	const operationCode = await removeEntity.removeEntityByKeyValue(AddressModel, 'id', address_id);
 

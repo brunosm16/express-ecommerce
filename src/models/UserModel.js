@@ -9,7 +9,7 @@ class UserModel extends Model {
 				password_hash: DataTypes.STRING,
 				token_reset_password: DataTypes.STRING,
 				token_reset_password_expire_date: DataTypes.DATE,
-				isAdmin: DataTypes.BOOLEAN,
+				is_admin: DataTypes.BOOLEAN,
 			},
 			{
 				tableName: 'users',

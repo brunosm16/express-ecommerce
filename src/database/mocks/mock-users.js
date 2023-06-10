@@ -6,7 +6,7 @@ const buildUser = () => ({
 	full_name: faker.name.fullName(),
 	email: faker.internet.email(),
 	password_hash: faker.datatype.uuid(),
-	isAdmin: faker.datatype.boolean(),
+	is_admin: faker.datatype.boolean(),
 });
 
 const mockUsers = (quantity) => mockEntity(buildUser, quantity);
