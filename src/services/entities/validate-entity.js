@@ -13,4 +13,31 @@ const entityExistsByPk = async (id, Model, message, shouldExists = true) => {
 	if (!shouldExists && entity) throw new EntityExistsError(message);
 };
 
-module.exports = { validateEntityNotExistsByPk, entityExistsByPk };
+const validateEntitiesAssociation = async (TableAssociation) => {
+	const { ParentTable, ChildTable, association } = TableAssociation;
+
+	const { ParentModel, parentId, parentName } = ParentTable;
+	const { childId, childName } = ChildTable;
+
+	const parentData = await ParentModel.findByPk(parentId, {
+		include: {
+			association,
+			where: {
+				id: childId,
+			},
+			required: false,
+		},
+	});
+
+	if (!parentData) {
+		const message = `${parentName} does not exists`;
+		throw new EntityNotExistsError(message);
+	}
+
+	if (!parentData?.[association]?.length) {
+		const message = `No ${childName} found to ${parentName}`;
+		throw new EntityNotExistsError(message);
+	}
+};
+
+module.exports = { validateEntityNotExistsByPk, entityExistsByPk, validateEntitiesAssociation };
