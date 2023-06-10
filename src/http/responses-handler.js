@@ -10,7 +10,7 @@ const makeInternalServerErrorResponse = (res, message) =>
 
 const makeOkResponse = (res, message) => sendResponse(res, STATUS_CODE_200, message);
 
-const makeResponseByOperationCode = (code, res) => {
+const makeResponseByOperationCode = (res, code) => {
 	const responsesByCode = {
 		[OPERATION_ERROR_CODE]: (response) =>
 			makeInternalServerErrorResponse(response, SOMETHING_WRONG),

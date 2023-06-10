@@ -1,11 +1,11 @@
 const create = require('./create');
 const findByUserId = require('./find-by-user-id');
-const deleteById = require('./delete-by-id');
+const remove = require('./remove');
 const update = require('./update');
 
 module.exports = {
 	create,
 	findByUserId,
-	deleteById,
+	remove,
 	update,
 };

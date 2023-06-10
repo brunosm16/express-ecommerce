@@ -16,8 +16,7 @@ addressesRouter.post('/', addressesValidator.create, expressHandler(addressesCon
 addressesRouter.delete(
 	'/:id',
 	addressesValidator.deleteById,
-	adminAuth,
-	addressesController.deleteById
+	expressHandler(addressesController.remove)
 );
 
 addressesRouter.put('/:id', addressesValidator.update, adminAuth, addressesController.update);

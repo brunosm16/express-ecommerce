@@ -3,11 +3,14 @@ const Sequelize = require('sequelize');
 const dbConfig = require('../../config/db/db-config');
 const requireBySourceAndDir = require('../../utils/require-by-source-and-dir');
 
+const isModelInstance = (value) => value.prototype instanceof Sequelize.Model;
+
 const initializeModels = (models, connection) => {
 	Object.keys(models).forEach((key) => {
 		const currentModel = models[key];
+		const isValidModel = currentModel && isModelInstance(currentModel);
 
-		if (currentModel) currentModel.init(connection);
+		if (isValidModel) currentModel.init(connection);
 	});
 };
 
@@ -15,8 +18,9 @@ const associateModels = (models, connection) => {
 	Object.keys(models).forEach((key) => {
 		const currentModel = models[key];
 		const associate = currentModel?.associate;
+		const isValidModel = isModelInstance(currentModel);
 
-		if (associate) associate(connection.models);
+		if (isValidModel && associate) associate(connection.models);
 	});
 };
 

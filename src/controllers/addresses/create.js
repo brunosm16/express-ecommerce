@@ -1,3 +1,3 @@
-const { createAddress } = require('../../services/addresses/create-address');
+const { persistAddress } = require('../../services/addresses/create-address');
 
-module.exports = async (req) => createAddress(req);
+module.exports = async (req) => persistAddress(req);

@@ -1,5 +1,4 @@
-const { EntityNotExistsError } = require('../../errors/errors-types');
-const { EntityExistsError } = require('../../errors/instances');
+const { EntityExistsError, EntityNotExistsError } = require('../../errors/instances');
 
 const validateEntityNotExistsByPk = async (id, Model) => {
 	const entity = await Model.findByPk(id);
