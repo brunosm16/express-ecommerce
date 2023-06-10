@@ -21,6 +21,13 @@ class AddressModel extends Model {
 			}
 		);
 	}
+
+	static associate({ AddressModel: ThisModel, UserModel }) {
+		ThisModel.belongsTo(UserModel, {
+			foreignKey: 'user_id',
+			as: 'user',
+		});
+	}
 }
 
 module.exports = AddressModel;

@@ -4,15 +4,12 @@ class UserModel extends Model {
 	static init(connection) {
 		super.init(
 			{
-				first_name: DataTypes.STRING,
-				last_name: DataTypes.STRING,
-				primary_email: DataTypes.STRING,
-				secondary_email: DataTypes.STRING,
-				date_of_birth: DataTypes.DATE,
+				full_name: DataTypes.STRING,
+				email: DataTypes.STRING,
 				password_hash: DataTypes.STRING,
-				reset_password_token: DataTypes.STRING,
-				reset_password_expire_date: DataTypes.DATE,
-				admin: DataTypes.BOOLEAN,
+				token_reset_password: DataTypes.STRING,
+				token_reset_password_expire_date: DataTypes.DATE,
+				isAdmin: DataTypes.BOOLEAN,
 			},
 			{
 				tableName: 'users',
@@ -21,9 +18,9 @@ class UserModel extends Model {
 		);
 	}
 
-	static associate({ AddressModel, UserModel: ThisModel, OrderModel }) {
+	static associate({ UserModel: ThisModel, AddressModel, OrderModel }) {
 		ThisModel.hasMany(AddressModel, {
-			foreignKey: 'customer_id',
+			foreignKey: 'user_id',
 			as: 'addresses',
 		});
 
