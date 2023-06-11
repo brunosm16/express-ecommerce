@@ -15,6 +15,15 @@ const ADDRESS_PARAMS_TO_CREATE_UPDATE = Object.freeze([
 	'state',
 	'street',
 	'zip_code',
+	'user_id',
+]);
+
+const ADDRESS_PARAMS_TO_SHOW = Object.freeze([
+	'building_number',
+	'city',
+	'state',
+	'street',
+	'zip_code',
 ]);
 
 const CATEGORY_PARAMS_TO_CREATE_UPDATE = Object.freeze([
@@ -51,4 +60,5 @@ module.exports = {
 	CATEGORY_PARAMS_TO_CREATE_UPDATE,
 	ORDER_PARAMS_TO_CREATE_UPDATE,
 	PRODUCTS_PARAMS_TO_CREATE_UPDATE,
+	ADDRESS_PARAMS_TO_SHOW,
 };
