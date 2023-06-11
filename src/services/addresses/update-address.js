@@ -1,4 +1,4 @@
-const { ADDRESS_PARAMS_TO_CREATE_UPDATE } = require('../../constants/allowed-params');
+const { addressParamsToPersist } = require('../../constants/params/addresses-params');
 const {
 	makeChildArgs,
 	makeParentArgs,
@@ -27,7 +27,7 @@ const updateAddressById = async (req) => {
 		AddressModel,
 		body,
 		{ id: address_id },
-		ADDRESS_PARAMS_TO_CREATE_UPDATE
+		addressParamsToPersist
 	);
 
 	return new ParanoidTableOperation(false, result);

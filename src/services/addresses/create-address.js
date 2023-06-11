@@ -1,21 +1,21 @@
-const {
-	ADDRESS_PARAMS_TO_CREATE_UPDATE,
-	ADDRESS_PARAMS_TO_SHOW,
-} = require('../../constants/allowed-params');
 const { persistEntity, validateEntity } = require('../entities');
-const { USER_NOT_FOUND } = require('../../constants/error-messages');
 const { UserModel, AddressModel } = require('../../models');
+const {
+	addressParamsToPersist,
+	addressParamsToExpose,
+} = require('../../constants/params/addresses-params');
+const { makeEntityNotFoundMessage } = require('../../errors/messages/make-error-messages');
 
 const persistAddress = async ({ body }) => {
 	const { user_id } = body;
 
-	await validateEntity.entityExistsByPk(user_id, UserModel, USER_NOT_FOUND);
+	await validateEntity.entityExistsByPk(user_id, UserModel, makeEntityNotFoundMessage('User'));
 
 	return persistEntity.saveEntity(
 		AddressModel,
 		body,
-		ADDRESS_PARAMS_TO_CREATE_UPDATE,
-		ADDRESS_PARAMS_TO_SHOW
+		addressParamsToPersist,
+		addressParamsToExpose
 	);
 };
 
