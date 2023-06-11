@@ -8,7 +8,7 @@ const makeChildTable = ({ Model, childId, childName }) => new ChildTable(Model, 
 const makeParentTable = ({ Model, parentId, parentName }) =>
 	new ParentTable(Model, parentId, parentName);
 
-const makeTableAssociation = (parentArgs, childArgs, association) =>
-	new TableAssociation(makeParentTable(parentArgs), makeChildTable(childArgs), association);
+const makeTableAssociation = (parentArgs, childArgs) =>
+	new TableAssociation(makeParentTable(parentArgs), makeChildTable(childArgs));
 
 module.exports = { makeTableAssociation, makeChildArgs, makeParentArgs };

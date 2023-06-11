@@ -14,14 +14,14 @@ const entityExistsByPk = async (id, Model, message, shouldExists = true) => {
 };
 
 const validateEntitiesAssociation = async (TableAssociation) => {
-	const { ParentTable, ChildTable, association } = TableAssociation;
+	const { ParentTable, ChildTable } = TableAssociation;
 
 	const { ParentModel, parentId, parentName } = ParentTable;
 	const { childId, childName } = ChildTable;
 
 	const parentData = await ParentModel.findByPk(parentId, {
 		include: {
-			association,
+			association: childName,
 			where: {
 				id: childId,
 			},
@@ -30,12 +30,12 @@ const validateEntitiesAssociation = async (TableAssociation) => {
 	});
 
 	if (!parentData) {
-		const message = `${parentName} does not exists`;
+		const message = `Entity from '${parentName}' does not exists`;
 		throw new EntityNotExistsError(message);
 	}
 
-	if (!parentData?.[association]?.length) {
-		const message = `No ${childName} found to ${parentName}`;
+	if (!parentData?.[childName]?.length) {
+		const message = `'${childName}' not found for '${parentName}'`;
 		throw new EntityNotExistsError(message);
 	}
 };
