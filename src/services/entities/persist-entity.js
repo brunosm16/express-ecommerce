@@ -1,11 +1,14 @@
 const { formatBodyParams } = require('../../utils/format-body-params');
 const { generateUUID } = require('../cryptography/cryptography-service');
 
-const saveEntity = async (Model, body, allowedParams, resultAllowedParams) => {
-	const { dataValues } = await Model.create({
-		id: generateUUID(),
-		...formatBodyParams(body, allowedParams),
-	});
+const saveEntity = async (Model, body, allowedParams, resultAllowedParams, transaction = null) => {
+	const { dataValues } = await Model.create(
+		{
+			id: generateUUID(),
+			...formatBodyParams(body, allowedParams),
+		},
+		{ transaction }
+	);
 
 	return formatBodyParams(dataValues, resultAllowedParams);
 };

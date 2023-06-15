@@ -1,50 +1,62 @@
+const { makeEntityAlreadyExistsMessage } = require('../../errors/messages/make-error-messages');
 const UserModel = require('../../models/UserModel');
 const sequelizeConnection = require('../../database/sequelize/connection');
 const cryptographyService = require('../cryptography/cryptography-service');
-const validateUserService = require('./validate-user-service');
+const { validateEntityExistsByKey } = require('../entities/validate-entity');
+const { persistEntity } = require('../entities');
+const {
+	USERS_PARAMS_TO_PERSIST,
+	USER_PARAMS_TO_EXPOSE,
+} = require('../../constants/params/users-params');
+const { INTERNAL_SERVER_ERROR, TOKEN_ERROR } = require('../../constants/error-messages');
 
-const getUserParams = async (body) => {
-	const { first_name, last_name, primary_email, secondary_email, date_of_birth, password, admin } =
-		body;
+const generateUserToken = (id, admin) => {
+	const token = cryptographyService.generateTokenByParams({ id, admin });
+	if (!token) throw new INTERNAL_SERVER_ERROR(TOKEN_ERROR);
+	return token;
+};
+
+const setPasswordHashOnBody = async (body) => {
+	const { password } = body;
 
 	const password_hash = await cryptographyService.encrypt(password);
-	const id = cryptographyService.generateUUID();
 
-	return {
-		id,
-		first_name,
-		last_name,
-		primary_email,
-		secondary_email,
-		date_of_birth,
-		password_hash,
-		admin,
-	};
+	return { ...body, password_hash };
 };
 
 const persistUser = async (body) => {
 	const transaction = await sequelizeConnection.transaction();
 	try {
-		const userParams = await getUserParams(body);
-		const userCreated = await UserModel.create({ ...userParams }, { transaction });
+		const formattedBody = await setPasswordHashOnBody(body);
 
-		const { id, admin } = userCreated;
-		const userToken = cryptographyService.generateTokenByParams({ id, admin });
+		const user = await persistEntity.saveEntity(
+			UserModel,
+			formattedBody,
+			USERS_PARAMS_TO_PERSIST,
+			USER_PARAMS_TO_EXPOSE,
+			transaction
+		);
 
-		validateUserService.validateToken(userToken);
+		const userToken = generateUserToken(user?.id, body?.is_admin);
 
 		await transaction.commit();
 
-		return { userCreated, userToken };
+		return { user, userToken };
 	} catch (err) {
 		await transaction.rollback();
 		throw err;
 	}
 };
 
-const createUser = async (body) => {
-	await validateUserService.validateUserExists(body);
-	const userResult = await persistUser(body);
-	return userResult;
+const validateUserExists = async ({ email }) => {
+	const message = makeEntityAlreadyExistsMessage('User');
+	const keyValue = { key: 'email', value: email };
+	await validateEntityExistsByKey(keyValue, UserModel, message, false);
+};
+
+const createUser = async (req) => {
+	const { body } = req;
+	await validateUserExists(body);
+	return persistUser(body);
 };
 module.exports = { createUser };

@@ -9,6 +9,7 @@ const {
 } = require('../../constants/cryptography');
 const { JWT_SECRET } = require('../../env/env-values');
 const { RESET_TOKEN_MINUTES_TO_EXPIRE } = require('../../constants/cryptography');
+const { InternalServerError } = require('../../errors/instances');
 
 const encrypt = async (plaintext) => {
 	return bcrypt.hash(plaintext, PASSWORD_SALT);
@@ -19,6 +20,10 @@ const generateUUID = () => {
 };
 
 const generateTokenByParams = (payload) => {
+	const invalidKeys = Object.values(payload).some((value) => !value);
+
+	if (invalidKeys) throw new InternalServerError('Invalid keys to encrypt password');
+
 	return jwt.sign({ ...payload }, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
 };
 

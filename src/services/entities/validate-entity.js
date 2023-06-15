@@ -5,12 +5,22 @@ const validateEntityNotExistsByPk = async (id, Model) => {
 	if (!entity) throw new EntityNotExistsError();
 };
 
-const entityExistsByPk = async (id, Model, message, shouldExists = true) => {
-	const entity = await Model.findByPk(id);
-
+const throwErrorByExistingOperator = (entity, message, shouldExists) => {
 	if (shouldExists && !entity) throw new EntityNotExistsError(message);
 
 	if (!shouldExists && entity) throw new EntityExistsError(message);
+};
+
+const entityExistsByPk = async (id, Model, message, shouldExists = true) => {
+	const entity = await Model.findByPk(id);
+	throwErrorByExistingOperator(entity, message, shouldExists);
+};
+
+const validateEntityExistsByKey = async (keyValue, Model, message, shouldExists = true) => {
+	const { key, value } = keyValue;
+	const args = { [key]: value };
+	const entity = await Model.findOne({ where: args });
+	throwErrorByExistingOperator(entity, message, shouldExists);
 };
 
 const validateEntitiesAssociation = async (TableAssociation) => {
@@ -40,4 +50,9 @@ const validateEntitiesAssociation = async (TableAssociation) => {
 	}
 };
 
-module.exports = { validateEntityNotExistsByPk, entityExistsByPk, validateEntitiesAssociation };
+module.exports = {
+	validateEntityNotExistsByPk,
+	entityExistsByPk,
+	validateEntitiesAssociation,
+	validateEntityExistsByKey,
+};
