@@ -14,7 +14,7 @@ usersRouter.get('/:id', userValidator.findById, adminAuth, usersController.findB
 
 usersRouter.post('/login', userValidator.login, usersController.login);
 
-usersRouter.delete('/:id', userValidator.deleteById, adminAuth, usersController.deleteById);
+usersRouter.delete('/:id', userValidator.deleteById, expressHandler(usersController.remove));
 
 usersRouter.put('/:id', userValidator.update, adminAuth, usersController.update);
 

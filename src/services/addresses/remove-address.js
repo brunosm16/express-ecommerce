@@ -1,4 +1,4 @@
-const ParanoidTableOperation = require('../../database/instances/paranoid-table-operation');
+const { makeTableResultCode } = require('../../database/factories/make-table-result-code');
 const { UserModel, AddressModel } = require('../../models');
 const { validateEntity, removeEntity } = require('../entities');
 const { extractUserAndAddressIds } = require('./addresses-helpers-service');
@@ -20,11 +20,9 @@ const removeAddressById = async (req) => {
 
 	await validateAddress(address_id);
 
-	const operationCode = await removeEntity.removeEntityByKeyValue(AddressModel, 'id', address_id);
+	const resultCode = await removeEntity.removeEntityByKeyValue(AddressModel, 'id', address_id);
 
-	const softOperation = new ParanoidTableOperation(true, operationCode);
-
-	return softOperation;
+	return makeTableResultCode(resultCode);
 };
 
 module.exports = { removeAddressById };

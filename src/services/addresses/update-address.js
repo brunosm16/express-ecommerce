@@ -4,7 +4,7 @@ const {
 	makeParentArgs,
 	makeTableAssociation,
 } = require('../../database/factories/make-table-association');
-const { ParanoidTableOperation } = require('../../database/instances');
+const { makeTableResultCode } = require('../../database/factories/make-table-result-code');
 const { UserModel, AddressModel } = require('../../models');
 const { updateEntity } = require('../entities/persist-entity');
 const { validateEntitiesAssociation } = require('../entities/validate-entity');
@@ -30,7 +30,7 @@ const updateAddressById = async (req) => {
 		addressParamsToPersist
 	);
 
-	return new ParanoidTableOperation(false, result);
+	return makeTableResultCode(result);
 };
 
 module.exports = { updateAddressById };
