@@ -9,6 +9,7 @@ const {
 	USER_PARAMS_TO_EXPOSE,
 } = require('../../constants/params/users-params');
 const { INTERNAL_SERVER_ERROR, TOKEN_ERROR } = require('../../constants/error-messages');
+const { InternalServerError } = require('../../errors/instances');
 
 const generateUserToken = (id, admin) => {
 	const token = cryptographyService.generateTokenByParams({ id, admin });
@@ -38,6 +39,8 @@ const saveUser = async (body) => {
 		);
 
 		const userToken = generateUserToken(user?.id, body?.is_admin);
+
+		if (!userToken) throw new InternalServerError(TOKEN_ERROR);
 
 		await transaction.commit();
 

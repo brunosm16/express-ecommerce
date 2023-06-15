@@ -3,7 +3,7 @@ const findUser = require('./find-user');
 const loginUser = require('./login-user');
 const removeUser = require('./remove-user');
 const validateUserService = require('./validate-user-service');
-const updateUserService = require('./update-user-service');
+const updateUser = require('./update-user');
 
 module.exports = {
 	createUser,
@@ -11,5 +11,5 @@ module.exports = {
 	loginUser,
 	removeUser,
 	validateUserService,
-	updateUserService,
+	updateUser,
 };

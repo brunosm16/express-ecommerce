@@ -20,7 +20,10 @@ const generateUUID = () => {
 };
 
 const generateTokenByParams = (payload) => {
-	const invalidKeys = Object.values(payload).some((value) => !value);
+	const invalidKeys = Object.values(payload).some((value) => {
+		if (typeof value === 'boolean') return false;
+		return !value;
+	});
 
 	if (invalidKeys) throw new InternalServerError('Invalid keys to encrypt password');
 

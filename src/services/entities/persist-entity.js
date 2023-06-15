@@ -13,7 +13,7 @@ const saveEntity = async (Model, body, allowedParams, resultAllowedParams, trans
 	return formatBodyParams(dataValues, resultAllowedParams);
 };
 
-const updateEntity = async (Model, body, args, allowedParams) =>
-	Model.update({ ...formatBodyParams(body, allowedParams) }, { where: args });
+const updateEntity = async (Model, body, args, allowedParams, transaction = null) =>
+	Model.update({ ...formatBodyParams(body, allowedParams) }, { where: args, transaction });
 
 module.exports = { saveEntity, updateEntity };
