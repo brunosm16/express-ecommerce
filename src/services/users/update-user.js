@@ -1,7 +1,7 @@
 const { EntityNotExistsError } = require('../../errors/errors-types');
 const cryptographyService = require('../cryptography/cryptography-service');
 const sequelizeConnection = require('../../database/sequelize/connection');
-const { validateUserPassword } = require('./validate-user-service');
+const { validateUserPassword } = require('./validate-user');
 const { findByPk } = require('../entities/find-entity');
 const UserModel = require('../../models/UserModel');
 const { persistEntity } = require('../entities');

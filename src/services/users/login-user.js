@@ -1,7 +1,7 @@
 const { UserModel } = require('../../models');
 const { generateTokenByParams } = require('../cryptography/cryptography-service');
 const { findEntityByKey } = require('../entities/find-entity');
-const { validateUserPassword } = require('./validate-user-service');
+const { validateUserPassword } = require('./validate-user');
 
 const extractDataFromBody = ({ body }) => {
 	const { email, password } = body;

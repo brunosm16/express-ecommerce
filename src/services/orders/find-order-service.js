@@ -1,6 +1,6 @@
 const { EntityNotExistsError } = require('../../errors/errors-types');
 const OrderModel = require('../../models/OrderModel');
-const { validateNonExistingUserById } = require('../users/validate-user-service');
+const { validateNonExistingUserById } = require('../users/validate-user');
 
 const orderAttrsToExclude = ['createdAt', 'updatedAt', 'user_id'];
 const addressAttrsToExclude = ['createdAt', 'updatedAt', 'deletedAt', 'customer_id', 'id'];
