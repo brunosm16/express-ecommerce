@@ -24,7 +24,7 @@ const setPasswordHashOnBody = async (body) => {
 	return { ...body, password_hash };
 };
 
-const persistUser = async (body) => {
+const saveUser = async (body) => {
 	const transaction = await sequelizeConnection.transaction();
 	try {
 		const formattedBody = await setPasswordHashOnBody(body);
@@ -54,9 +54,9 @@ const validateUserExists = async ({ email }) => {
 	await validateEntityExistsByKey(keyValue, UserModel, message, false);
 };
 
-const createUser = async (req) => {
+const persistUser = async (req) => {
 	const { body } = req;
 	await validateUserExists(body);
-	return persistUser(body);
+	return saveUser(body);
 };
-module.exports = { createUser };
+module.exports = { persistUser };

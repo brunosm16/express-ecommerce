@@ -1,3 +1,3 @@
-const createUserService = require('../../services/users/create-user-service');
+const { persistUser } = require('../../services/users/create-user');
 
-module.exports = async (req) => createUserService.createUser(req);
+module.exports = async (req) => persistUser(req);
