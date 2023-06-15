@@ -12,7 +12,7 @@ usersRouter.get('/', userValidator.findAll, expressHandler(usersController.findA
 
 usersRouter.get('/:id', userValidator.findById, expressHandler(usersController.findById));
 
-usersRouter.post('/login', userValidator.login, usersController.login);
+usersRouter.post('/login', userValidator.login, expressHandler(usersController.login));
 
 usersRouter.delete('/:id', userValidator.deleteById, expressHandler(usersController.remove));
 

@@ -31,9 +31,8 @@ const validateUserExistsByEmail = async (email) => {
 	if (!user) throw new EntityNotExistsError('No user found with this email');
 };
 
-const validateInputPasswordWithHash = async (password, hash) => {
+const validateUserPassword = async (password, hash) => {
 	const isEqual = await comparePasswords(password, hash);
-
 	if (!isEqual) throw new WrongPasswordError();
 };
 
@@ -54,6 +53,6 @@ module.exports = {
 	validateToken,
 	validateNonExistingUserById,
 	validateUserExistsByEmail,
-	validateInputPasswordWithHash,
+	validateUserPassword,
 	validateUserAddressRelation,
 };

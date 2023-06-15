@@ -7,9 +7,9 @@ const update = require('./update');
 
 module.exports = {
 	create,
-	remove,
 	findAll,
 	findById,
 	login,
+	remove,
 	update,
 };

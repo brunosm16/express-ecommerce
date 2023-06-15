@@ -1,9 +1,8 @@
 const findUserService = require('./find-user');
 const { EntityNotExistsError, EmptyBodyError } = require('../../errors/errors-types');
-const { validateInputPasswordWithHash } = require('./validate-user-service');
 const cryptographyService = require('../cryptography/cryptography-service');
 const sequelizeConnection = require('../../database/sequelize/connection');
-const validateUserService = require('./validate-user-service');
+const { validateUserPassword, validateToken } = require('./validate-user-service');
 const { filterNullValuesFromObj, filterObjByKeys } = require('../../utils/object-utils');
 const { USER_PARAMS_TO_UPDATE } = require('../../constants/allowed-params');
 
@@ -12,7 +11,7 @@ const validatePasswords = async (user, body) => {
 
 	const { password_hash } = user;
 
-	await validateInputPasswordWithHash(current_password, password_hash);
+	await validateUserPassword(current_password, password_hash);
 };
 
 const validateUserBodyParams = async (user, body) => {
@@ -50,7 +49,7 @@ const persistUser = async (user, body) => {
 		const { id, admin } = userResult;
 		const userToken = cryptographyService.generateTokenByParams({ id, admin });
 
-		validateUserService.validateToken(userToken);
+		validateToken(userToken);
 
 		await transaction.commit();
 

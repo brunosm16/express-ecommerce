@@ -1,12 +1,3 @@
-const { makeResponseByError, makeOkResponse } = require('../../http/http-responses');
-const loginUserService = require('../../services/users/login-user-service');
+const { loginUserWithToken } = require('../../services/users/login-user');
 
-module.exports = async (req, res) => {
-	try {
-		const accessToken = await loginUserService.createAccessToken(req.body);
-
-		return makeOkResponse(res, accessToken);
-	} catch (err) {
-		return makeResponseByError(res, err);
-	}
-};
+module.exports = async (req) => loginUserWithToken(req);
