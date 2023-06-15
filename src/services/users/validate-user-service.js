@@ -10,7 +10,7 @@ const {
 } = require('../../errors/errors-types');
 const { EntityNotExistsError } = require('../../errors/instances');
 const { comparePasswords } = require('../cryptography/cryptography-service');
-const findUserService = require('./find-user-service');
+const findUserService = require('./find-user');
 
 const validateUserExists = async ({ primary_email, secondary_email }) => {
 	const user = await findUserService.findUserByEmails(primary_email, secondary_email);

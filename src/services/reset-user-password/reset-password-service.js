@@ -1,8 +1,8 @@
 const { EntityNotExistsError } = require('../../errors/errors-types');
-const { findUserById } = require('../users/find-user-service');
 const { getTokenData } = require('./find-token-data');
 const validateResetTokenService = require('./validate-reset-token-service');
 const cryptographyService = require('../cryptography/cryptography-service');
+const { findUserById } = require('../users/find-user');
 
 const getUser = async (id) => {
 	const user = await findUserById(id);

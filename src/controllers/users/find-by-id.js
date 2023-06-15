@@ -1,6 +1,6 @@
 const { EntityNotExistsError } = require('../../errors/errors-types');
 const { makeResponseByError, makeOkResponse } = require('../../http/http-responses');
-const { findUserById } = require('../../services/users/find-user-service');
+const { findUserById } = require('../../services/users/find-user');
 
 module.exports = async (req, res) => {
 	try {

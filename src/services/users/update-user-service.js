@@ -1,4 +1,4 @@
-const findUserService = require('./find-user-service');
+const findUserService = require('./find-user');
 const { EntityNotExistsError, EmptyBodyError } = require('../../errors/errors-types');
 const { validateInputPasswordWithHash } = require('./validate-user-service');
 const cryptographyService = require('../cryptography/cryptography-service');

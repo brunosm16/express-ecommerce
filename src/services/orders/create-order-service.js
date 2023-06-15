@@ -9,7 +9,7 @@ const OrderModel = require('../../models/OrderModel');
 const ProductModel = require('../../models/ProductModel');
 const { formatBodyParams } = require('../../utils/format-body-params');
 const { generateUUID } = require('../cryptography/cryptography-service');
-const { findUserByAssociation } = require('../users/find-user-service');
+const { findUserByAssociation } = require('../users/find-user');
 
 const validateUserAddress = async (user_id, address_id) => {
 	const user = await findUserByAssociation(user_id, address_id, 'addresses');

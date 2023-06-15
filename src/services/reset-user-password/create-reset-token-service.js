@@ -4,7 +4,7 @@ const {
 	generateResetTokenById,
 	generateTokenExpirationDate,
 } = require('../cryptography/cryptography-service');
-const { findUserByEmail } = require('../users/find-user-service');
+const { findUserByEmail } = require('../users/find-user');
 const { validateTokenExists } = require('./validate-reset-token-service');
 
 const validateUserToken = ({ reset_password_token, reset_password_expire_date }) => {

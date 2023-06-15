@@ -8,7 +8,7 @@ const expressHandler = require('../../middlewares/express-handler');
 
 usersRouter.post('/', userValidator.create, expressHandler(usersController.create));
 
-usersRouter.get('/', userValidator.findAll, adminAuth, usersController.findAll);
+usersRouter.get('/', userValidator.findAll, expressHandler(usersController.findAll));
 
 usersRouter.get('/:id', userValidator.findById, adminAuth, usersController.findById);
 

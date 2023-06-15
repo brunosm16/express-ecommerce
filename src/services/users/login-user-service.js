@@ -1,5 +1,5 @@
 const { generateTokenByParams } = require('../cryptography/cryptography-service');
-const { findUserByEmail } = require('./find-user-service');
+const { findUserByEmail } = require('./find-user');
 const {
 	validateUserExistsByEmail,
 	validateInputPasswordWithHash,

@@ -1,11 +1,3 @@
-const { makeOkResponse, makeResponseByError } = require('../../http/http-responses');
-const findUserService = require('../../services/users/find-user-service');
+const { findAllUsers } = require('../../services/users/find-user');
 
-module.exports = async (req, res) => {
-	try {
-		const users = await findUserService.findAllUsers();
-		return makeOkResponse(res, users);
-	} catch (err) {
-		return makeResponseByError(res, err);
-	}
-};
+module.exports = async () => findAllUsers();
