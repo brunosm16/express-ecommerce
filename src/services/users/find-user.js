@@ -1,13 +1,13 @@
 const { Op } = require('sequelize');
 const UserModel = require('../../models/UserModel');
+const { userParams } = require('../../constants/params');
+const { findEntity } = require('../entities');
 
-const findAllUsers = async () => {
-	const nowAllowedParams = [
-		'password_hash',
-		'token_reset_password_expire_date',
-		'token_reset_password',
-	];
-	return UserModel.findAll({ attributes: { exclude: nowAllowedParams } });
+const findAllUsers = async () => findEntity.findAll(UserModel, userParams.USER_PARAMS_TO_EXPOSE);
+
+const findUserById = async ({ params }) => {
+	const { id } = params;
+	return findEntity.findByPk(UserModel, id, userParams.USER_PARAMS_TO_EXPOSE);
 };
 
 const findUserByEmails = async (primary_email, secondary_email) => {
@@ -16,10 +16,6 @@ const findUserByEmails = async (primary_email, secondary_email) => {
 			[Op.or]: [{ primary_email }, { secondary_email }],
 		},
 	});
-};
-
-const findUserById = async (id) => {
-	return UserModel.findByPk(id);
 };
 
 const findUserByEmail = async (email) => {

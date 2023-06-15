@@ -10,7 +10,7 @@ usersRouter.post('/', userValidator.create, expressHandler(usersController.creat
 
 usersRouter.get('/', userValidator.findAll, expressHandler(usersController.findAll));
 
-usersRouter.get('/:id', userValidator.findById, adminAuth, usersController.findById);
+usersRouter.get('/:id', userValidator.findById, expressHandler(usersController.findById));
 
 usersRouter.post('/login', userValidator.login, usersController.login);
 
