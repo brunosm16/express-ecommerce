@@ -5,12 +5,6 @@ const resetUserPasswordController = require('../../controllers/reset-user-passwo
 
 const resetUserPasswordRouter = express.Router();
 
-resetUserPasswordRouter.post(
-	'/',
-	resetUserPasswordValidator.createToken,
-	resetUserPasswordController.createResetToken
-);
-
 resetUserPasswordRouter.put(
 	'/',
 	resetUserPasswordValidator.resetPassword,

@@ -55,7 +55,7 @@ const extractUserData = ({ body, params }) => {
 };
 
 const formatUpdateUserResult = (result) => {
-	if (!result?.userToken) makeTableResultCode(result);
+	if (!result?.resultCode) makeTableResultCode(result);
 
 	const { userToken } = result;
 

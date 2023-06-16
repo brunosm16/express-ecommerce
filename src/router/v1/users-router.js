@@ -17,4 +17,10 @@ usersRouter.delete('/:id', userValidator.remove, expressHandler(usersController.
 
 usersRouter.put('/:id', userValidator.update, expressHandler(usersController.update));
 
+usersRouter.post(
+	'/create-reset-token',
+	userValidator.createResetToken,
+	expressHandler(usersController.createResetToken)
+);
+
 module.exports = usersRouter;
