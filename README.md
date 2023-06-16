@@ -20,6 +20,11 @@ Ecommerce written with Express, JavaScript and Sequelize.
 
 This project has the purpose to implement REST API's with Relational Databases and also to apply the best practices and best concepts when implementing back-end projects. 
 
+## Requirements
+
+- MySQL installed on your machine 
+- Node and Npm installed 
+
 ## Technologies Used
 
 - BCrypt | Encrypt and Hashing 
@@ -30,9 +35,8 @@ This project has the purpose to implement REST API's with Relational Databases a
 
 ## Docs
 
- 1. How to run this application
- 2. Requirements
- 3. [Entity Relationship Diagram](./docs/entity-relationship-diagram/diagram.md)
+ 1. [How to run this application](./docs/how-to-run/how-to-run.md)
+ 2. [Entity Relationship Diagram](./docs/entity-relationship-diagram/diagram.md)
 
 ---
 Thank you 💜
