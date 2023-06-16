@@ -1,4 +1,4 @@
-const { PRODUCTS_PARAMS_TO_CREATE_UPDATE } = require('../../constants/allowed-params');
+const { productsParams } = require('../../constants/params');
 const { EntityNotExistsError } = require('../../errors/errors-types');
 const ProductModel = require('../../models/ProductModel');
 const { formatBodyParams } = require('../../utils/format-body-params');
@@ -14,7 +14,7 @@ const update = async (id, body) => {
 
 	validateProduct(order, body);
 
-	const params = formatBodyParams(body, PRODUCTS_PARAMS_TO_CREATE_UPDATE);
+	const params = formatBodyParams(body, productsParams.productsParamsToPersist);
 
 	return order.update({ ...params });
 };

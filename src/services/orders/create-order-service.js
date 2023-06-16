@@ -1,4 +1,4 @@
-const { ORDER_PARAMS_TO_CREATE_UPDATE } = require('../../constants/allowed-params');
+const { ordersParams } = require('../../constants/params');
 const {
 	USER_NOT_FOUND,
 	ADDRESS_NOT_FOUND,
@@ -111,7 +111,7 @@ const create = async (body) => {
 
 	const createdOrder = await OrderModel.create({
 		id: generateUUID(),
-		...formatBodyParams(params, ORDER_PARAMS_TO_CREATE_UPDATE),
+		...formatBodyParams(params, ordersParams.orderParamsToPersist),
 	});
 
 	await setRelationshipOrderProducts(createdOrder, products);

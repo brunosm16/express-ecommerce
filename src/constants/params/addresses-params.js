@@ -15,9 +15,7 @@ const ADDRESS_PARAMS_TO_EXPOSE = Object.freeze([
 	'zip_code',
 ]);
 
-const paramsAddress = {
+module.exports = {
 	addressParamsToPersist: ADDRESS_PARAMS_TO_PERSIST,
 	addressParamsToExpose: ADDRESS_PARAMS_TO_EXPOSE,
 };
-
-module.exports = paramsAddress;

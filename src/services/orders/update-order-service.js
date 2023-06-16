@@ -1,4 +1,4 @@
-const { ORDER_PARAMS_TO_CREATE_UPDATE } = require('../../constants/allowed-params');
+const { ordersParams } = require('../../constants/params');
 const { EntityNotExistsError } = require('../../errors/errors-types');
 const OrderModel = require('../../models/OrderModel');
 const { formatBodyParams } = require('../../utils/format-body-params');
@@ -14,7 +14,7 @@ const update = async (id, body) => {
 
 	validateOrder(order, body);
 
-	const params = formatBodyParams(body, ORDER_PARAMS_TO_CREATE_UPDATE);
+	const params = formatBodyParams(body, ordersParams.orderParamsToPersist);
 
 	return order.update({ ...params });
 };

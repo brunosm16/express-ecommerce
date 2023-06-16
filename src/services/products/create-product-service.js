@@ -1,10 +1,10 @@
 const ProductModel = require('../../models/ProductModel');
-const { PRODUCTS_PARAMS_TO_CREATE_UPDATE } = require('../../constants/allowed-params');
+const { productsParams } = require('../../constants/params');
 const { formatBodyParams } = require('../../utils/format-body-params');
 const { generateUUID } = require('../cryptography/cryptography-service');
 
 const createProduct = async (body) => {
-	const params = formatBodyParams(body, PRODUCTS_PARAMS_TO_CREATE_UPDATE);
+	const params = formatBodyParams(body, productsParams.productsParamsToPersist);
 
 	return ProductModel.create({ id: generateUUID(), ...params });
 };

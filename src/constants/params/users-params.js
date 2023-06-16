@@ -10,4 +10,7 @@ const USERS_PARAMS_TO_PERSIST = Object.freeze([
 
 const USER_PARAMS_TO_EXPOSE = Object.freeze(['id', 'full_name', 'email']);
 
-module.exports = { USERS_PARAMS_TO_PERSIST, USER_PARAMS_TO_EXPOSE };
+module.exports = {
+	userParamsToPersist: USERS_PARAMS_TO_PERSIST,
+	userParamsToExpose: USER_PARAMS_TO_EXPOSE,
+};

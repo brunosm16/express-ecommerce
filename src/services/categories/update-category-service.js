@@ -1,4 +1,4 @@
-const { CATEGORY_PARAMS_TO_CREATE_UPDATE } = require('../../constants/allowed-params');
+const { categoriesParams } = require('../../constants/params');
 const { EntityNotExistsError } = require('../../errors/errors-types');
 const CategoryModel = require('../../models/CategoryModel');
 const { formatBodyParams } = require('../../utils/format-body-params');
@@ -14,7 +14,7 @@ const update = async (id, body) => {
 
 	validateCategory(category, body);
 
-	const params = formatBodyParams(body, CATEGORY_PARAMS_TO_CREATE_UPDATE);
+	const params = formatBodyParams(body, categoriesParams.categoryParamsToPersist);
 
 	return category.update({ ...params });
 };
