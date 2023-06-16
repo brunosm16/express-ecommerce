@@ -28,7 +28,7 @@ const updateUserPassword = async (userId, password) => {
 	const password_hash = await cryptographyService.encrypt(password);
 	return persistEntity.updateEntity(
 		UserModel,
-		{ password_hash },
+		{ password_hash, token_reset_password: null, token_reset_password_expire_date: null },
 		{ id: userId },
 		USERS_PARAMS_TO_PERSIST
 	);

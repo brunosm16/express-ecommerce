@@ -1,9 +1,13 @@
 const { EmptyBodyError } = require('../errors/errors-types');
 
-// eslint-disable-next-line no-unused-vars
-const nonNullObjectValues = (obj) => Object.entries(obj).filter(([key, value]) => !!value);
+const nonEmptyObjectValues = (obj) =>
+	// eslint-disable-next-line no-unused-vars
+	Object.entries(obj).filter(([key, value]) => {
+		if (value === null) return true;
+		return !!value;
+	});
 
-const filterNullValuesFromObj = (obj) => Object.fromEntries(nonNullObjectValues(obj));
+const filterNullValuesFromObj = (obj) => Object.fromEntries(nonEmptyObjectValues(obj));
 
 const filterObjByKeys = (obj, keys) => {
 	// eslint-disable-next-line no-unused-vars
