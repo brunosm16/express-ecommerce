@@ -2,7 +2,7 @@ const { EntityNotExistsError } = require('../../errors/errors-types');
 const cryptographyService = require('../cryptography/cryptography-service');
 const sequelizeConnection = require('../../database/sequelize/connection');
 const { validateUserPassword } = require('./validate-user');
-const { findByPk } = require('../entities/find-entity');
+const { findEntityByPk } = require('../entities/find-entity');
 const UserModel = require('../../models/UserModel');
 const { persistEntity } = require('../entities');
 const { USERS_PARAMS_TO_PERSIST } = require('../../constants/params/users-params');
@@ -68,7 +68,7 @@ const formatUpdateUserResult = (result) => {
 const persistUserUpdate = async (req) => {
 	const { body, id } = extractUserData(req);
 
-	const user = await findByPk(UserModel, id);
+	const user = await findEntityByPk(UserModel, id);
 	await runUserValidations(user, body);
 	const result = await updateUser(id, body);
 

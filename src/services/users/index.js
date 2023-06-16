@@ -5,7 +5,8 @@ const removeUser = require('./remove-user');
 const validateUser = require('./validate-user');
 const updateUser = require('./update-user');
 const createResetToken = require('./create-reset-token');
-const validateResetToken = require('./validate-reset-token');
+const validateUserResetToken = require('./validate-user-reset-token');
+const resetUserPassword = require('./reset-user-password');
 
 module.exports = {
 	createUser,
@@ -15,5 +16,6 @@ module.exports = {
 	validateUser,
 	updateUser,
 	createResetToken,
-	validateResetToken,
+	validateUserResetToken,
+	resetUserPassword,
 };

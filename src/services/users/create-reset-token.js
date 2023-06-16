@@ -15,7 +15,7 @@ const {
 } = require('../cryptography/cryptography-service');
 const { persistEntity } = require('../entities');
 const { findEntityByKey } = require('../entities/find-entity');
-const { validateTokenDate } = require('./validate-reset-token');
+const { tokenExpired } = require('./validate-user-reset-token');
 
 const generateTokenData = async (id) => {
 	return {
@@ -25,7 +25,10 @@ const generateTokenData = async (id) => {
 };
 
 const persistUserToken = async (userId, token, expirationDate) => {
-	const body = { reset_password_token: token, reset_password_expire_date: expirationDate };
+	const body = {
+		token_reset_password: token,
+		token_reset_password_expire_date: expirationDate,
+	};
 	return persistEntity.updateEntity(UserModel, body, { id: userId }, USERS_PARAMS_TO_PERSIST);
 };
 
@@ -38,7 +41,7 @@ const runValidations = async (user, inputPassword) => {
 		throw new WrongPasswordError();
 	}
 
-	if (token_reset_password || validateTokenDate(token_reset_password_expire_date)) {
+	if (token_reset_password || !tokenExpired(token_reset_password_expire_date)) {
 		throw new EntityExistsError(makeEntityAlreadyExistsMessage('Token'));
 	}
 };

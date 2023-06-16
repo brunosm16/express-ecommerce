@@ -5,6 +5,7 @@ const remove = require('./remove');
 const update = require('./update');
 const login = require('./login');
 const createResetToken = require('./create-reset-token');
+const resetPassword = require('./reset-password');
 
 module.exports = {
 	create,
@@ -14,4 +15,5 @@ module.exports = {
 	remove,
 	update,
 	createResetToken,
+	resetPassword,
 };

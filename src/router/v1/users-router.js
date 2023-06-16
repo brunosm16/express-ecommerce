@@ -15,6 +15,12 @@ usersRouter.post('/login', userValidator.login, expressHandler(usersController.l
 
 usersRouter.delete('/:id', userValidator.remove, expressHandler(usersController.remove));
 
+usersRouter.put(
+	'/reset-user-password',
+	userValidator.resetPassword,
+	expressHandler(usersController.resetPassword)
+);
+
 usersRouter.put('/:id', userValidator.update, expressHandler(usersController.update));
 
 usersRouter.post(

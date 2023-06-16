@@ -5,6 +5,7 @@ const findById = require('./find-by-id');
 const login = require('./login');
 const update = require('./update');
 const createResetToken = require('./create-reset-token');
+const resetPassword = require('./reset-password');
 
 module.exports = {
 	create,
@@ -14,4 +15,5 @@ module.exports = {
 	remove,
 	update,
 	createResetToken,
+	resetPassword,
 };
