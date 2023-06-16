@@ -1,5 +1,4 @@
-const { STORAGE_FOLDER_TEST } = require('../../constants/db-paths');
-
+const { STORAGE_FOLDER_TEST } = require('../../constants/config-constants');
 const { DB_DIALECT, DB_URL } = require('../../env/env-values');
 
 module.exports = {
