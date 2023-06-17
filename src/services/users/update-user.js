@@ -23,7 +23,7 @@ const updateUser = async (userId, body) => {
 	try {
 		const formattedBody = await setNewPasswordOnBody(body);
 
-		const resultCode = await persistEntity.updateEntity(
+		const [resultCode] = await persistEntity.updateEntity(
 			UserModel,
 			formattedBody,
 			{ id: userId },

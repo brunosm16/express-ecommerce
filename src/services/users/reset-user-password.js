@@ -41,7 +41,7 @@ const resetUserPassword = async ({ token, password }) => {
 
 	await validateInputResetToken(token, user);
 
-	const resultCode = await updateUserPassword(user?.id, password);
+	const [resultCode] = await updateUserPassword(user?.id, password);
 
 	return makeTableResultCode(resultCode);
 };
