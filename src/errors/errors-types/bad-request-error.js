@@ -1,7 +1,7 @@
-const { BAD_REQUEST } = require('../../constants/error-messages');
+const { BAD_REQUEST_ERROR } = require('../../constants/messages/errors');
 
 class BadRequestError extends Error {
-	constructor(message = BAD_REQUEST) {
+	constructor(message = BAD_REQUEST_ERROR) {
 		super(message);
 		this.message = message;
 	}

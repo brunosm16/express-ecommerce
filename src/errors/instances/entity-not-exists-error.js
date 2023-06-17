@@ -1,8 +1,8 @@
-const { ENTITY_NOT_EXISTS } = require('../../constants/error-messages');
+const { ENTITY_NOT_FOUND_ERROR } = require('../../constants/messages/errors');
 const NotFoundError = require('./base/not-found-error');
 
 class EntityNotExistsError extends NotFoundError {
-	constructor(message = ENTITY_NOT_EXISTS) {
+	constructor(message = ENTITY_NOT_FOUND_ERROR) {
 		super(message);
 		this.name = 'EntityNotExistsError';
 		this.message = message;

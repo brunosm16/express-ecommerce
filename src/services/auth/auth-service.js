@@ -1,4 +1,4 @@
-const { INVALID_TOKEN_CREDENTIAL } = require('../../constants/error-messages');
+const { INVALID_TOKEN_CREDENTIAL_ERROR } = require('../../constants/messages/errors');
 const { RequiredFieldError, InvalidCredentialsError } = require('../../errors/errors-types');
 
 const authorizationIsNotBearer = (authorization) => {
@@ -13,7 +13,7 @@ const validateAuthorization = (authorization) => {
 	if (!authorization) throw new RequiredFieldError('Authorization is a required field');
 
 	if (authorizationIsNotBearer(authorization))
-		throw new InvalidCredentialsError(INVALID_TOKEN_CREDENTIAL);
+		throw new InvalidCredentialsError(INVALID_TOKEN_CREDENTIAL_ERROR);
 };
 
 module.exports = { validateAuthorization };

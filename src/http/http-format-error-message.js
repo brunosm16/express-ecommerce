@@ -1,5 +1,5 @@
-const { BAD_REQUEST } = require('../constants/error-messages');
 const { STATUS_CODE_400, STATUS_CODE_500 } = require('../constants/http-status-codes');
+const { BAD_REQUEST_ERROR } = require('../constants/messages/errors');
 const requireBySourceAndDir = require('../utils/require-by-source-and-dir');
 
 const badRequestErrorsTypes = ['TokenExpiredError'];
@@ -19,10 +19,10 @@ const formatErrorMessage = (err) => {
 	}
 
 	if (isBadRequestTypeError(err)) {
-		return { statusCode: STATUS_CODE_400, message: err ?? BAD_REQUEST };
+		return { statusCode: STATUS_CODE_400, message: err ?? BAD_REQUEST_ERROR };
 	}
 
-	return { statusCode: STATUS_CODE_500, message: err?.message ?? BAD_REQUEST };
+	return { statusCode: STATUS_CODE_500, message: err?.message ?? BAD_REQUEST_ERROR };
 };
 
 module.exports = { formatErrorMessage };

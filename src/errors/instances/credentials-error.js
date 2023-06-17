@@ -1,8 +1,8 @@
-const { INVALID_TOKEN_CREDENTIAL } = require('../../constants/error-messages');
+const { INVALID_TOKEN_CREDENTIAL_ERROR } = require('../../constants/messages/errors');
 const UnauthorizedError = require('./base/unauthorized-error');
 
 class CredentialsError extends UnauthorizedError {
-	constructor(message = INVALID_TOKEN_CREDENTIAL) {
+	constructor(message = INVALID_TOKEN_CREDENTIAL_ERROR) {
 		super(message);
 		this.name = 'CredentialsError';
 		this.message = message;

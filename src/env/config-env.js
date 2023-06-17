@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 
-const { TEST_ENV, DEFAULT_ENV } = require('../constants/env-files');
+const { TEST_ENV, DEFAULT_ENV } = require('../constants/config-constants');
 
 const { NODE_ENV } = process.env;
 

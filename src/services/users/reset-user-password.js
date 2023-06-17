@@ -1,4 +1,3 @@
-const { INVALID_TOKEN_CREDENTIAL } = require('../../constants/error-messages');
 const { CredentialsError, EntityNotExistsError } = require('../../errors/instances');
 const cryptographyService = require('../cryptography/cryptography-service');
 const { findEntityByPk } = require('../entities/find-entity');
@@ -8,6 +7,7 @@ const { makeEntityNotFoundMessage } = require('../../errors/messages/make-error-
 const { persistEntity } = require('../entities');
 const { USERS_PARAMS_TO_PERSIST } = require('../../constants/params/users-params');
 const { makeTableResultCode } = require('../../database/factories/make-table-result-code');
+const { INVALID_TOKEN_CREDENTIAL_ERROR } = require('../../constants/messages/errors');
 
 const findUserById = async (id) => {
 	const user = await findEntityByPk(UserModel, id);
@@ -16,11 +16,11 @@ const findUserById = async (id) => {
 };
 
 const extractIdFromToken = (inputToken) => {
-	if (!inputToken) throw new CredentialsError(INVALID_TOKEN_CREDENTIAL);
+	if (!inputToken) throw new CredentialsError(INVALID_TOKEN_CREDENTIAL_ERROR);
 	// eslint-disable-next-line no-unused-vars
 	const [_, id] = inputToken.split('&=');
 
-	if (!id) throw new CredentialsError(INVALID_TOKEN_CREDENTIAL);
+	if (!id) throw new CredentialsError(INVALID_TOKEN_CREDENTIAL_ERROR);
 	return id;
 };
 

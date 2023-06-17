@@ -1,9 +1,4 @@
 const {
-	TOKEN_ERROR,
-	USER_NOT_FOUND,
-	ADDRESS_NOT_FOUND,
-} = require('../../constants/error-messages');
-const {
 	EntityExistsError,
 	InternalServerError,
 	WrongPasswordError,
@@ -19,11 +14,11 @@ const validateUserExists = async ({ primary_email, secondary_email }) => {
 
 const validateNonExistingUserById = async (id) => {
 	const user = await findUserService.findUserById(id);
-	if (!user) throw new EntityNotExistsError(USER_NOT_FOUND);
+	if (!user) throw new EntityNotExistsError('User Not Found');
 };
 
 const validateToken = (token) => {
-	if (!token) throw new InternalServerError(TOKEN_ERROR);
+	if (!token) throw new InternalServerError('Token not provided');
 };
 
 const validateUserExistsByEmail = async (email) => {
@@ -40,11 +35,11 @@ const validateUserAddressRelation = async (addressId, userId) => {
 	const user = await findUserService.findUserByAssociation(userId, addressId, 'addresses');
 
 	if (!user) {
-		throw new EntityNotExistsError(USER_NOT_FOUND);
+		throw new EntityNotExistsError('User Not Found');
 	}
 
 	if (!user?.addresses?.length) {
-		throw new EntityNotExistsError(ADDRESS_NOT_FOUND);
+		throw new EntityNotExistsError('Addresses not associated to this user');
 	}
 };
 

@@ -1,20 +1,20 @@
-const { SOMETHING_WRONG, OPERATION_SUCCEEDED } = require('../constants/error-messages');
 const { STATUS_CODE_500, STATUS_CODE_200 } = require('../constants/http-status-codes');
+const { INTERNAL_SERVER_ERROR } = require('../constants/messages/errors');
+const { OPERATION_SUCCEEDED } = require('../constants/messages/success');
 const { TableResultCode } = require('../database/instances');
 const { formatErrorMessage } = require('./http-format-error-message');
 const { OPERATION_ERROR_CODE, OPERATION_SUCCESS_CODE } = require('./operation-errors-codes');
 
 const sendResponse = (res, statusCode, message) => res.status(statusCode).json({ message });
 
-const makeInternalServerErrorResponse = (res, message) =>
-	sendResponse(res, STATUS_CODE_500, message);
+const makeInternalServerErrorResponse = (res) =>
+	sendResponse(res, STATUS_CODE_500, INTERNAL_SERVER_ERROR);
 
 const makeOkResponse = (res, message) => sendResponse(res, STATUS_CODE_200, message);
 
 const makeResponseByOperationCode = (res, { resultCode }) => {
 	const responsesByCode = {
-		[OPERATION_ERROR_CODE]: (response) =>
-			makeInternalServerErrorResponse(response, SOMETHING_WRONG),
+		[OPERATION_ERROR_CODE]: (response) => makeInternalServerErrorResponse(response),
 		[OPERATION_SUCCESS_CODE]: (response) => makeOkResponse(response, OPERATION_SUCCEEDED),
 	};
 

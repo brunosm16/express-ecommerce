@@ -1,9 +1,4 @@
 const { ordersParams } = require('../../constants/params');
-const {
-	USER_NOT_FOUND,
-	ADDRESS_NOT_FOUND,
-	PRODUCT_NOT_EXISTS,
-} = require('../../constants/error-messages');
 const { EntityNotExistsError, BadRequestError } = require('../../errors/errors-types');
 const OrderModel = require('../../models/OrderModel');
 const ProductModel = require('../../models/ProductModel');
@@ -13,13 +8,14 @@ const { findUserByAssociation } = require('../users/find-user');
 
 const validateUserAddress = async (user_id, address_id) => {
 	const user = await findUserByAssociation(user_id, address_id, 'addresses');
-	if (!user) throw new EntityNotExistsError(USER_NOT_FOUND);
-	if (!user?.addresses?.length) throw new EntityNotExistsError(ADDRESS_NOT_FOUND);
+	if (!user) throw new EntityNotExistsError('User not found');
+	if (!user?.addresses?.length)
+		throw new EntityNotExistsError('Addresses not associated to this user');
 };
 
 const validateNotFoundProducts = (products) => {
 	const notFound = products.some((productFound) => !productFound);
-	if (notFound) throw new EntityNotExistsError(PRODUCT_NOT_EXISTS);
+	if (notFound) throw new EntityNotExistsError('Not found product');
 };
 
 const getProductsByPayload = async (payload) => {

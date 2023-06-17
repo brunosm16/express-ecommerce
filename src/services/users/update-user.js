@@ -6,9 +6,9 @@ const { findEntityByPk } = require('../entities/find-entity');
 const UserModel = require('../../models/UserModel');
 const { persistEntity } = require('../entities');
 const { USERS_PARAMS_TO_PERSIST } = require('../../constants/params/users-params');
-const { TOKEN_ERROR } = require('../../constants/error-messages');
 const { InternalServerError } = require('../../errors/instances');
 const { makeTableResultCode } = require('../../database/factories/make-table-result-code');
+const { GENERATE_USER_TOKEN_ERROR } = require('../../constants/messages/errors');
 
 const setNewPasswordOnBody = async (body) => {
 	const { new_password } = body;
@@ -33,7 +33,7 @@ const updateUser = async (userId, body) => {
 
 		const userToken = cryptographyService.generateTokenByParams(userId, body?.is_admin);
 
-		if (!userToken) throw new InternalServerError(TOKEN_ERROR);
+		if (!userToken) throw new InternalServerError(GENERATE_USER_TOKEN_ERROR);
 
 		await transaction.commit();
 

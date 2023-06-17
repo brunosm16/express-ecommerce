@@ -1,7 +1,5 @@
-const { EMPTY_BODY } = require('../../constants/error-messages');
-
 class EmptyBodyError extends Error {
-	constructor(message = EMPTY_BODY) {
+	constructor(message = 'Empty Body Error') {
 		super(message);
 		this.name = 'EmptyBodyError';
 	}
