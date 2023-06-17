@@ -9,7 +9,7 @@ const removeUserById = async ({ params }) => {
 
 	await entityExistsByPk(id, UserModel, makeEntityNotFoundMessage('User'));
 
-	const resultCode = await removeEntityByKeyValue(UserModel, 'id', id);
+	const [resultCode] = await removeEntityByKeyValue(UserModel, 'id', id);
 
 	return makeTableResultCode(resultCode);
 };
