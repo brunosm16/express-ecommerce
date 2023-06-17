@@ -1,6 +1,5 @@
 const { INVALID_TOKEN_CREDENTIAL_ERROR } = require('../../constants/messages/errors');
-const { InvalidCredentialsError, EntityNotExistsError } = require('../../errors/errors-types');
-const { CredentialsError } = require('../../errors/instances');
+const { CredentialsError, EntityNotExistsError } = require('../../errors/instances');
 const { makeEntityNotFoundMessage } = require('../../errors/messages/make-error-messages');
 
 const tokenExpired = (isoDate) => {
@@ -14,7 +13,7 @@ const validateInputResetToken = async (inputToken, user) => {
 
 	const { token_reset_password: userToken, token_reset_password_expire_date } = user;
 
-	if (inputToken !== userToken) throw new InvalidCredentialsError(INVALID_TOKEN_CREDENTIAL_ERROR);
+	if (inputToken !== userToken) throw new CredentialsError(INVALID_TOKEN_CREDENTIAL_ERROR);
 
 	if (tokenExpired(token_reset_password_expire_date)) throw new CredentialsError('Token expired');
 };

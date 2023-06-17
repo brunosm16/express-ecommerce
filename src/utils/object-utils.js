@@ -1,4 +1,4 @@
-const { EmptyBodyError } = require('../errors/errors-types');
+const { EmptyBodyError } = require('../errors/instances');
 
 const nonEmptyObjectValues = (obj) =>
 	// eslint-disable-next-line no-unused-vars

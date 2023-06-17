@@ -1,5 +1,5 @@
 const { ordersParams } = require('../../constants/params');
-const { EntityNotExistsError } = require('../../errors/errors-types');
+const { EntityNotExistsError } = require('../../errors/instances');
 const OrderModel = require('../../models/OrderModel');
 const { formatBodyParams } = require('../../utils/format-body-params');
 const { validateEmptyBody } = require('../../utils/object-utils');

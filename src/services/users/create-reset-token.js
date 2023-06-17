@@ -1,7 +1,7 @@
 const { RESET_TOKEN_MINUTES_TO_EXPIRE } = require('../../constants/cryptography');
 const { USERS_PARAMS_TO_PERSIST } = require('../../constants/params/users-params');
 const { makeTableResultCode } = require('../../database/factories/make-table-result-code');
-const { WrongPasswordError } = require('../../errors/errors-types');
+const { WrongPasswordError } = require('../../errors/instances');
 const { EntityExistsError, EntityNotExistsError } = require('../../errors/instances');
 const {
 	makeEntityNotFoundMessage,

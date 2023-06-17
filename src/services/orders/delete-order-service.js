@@ -1,4 +1,4 @@
-const { EntityNotExistsError, BadRequestError } = require('../../errors/errors-types');
+const { EntityNotExistsError, BadRequestError } = require('../../errors/instances');
 const OrderModel = require('../../models/OrderModel');
 
 const deleteOrder = async (id) => {

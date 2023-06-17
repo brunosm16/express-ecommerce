@@ -1,8 +1,8 @@
-const { BadRequestError } = require('../../errors/errors-types');
 const { findAll } = require('./find-category-service');
 const { validateEntityNotExistsByPk } = require('../entities/validate-entity');
 const ProductModel = require('../../models/ProductModel');
 const CategoryModel = require('../../models/CategoryModel');
+const { BadRequestError } = require('../../errors/instances');
 
 const validateCategories = async (categoryId, categoryToTransferId) => {
 	if (categoryId === categoryToTransferId) {

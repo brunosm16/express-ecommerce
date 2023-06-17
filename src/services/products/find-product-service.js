@@ -1,4 +1,4 @@
-const { EntityNotExistsError } = require('../../errors/errors-types');
+const { EntityNotExistsError } = require('../../errors/instances');
 const ProductModel = require('../../models/ProductModel');
 
 const findAll = async () => {

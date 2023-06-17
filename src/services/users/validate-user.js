@@ -2,7 +2,7 @@ const {
 	EntityExistsError,
 	InternalServerError,
 	WrongPasswordError,
-} = require('../../errors/errors-types');
+} = require('../../errors/instances');
 const { EntityNotExistsError } = require('../../errors/instances');
 const { comparePasswords } = require('../cryptography/cryptography-service');
 const findUserService = require('./find-user');

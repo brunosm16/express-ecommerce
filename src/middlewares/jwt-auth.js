@@ -1,4 +1,4 @@
-const { NotAllowedError } = require('../errors/errors-types');
+const { UnauthorizedError } = require('../errors/instances');
 const { makeResponseByError } = require('../http/http-responses');
 const { validateAuthorization } = require('../services/auth/auth-service');
 const { decodeToken } = require('../services/cryptography/cryptography-service');
@@ -16,7 +16,7 @@ const adminAuth = async (req, res, next) => {
 
 		const { admin } = getBearerTokenDecoded(authorization);
 
-		if (!admin) throw new NotAllowedError();
+		if (!admin) throw new UnauthorizedError();
 
 		return next();
 	} catch (err) {

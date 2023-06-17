@@ -1,4 +1,4 @@
-const { NotFoundError, EntityExistsError, EntityNotExistsError } = require('../errors-types');
+const { NotFoundError, EntityExistsError, EntityNotExistsError } = require('../instances');
 
 const badRequestErrorsInstances = [EntityExistsError, NotFoundError, EntityNotExistsError];
 

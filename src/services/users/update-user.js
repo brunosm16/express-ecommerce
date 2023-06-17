@@ -1,4 +1,4 @@
-const { EntityNotExistsError } = require('../../errors/errors-types');
+const { EntityNotExistsError } = require('../../errors/instances');
 const cryptographyService = require('../cryptography/cryptography-service');
 const sequelizeConnection = require('../../database/sequelize/connection');
 const { validateUserPassword } = require('./validate-user');

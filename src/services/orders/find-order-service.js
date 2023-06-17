@@ -1,4 +1,4 @@
-const { EntityNotExistsError } = require('../../errors/errors-types');
+const { EntityNotExistsError } = require('../../errors/instances');
 const OrderModel = require('../../models/OrderModel');
 const { validateNonExistingUserById } = require('../users/validate-user');
 
