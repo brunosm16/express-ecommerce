@@ -1,21 +1,20 @@
+const {
+	ADDRESS_NOT_FOUND,
+	ADDRESS_NOT_FOUND_TO_USER,
+} = require('../../constants/messages/entities-messages/addresses');
 const { makeTableResultCode } = require('../../database/factories/make-table-result-code');
 const { UserModel, AddressModel } = require('../../models');
 const { validateEntity, removeEntity } = require('../entities');
-const { extractUserAndAddressIds } = require('./addresses-helpers-service');
 
 const validateUser = async (user_id) => {
-	const message = 'User not found to this address';
-	await validateEntity.entityExistsByPk(user_id, UserModel, message);
+	await validateEntity.entityExistsByPk(user_id, UserModel, ADDRESS_NOT_FOUND_TO_USER);
 };
 
 const validateAddress = async (address_id) => {
-	const message = 'Address not found';
-	await validateEntity.entityExistsByPk(address_id, AddressModel, message);
+	await validateEntity.entityExistsByPk(address_id, AddressModel, ADDRESS_NOT_FOUND);
 };
 
-const removeAddressById = async (req) => {
-	const { address_id, user_id } = extractUserAndAddressIds(req);
-
+const removeAddressById = async (user_id, address_id) => {
 	await validateUser(user_id);
 
 	await validateAddress(address_id);

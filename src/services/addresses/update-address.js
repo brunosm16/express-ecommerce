@@ -8,7 +8,6 @@ const { makeTableResultCode } = require('../../database/factories/make-table-res
 const { UserModel, AddressModel } = require('../../models');
 const { updateEntity } = require('../entities/persist-entity');
 const { validateEntitiesAssociation } = require('../entities/validate-entity');
-const { extractUserAndAddressIds } = require('./addresses-helpers-service');
 
 const validateUserAddressAssociation = async (user_id, address_id) => {
 	const userArgs = makeParentArgs(UserModel, user_id, 'users');
@@ -17,10 +16,7 @@ const validateUserAddressAssociation = async (user_id, address_id) => {
 	await validateEntitiesAssociation(AssociationTable);
 };
 
-const updateAddressById = async (req) => {
-	const { body } = req;
-	const { user_id, address_id } = extractUserAndAddressIds(req);
-
+const updateAddressById = async (body, user_id, address_id) => {
 	await validateUserAddressAssociation(user_id, address_id);
 
 	const [result] = await updateEntity(

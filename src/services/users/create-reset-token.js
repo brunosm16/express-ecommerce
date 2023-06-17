@@ -65,7 +65,7 @@ const createResetToken = async ({ email, password }) => {
 	await runValidations(user, password);
 
 	const { token, expirationDate } = await generateTokenData(user?.id);
-	const result = await persistUserToken(user?.id, token, expirationDate);
+	const [result] = await persistUserToken(user?.id, token, expirationDate);
 	return formatUserTokenResult(result, token);
 };
 

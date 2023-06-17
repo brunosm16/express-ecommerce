@@ -4,12 +4,12 @@ const {
 	addressParamsToPersist,
 	addressParamsToExpose,
 } = require('../../constants/params/addresses-params');
-const { makeEntityNotFoundMessage } = require('../../errors/messages/make-error-messages');
+const { USER_NOT_FOUND } = require('../../constants/messages/entities-messages/users');
 
-const persistAddress = async ({ body }) => {
+const persistAddress = async (body) => {
 	const { user_id } = body;
 
-	await validateEntity.entityExistsByPk(user_id, UserModel, makeEntityNotFoundMessage('User'));
+	await validateEntity.entityExistsByPk(user_id, UserModel, USER_NOT_FOUND);
 
 	return persistEntity.saveEntity(
 		AddressModel,
