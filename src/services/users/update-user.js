@@ -1,4 +1,4 @@
-const { EntityNotExistsError } = require('../../errors/instances');
+const { EntityNotExistsError, UnauthorizedError } = require('../../errors/instances');
 const cryptographyService = require('../cryptography/cryptography-service');
 const sequelizeConnection = require('../../database/sequelize/connection');
 const { validateUserPassword } = require('./validate-user');
@@ -65,7 +65,8 @@ const formatUpdateUserResult = (result) => {
 	};
 };
 
-const persistUserUpdate = async (body, id) => {
+const persistUserUpdate = async (body, id, tokenId) => {
+	if (tokenId !== id) throw new UnauthorizedError();
 	const user = await findEntityByPk(UserModel, id);
 	await runUserValidations(user, body);
 	const result = await updateUser(id, body);

@@ -30,8 +30,9 @@ const auth = async (req, res, next) => {
 
 		validateAuthorization(authorization);
 
-		const { admin } = getBearerTokenDecoded(authorization);
+		const { admin, id } = getBearerTokenDecoded(authorization);
 		req.is_admin = admin;
+		req.tokenId = id;
 		return next();
 	} catch (err) {
 		return makeResponseByError(res, err);
