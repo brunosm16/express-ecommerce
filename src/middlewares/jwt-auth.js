@@ -14,9 +14,9 @@ const adminAuth = async (req, res, next) => {
 
 		validateAuthorization(authorization);
 
-		const { admin } = getBearerTokenDecoded(authorization);
+		const { is_admin } = getBearerTokenDecoded(authorization);
 
-		if (!admin) throw new UnauthorizedError();
+		if (!is_admin) throw new UnauthorizedError();
 
 		return next();
 	} catch (err) {
