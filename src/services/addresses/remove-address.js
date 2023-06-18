@@ -19,7 +19,7 @@ const removeAddressById = async (user_id, address_id) => {
 
 	await validateAddress(address_id);
 
-	const [resultCode] = await removeEntity.removeEntityByKeyValue(AddressModel, 'id', address_id);
+	const resultCode = await removeEntity.removeEntityByKeyValue(AddressModel, 'id', address_id);
 
 	return makeTableResultCode(resultCode);
 };

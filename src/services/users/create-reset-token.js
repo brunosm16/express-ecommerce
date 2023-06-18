@@ -1,12 +1,12 @@
 const { RESET_TOKEN_MINUTES_TO_EXPIRE } = require('../../constants/cryptography');
-const { USERS_PARAMS_TO_PERSIST } = require('../../constants/params/users-params');
+const {
+	USER_TOKEN_EXISTS,
+	USER_NOT_FOUND_EMAIL,
+} = require('../../constants/messages/entities-messages/users');
+const { userParamsToPersist } = require('../../constants/params/users-params');
 const { makeTableResultCode } = require('../../database/factories/make-table-result-code');
 const { WrongPasswordError } = require('../../errors/instances');
 const { EntityExistsError, EntityNotExistsError } = require('../../errors/instances');
-const {
-	makeEntityNotFoundMessage,
-	makeEntityAlreadyExistsMessage,
-} = require('../../errors/messages/make-error-messages');
 const { UserModel } = require('../../models');
 const {
 	generateResetTokenById,
@@ -29,7 +29,7 @@ const persistUserToken = async (userId, token, expirationDate) => {
 		token_reset_password: token,
 		token_reset_password_expire_date: expirationDate,
 	};
-	return persistEntity.updateEntity(UserModel, body, { id: userId }, USERS_PARAMS_TO_PERSIST);
+	return persistEntity.updateEntity(UserModel, body, { id: userId }, userParamsToPersist);
 };
 
 const runValidations = async (user, inputPassword) => {
@@ -42,13 +42,13 @@ const runValidations = async (user, inputPassword) => {
 	}
 
 	if (token_reset_password || !tokenExpired(token_reset_password_expire_date)) {
-		throw new EntityExistsError(makeEntityAlreadyExistsMessage('Token'));
+		throw new EntityExistsError(USER_TOKEN_EXISTS);
 	}
 };
 
 const findUserByEmail = (email) => {
 	const user = findEntityByKey({ key: 'email', value: email }, UserModel);
-	if (!user) throw new EntityNotExistsError(makeEntityNotFoundMessage('User'));
+	if (!user) throw new EntityNotExistsError(USER_NOT_FOUND_EMAIL);
 	return user;
 };
 
@@ -60,12 +60,12 @@ const formatUserTokenResult = (code, token) => {
 	};
 };
 
-const createResetToken = async ({ email, password }) => {
+const createResetToken = async (email, password) => {
 	const user = await findUserByEmail(email);
 	await runValidations(user, password);
 
 	const { token, expirationDate } = await generateTokenData(user?.id);
-	const [result] = await persistUserToken(user?.id, token, expirationDate);
+	const result = await persistUserToken(user?.id, token, expirationDate);
 	return formatUserTokenResult(result, token);
 };
 

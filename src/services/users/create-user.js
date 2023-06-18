@@ -1,15 +1,12 @@
-const { makeEntityAlreadyExistsMessage } = require('../../errors/messages/make-error-messages');
 const UserModel = require('../../models/UserModel');
 const sequelizeConnection = require('../../database/sequelize/connection');
 const cryptographyService = require('../cryptography/cryptography-service');
 const { validateEntityExistsByKey } = require('../entities/validate-entity');
 const { persistEntity } = require('../entities');
-const {
-	USERS_PARAMS_TO_PERSIST,
-	USER_PARAMS_TO_EXPOSE,
-} = require('../../constants/params/users-params');
+const { userParamsToPersist, userParamsToExpose } = require('../../constants/params/users-params');
 const { InternalServerError } = require('../../errors/instances');
 const { GENERATE_USER_TOKEN_ERROR } = require('../../constants/messages/errors');
+const { USER_EXISTS_EMAIL } = require('../../constants/messages/entities-messages/users');
 
 const generateUserToken = (id, admin) => {
 	const token = cryptographyService.generateTokenByParams({ id, admin });
@@ -33,8 +30,8 @@ const saveUser = async (body) => {
 		const user = await persistEntity.saveEntity(
 			UserModel,
 			formattedBody,
-			USERS_PARAMS_TO_PERSIST,
-			USER_PARAMS_TO_EXPOSE,
+			userParamsToPersist,
+			userParamsToExpose,
 			transaction
 		);
 
@@ -52,13 +49,11 @@ const saveUser = async (body) => {
 };
 
 const validateUserExists = async ({ email }) => {
-	const message = makeEntityAlreadyExistsMessage('User');
 	const keyValue = { key: 'email', value: email };
-	await validateEntityExistsByKey(keyValue, UserModel, message, false);
+	await validateEntityExistsByKey(keyValue, UserModel, USER_EXISTS_EMAIL, false);
 };
 
-const persistUser = async (req) => {
-	const { body } = req;
+const persistUser = async (body) => {
 	await validateUserExists(body);
 	return saveUser(body);
 };

@@ -5,7 +5,7 @@ const { validateUserPassword } = require('./validate-user');
 const { findEntityByPk } = require('../entities/find-entity');
 const UserModel = require('../../models/UserModel');
 const { persistEntity } = require('../entities');
-const { USERS_PARAMS_TO_PERSIST } = require('../../constants/params/users-params');
+const { userParamsToPersist } = require('../../constants/params/users-params');
 const { InternalServerError } = require('../../errors/instances');
 const { makeTableResultCode } = require('../../database/factories/make-table-result-code');
 const { GENERATE_USER_TOKEN_ERROR } = require('../../constants/messages/errors');
@@ -27,7 +27,7 @@ const updateUser = async (userId, body) => {
 			UserModel,
 			formattedBody,
 			{ id: userId },
-			USERS_PARAMS_TO_PERSIST,
+			userParamsToPersist,
 			transaction
 		);
 
@@ -46,12 +46,12 @@ const updateUser = async (userId, body) => {
 
 const runUserValidations = async (user, body) => {
 	if (!user) throw new EntityNotExistsError();
-	await validateUserPassword(body?.current_password, user?.password_hash);
-};
 
-const extractUserData = ({ body, params }) => {
-	const { id } = params;
-	return { body, id };
+	const { new_password, current_password } = body;
+
+	if (new_password) {
+		await validateUserPassword(current_password, user?.password_hash);
+	}
 };
 
 const formatUpdateUserResult = (result) => {
@@ -65,9 +65,7 @@ const formatUpdateUserResult = (result) => {
 	};
 };
 
-const persistUserUpdate = async (req) => {
-	const { body, id } = extractUserData(req);
-
+const persistUserUpdate = async (body, id) => {
 	const user = await findEntityByPk(UserModel, id);
 	await runUserValidations(user, body);
 	const result = await updateUser(id, body);

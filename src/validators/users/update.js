@@ -8,8 +8,10 @@ module.exports = celebrate({
 	[Segments.BODY]: Joi.object().keys({
 		full_name: Joi.string().optional(),
 		email: Joi.string().optional(),
-		current_password: Joi.string().optional().min(8),
-		is_admin: Joi.boolean().optional(),
 		new_password: Joi.string().optional().min(8),
+		current_password: Joi.string()
+			.min(8)
+			.when('new_password', { is: Joi.exist(), then: Joi.required() }),
+		is_admin: Joi.boolean().optional(),
 	}),
 });

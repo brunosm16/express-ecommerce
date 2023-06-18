@@ -3,15 +3,15 @@ const cryptographyService = require('../cryptography/cryptography-service');
 const { findEntityByPk } = require('../entities/find-entity');
 const { validateInputResetToken } = require('./validate-user-reset-token');
 const { UserModel } = require('../../models');
-const { makeEntityNotFoundMessage } = require('../../errors/messages/make-error-messages');
 const { persistEntity } = require('../entities');
-const { USERS_PARAMS_TO_PERSIST } = require('../../constants/params/users-params');
 const { makeTableResultCode } = require('../../database/factories/make-table-result-code');
 const { INVALID_TOKEN_CREDENTIAL_ERROR } = require('../../constants/messages/errors');
+const { USER_NOT_FOUND } = require('../../constants/messages/entities-messages/users');
+const usersParams = require('../../constants/params/users-params');
 
 const findUserById = async (id) => {
 	const user = await findEntityByPk(UserModel, id);
-	if (!user) throw new EntityNotExistsError(makeEntityNotFoundMessage('User'));
+	if (!user) throw new EntityNotExistsError(USER_NOT_FOUND);
 	return user;
 };
 
@@ -30,18 +30,18 @@ const updateUserPassword = async (userId, password) => {
 		UserModel,
 		{ password_hash, token_reset_password: null, token_reset_password_expire_date: null },
 		{ id: userId },
-		USERS_PARAMS_TO_PERSIST
+		usersParams.userParamsToPersist
 	);
 };
 
-const resetUserPassword = async ({ token, password }) => {
+const resetUserPassword = async (token, password) => {
 	const id = extractIdFromToken(token);
 
 	const user = await findUserById(id);
 
 	await validateInputResetToken(token, user);
 
-	const [resultCode] = await updateUserPassword(user?.id, password);
+	const resultCode = await updateUserPassword(user?.id, password);
 
 	return makeTableResultCode(resultCode);
 };
