@@ -2,10 +2,16 @@ const express = require('express');
 const categoriesValidator = require('../../validators/categories');
 const categoriesController = require('../../controllers/categories');
 const { adminAuth } = require('../../middlewares/jwt-auth');
+const expressHandler = require('../../middlewares/express-handler');
 
 const categoriesRouter = express.Router();
 
-categoriesRouter.post('/', categoriesValidator.create, adminAuth, categoriesController.create);
+categoriesRouter.post(
+	'/',
+	categoriesValidator.create,
+	adminAuth,
+	expressHandler(categoriesController.create)
+);
 categoriesRouter.delete(
 	'/:id',
 	categoriesValidator.deleteById,
