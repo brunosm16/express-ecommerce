@@ -2,6 +2,7 @@
 
 const { TableRelations, RelationTable } = require('../instances');
 const { bulkInsertTablesWithRelations } = require('./helpers/bulk-insert-tables-with-relations');
+const { dropTablesWithRelations } = require('./helpers/drop-tables-with-relations');
 
 const makeRelationsArray = () => {
 	const users = new RelationTable('user_id', 'users');
@@ -17,6 +18,6 @@ module.exports = {
 	},
 
 	async down(queryInterface, Sequelize) {
-		await queryInterface.bulkDelete('addresses', null, {});
+		return dropTablesWithRelations(makeRelationsArray(), queryInterface);
 	},
 };

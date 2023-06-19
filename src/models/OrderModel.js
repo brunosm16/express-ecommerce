@@ -4,8 +4,7 @@ class OrderModel extends Model {
 	static init(connection) {
 		super.init(
 			{
-				total_price: DataTypes.DECIMAL,
-				status: DataTypes.STRING,
+				order_total_price: DataTypes.DECIMAL,
 			},
 			{ sequelize: connection, tableName: 'orders' }
 		);
