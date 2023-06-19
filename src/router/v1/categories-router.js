@@ -24,7 +24,12 @@ categoriesRouter.get(
 	auth,
 	expressHandler(categoriesController.findAll)
 );
-categoriesRouter.get('/:id', categoriesValidator.findById, categoriesController.findById);
+categoriesRouter.get(
+	'/:id',
+	categoriesValidator.findById,
+	auth,
+	expressHandler(categoriesController.findById)
+);
 categoriesRouter.put('/:id', categoriesValidator.update, adminAuth, categoriesController.update);
 
 module.exports = categoriesRouter;
