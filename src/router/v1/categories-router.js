@@ -16,7 +16,7 @@ categoriesRouter.delete(
 	'/:id',
 	categoriesValidator.deleteById,
 	adminAuth,
-	categoriesController.deleteById
+	expressHandler(categoriesController.deleteById)
 );
 categoriesRouter.get('/', categoriesValidator.findAll, adminAuth, categoriesController.findAll);
 categoriesRouter.get(
