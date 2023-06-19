@@ -1,7 +1,7 @@
 const express = require('express');
 const categoriesValidator = require('../../validators/categories');
 const categoriesController = require('../../controllers/categories');
-const { adminAuth } = require('../../middlewares/jwt-auth');
+const { auth, adminAuth } = require('../../middlewares/jwt-auth');
 const expressHandler = require('../../middlewares/express-handler');
 
 const categoriesRouter = express.Router();
@@ -18,13 +18,13 @@ categoriesRouter.delete(
 	adminAuth,
 	expressHandler(categoriesController.deleteById)
 );
-categoriesRouter.get('/', categoriesValidator.findAll, adminAuth, categoriesController.findAll);
 categoriesRouter.get(
-	'/:id',
-	categoriesValidator.findById,
-	adminAuth,
-	categoriesController.findById
+	'/',
+	categoriesValidator.findAll,
+	auth,
+	expressHandler(categoriesController.findAll)
 );
+categoriesRouter.get('/:id', categoriesValidator.findById, categoriesController.findById);
 categoriesRouter.put('/:id', categoriesValidator.update, adminAuth, categoriesController.update);
 
 module.exports = categoriesRouter;

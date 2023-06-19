@@ -1,4 +1,5 @@
-const findAllEntities = async (Model, params) => Model.findAll({ attributes: params });
+const findAllEntities = async (Model, params = null, order = null) =>
+	Model.findAll({ attributes: params, order });
 
 const findEntityByPk = async (Model, pk, params) => Model.findByPk(pk, { attributes: params });
 
