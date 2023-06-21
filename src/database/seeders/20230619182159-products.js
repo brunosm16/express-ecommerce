@@ -12,12 +12,12 @@ const seedCategories = async (queryInterface) => {
 
 const seedProducts = async (queryInterface) => {
 	const categoryIds = await seedCategories(queryInterface);
-	const formattedProducts = mockProducts.map((product, idx) => ({
+	const formattedProducts = mockProducts().map((product, idx) => ({
 		...product,
 		category_id: categoryIds[idx],
 	}));
 
-	return queryInterface('products', formattedProducts);
+	return queryInterface.bulkInsert('products', formattedProducts);
 };
 
 /** @type {import('sequelize-cli').Migration} */
