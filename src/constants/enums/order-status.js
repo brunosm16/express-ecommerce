@@ -6,6 +6,6 @@ const status = {
 	processing: 'Processing',
 };
 
-const orderStatusEnums = Object.freeze(Object.values(status));
-const defaultOrderStatus = status.pending;
-module.exports = { orderStatusEnums, defaultOrderStatus };
+const statusEnums = Object.freeze(Object.values(status));
+const defaultStatus = status.pending;
+module.exports = { statusEnums, defaultStatus };

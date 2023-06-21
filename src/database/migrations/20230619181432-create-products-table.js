@@ -1,12 +1,4 @@
 /* eslint-disable no-unused-vars */
-
-const {
-	statusEnums,
-	defaultStatus,
-	orderStatusEnums,
-	defaultOrderStatus,
-} = require('../../constants/enums/order-status');
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
@@ -42,11 +34,6 @@ module.exports = {
 			discount_percentage: {
 				type: Sequelize.DECIMAL,
 				allowNull: true,
-			},
-			status: {
-				type: Sequelize.ENUM(orderStatusEnums),
-				allowNull: false,
-				defaultValue: defaultOrderStatus,
 			},
 			created_at: {
 				allowNull: false,
