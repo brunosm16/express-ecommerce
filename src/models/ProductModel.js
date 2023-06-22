@@ -9,8 +9,8 @@ class ProductModel extends Model {
 				quantity_in_stock: DataTypes.INTEGER,
 				quantity_sold: DataTypes.INTEGER,
 				discount_percentage: DataTypes.INTEGER,
-				discount_start_date: DataTypes.DATE,
-				discount_end_date: DataTypes.DATE,
+				start_discount_date: DataTypes.DATE,
+				end_discount_date: DataTypes.DATE,
 			},
 			{
 				sequelize: connection,

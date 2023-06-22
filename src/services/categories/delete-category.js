@@ -1,7 +1,11 @@
 const ProductModel = require('../../models/ProductModel');
 const CategoryModel = require('../../models/CategoryModel');
 const { BadRequestError, NotFoundError } = require('../../errors/instances');
-const { findAllEntities, findEntityByPk } = require('../entities/find-entity');
+const {
+	findAllEntities,
+	findEntityByPk,
+	findAllEntitiesByKey,
+} = require('../entities/find-entity');
 const {
 	CATEGORY_IS_PARENT_ERROR,
 	CATEGORY_IS_EQUAL_ERROR,
@@ -30,12 +34,10 @@ const validateCategoryIsParent = async (categoryId) => {
 };
 
 const transferProductCategory = async (categoryId, categoryToTransferId) => {
-	const products = await ProductModel.findAll({
-		where: {
-			category_id: categoryId,
-		},
-	});
-
+	const products = await findAllEntitiesByKey(
+		{ key: 'category_id', value: categoryId },
+		ProductModel
+	);
 	if (!products?.length) return;
 
 	const promises = products.map(async ({ id }) => {

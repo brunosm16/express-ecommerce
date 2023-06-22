@@ -9,4 +9,10 @@ const findEntityByKey = async (keyValue, Model) => {
 	return Model.findOne({ where: args });
 };
 
-module.exports = { findAllEntities, findEntityByPk, findEntityByKey };
+const findAllEntitiesByKey = async (keyValue, Model) => {
+	const { key, value } = keyValue;
+	const args = { [key]: value };
+	return Model.findAll({ where: args });
+};
+
+module.exports = { findAllEntities, findEntityByPk, findEntityByKey, findAllEntitiesByKey };
