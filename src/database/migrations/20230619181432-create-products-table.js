@@ -35,6 +35,14 @@ module.exports = {
 				type: Sequelize.DECIMAL,
 				allowNull: true,
 			},
+			quantity_in_stock: {
+				type: Sequelize.INTEGER,
+				allowNull: false,
+			},
+			quantity_sold: {
+				type: Sequelize.INTEGER,
+				allowNull: false,
+			},
 			created_at: {
 				allowNull: false,
 				type: Sequelize.DATE,

@@ -5,6 +5,7 @@ class OrderModel extends Model {
 		super.init(
 			{
 				order_total_price: DataTypes.DECIMAL,
+				status: DataTypes.ENUM,
 			},
 			{ sequelize: connection, tableName: 'orders' }
 		);

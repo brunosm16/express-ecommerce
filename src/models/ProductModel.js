@@ -5,17 +5,12 @@ class ProductModel extends Model {
 		super.init(
 			{
 				name: DataTypes.STRING,
-				description: DataTypes.STRING,
 				price: DataTypes.DECIMAL,
 				quantity_in_stock: DataTypes.INTEGER,
 				quantity_sold: DataTypes.INTEGER,
-				discount_percent: DataTypes.INTEGER,
+				discount_percentage: DataTypes.INTEGER,
 				discount_start_date: DataTypes.DATE,
 				discount_end_date: DataTypes.DATE,
-				width: DataTypes.DECIMAL,
-				height: DataTypes.DECIMAL,
-				length: DataTypes.DECIMAL,
-				sku: DataTypes.STRING,
 			},
 			{
 				sequelize: connection,

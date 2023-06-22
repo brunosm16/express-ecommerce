@@ -22,10 +22,15 @@ class AddressModel extends Model {
 		);
 	}
 
-	static associate({ AddressModel: ThisModel, UserModel }) {
+	static associate({ AddressModel: ThisModel, UserModel, OrderModel }) {
 		ThisModel.belongsTo(UserModel, {
 			foreignKey: 'user_id',
 			as: 'user',
+		});
+
+		ThisModel.hasMany(OrderModel, {
+			foreignKey: 'address_id',
+			as: 'orders',
 		});
 	}
 }

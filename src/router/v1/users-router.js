@@ -6,7 +6,7 @@ const userValidator = require('../../validators/users');
 const expressHandler = require('../../middlewares/express-handler');
 const { adminAuth, auth } = require('../../middlewares/jwt-auth');
 
-usersRouter.post('/', userValidator.create, adminAuth, expressHandler(usersController.create));
+usersRouter.post('/', userValidator.create, expressHandler(usersController.create));
 
 usersRouter.get('/', userValidator.findAll, auth, expressHandler(usersController.findAll));
 
