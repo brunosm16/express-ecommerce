@@ -1,11 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
+const orderStatus = require('../constants/enums/order-status');
 
 class OrderModel extends Model {
 	static init(connection) {
 		super.init(
 			{
 				order_total_price: DataTypes.DECIMAL,
-				status: DataTypes.ENUM,
+				status: DataTypes.ENUM(orderStatus.statusEnums),
 			},
 			{ sequelize: connection, tableName: 'orders' }
 		);
