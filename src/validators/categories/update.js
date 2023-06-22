@@ -6,6 +6,6 @@ module.exports = celebrate({
 	...params.requiredIdParams,
 	[Segments.BODY]: Joi.object().keys({
 		name: Joi.string().required(),
-		product_id: Joi.string().required(),
+		parent_category_id: Joi.string().optional(),
 	}),
 });
