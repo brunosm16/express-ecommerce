@@ -8,8 +8,8 @@ const { InternalServerError } = require('../../errors/instances');
 const { GENERATE_USER_TOKEN_ERROR } = require('../../constants/messages/errors');
 const { USER_EXISTS_EMAIL } = require('../../constants/messages/entities-messages/users');
 
-const generateUserToken = (id, admin) => {
-	const token = cryptographyService.generateTokenByParams({ id, admin });
+const generateUserToken = (id, is_admin) => {
+	const token = cryptographyService.generateTokenByParams({ id, is_admin });
 	if (!token) throw new InternalServerError(GENERATE_USER_TOKEN_ERROR);
 	return token;
 };
