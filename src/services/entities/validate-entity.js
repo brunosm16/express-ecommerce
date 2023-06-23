@@ -45,7 +45,7 @@ const validateEntitiesAssociation = async (TableAssociation) => {
 	}
 
 	if (!parentData?.[childName]?.length) {
-		const message = `'${childName}' not found for '${parentName}'`;
+		const message = `Entity from '${childName}' not found for '${parentName}'`;
 		throw new EntityNotExistsError(message);
 	}
 };

@@ -1,12 +1,13 @@
 const express = require('express');
 const { adminAuth } = require('../../middlewares/jwt-auth');
+const expressHandler = require('../../middlewares/express-handler');
 
 const ordersValidator = require('../../validators/orders');
 const ordersController = require('../../controllers/orders');
 
 const ordersRouter = express.Router();
 
-ordersRouter.post('/', ordersValidator.create, ordersController.create);
+ordersRouter.post('/', ordersValidator.create, expressHandler(ordersController.create));
 ordersRouter.delete('/:id', ordersValidator.deleteById, adminAuth, ordersController.deleteById);
 ordersRouter.get('/', ordersValidator.findAll, adminAuth, ordersController.findAll);
 ordersRouter.get(

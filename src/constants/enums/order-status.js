@@ -7,5 +7,6 @@ const status = {
 };
 
 const statusEnums = Object.freeze(Object.values(status));
+const statusEnumsObject = Object.freeze(status);
 const defaultStatus = status.pending;
-module.exports = { statusEnums, defaultStatus };
+module.exports = { statusEnums, defaultStatus, statusEnumsObject };

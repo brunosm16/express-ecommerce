@@ -16,7 +16,7 @@ class OrdersProductModel extends Model {
 			},
 			{
 				sequelize: connection,
-				tableName: 'order_products',
+				tableName: 'orders_products',
 				paranoid: true,
 				hooks: {
 					beforeSave: async (ordersProduct) => {
