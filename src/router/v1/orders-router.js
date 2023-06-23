@@ -7,8 +7,13 @@ const ordersController = require('../../controllers/orders');
 
 const ordersRouter = express.Router();
 
-ordersRouter.post('/', ordersValidator.create, expressHandler(ordersController.create));
-ordersRouter.delete('/:id', ordersValidator.deleteById, adminAuth, ordersController.deleteById);
+ordersRouter.post('/', ordersValidator.create, adminAuth, expressHandler(ordersController.create));
+ordersRouter.delete(
+	'/:id',
+	ordersValidator.deleteById,
+	adminAuth,
+	expressHandler(ordersController.deleteById)
+);
 ordersRouter.get('/', ordersValidator.findAll, adminAuth, ordersController.findAll);
 ordersRouter.get(
 	'/:id',

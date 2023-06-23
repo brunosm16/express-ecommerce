@@ -1,12 +1,3 @@
-const { makeResponseByError, makeOkResponse } = require('../../http/http-responses');
-const deleteOrderService = require('../../services/orders/delete-order-service');
+const { removeOrderById } = require('../../services/orders/delete-order');
 
-module.exports = async (req, res) => {
-	try {
-		const { id } = req.params;
-		const deleted = await deleteOrderService.deleteOrder(id);
-		return makeOkResponse(res, deleted);
-	} catch (err) {
-		return makeResponseByError(res, err);
-	}
-};
+module.exports = async ({ params }) => removeOrderById(params?.id);
