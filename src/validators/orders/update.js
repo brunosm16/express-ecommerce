@@ -1,16 +1,13 @@
 const { celebrate, Joi, Segments } = require('celebrate');
+const { authorization, params } = require('../base-validators');
+const { statusEnums } = require('../../constants/enums/order-status');
 
 module.exports = celebrate({
-	[Segments.HEADERS]: Joi.object()
-		.keys({
-			authorization: Joi.string().required(),
-		})
-		.unknown(),
-	[Segments.PARAMS]: Joi.object().keys({
-		id: Joi.string().required(),
-	}),
+	...authorization.requiredAuthorizationHeader,
+	...params.requiredIdParams,
 	[Segments.BODY]: Joi.object().keys({
-		total_price: Joi.string().required(),
-		status: Joi.string().required(),
+		status: Joi.string()
+			.valid(...statusEnums)
+			.optional(),
 	}),
 });

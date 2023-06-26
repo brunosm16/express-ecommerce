@@ -20,6 +20,11 @@ ordersRouter.get(
 	adminAuth,
 	expressHandler(ordersController.findOrdersByUser)
 );
-ordersRouter.put('/:id', ordersValidator.update, adminAuth, ordersController.update);
+ordersRouter.put(
+	'/:id',
+	ordersValidator.update,
+	adminAuth,
+	expressHandler(ordersController.update)
+);
 
 module.exports = ordersRouter;
