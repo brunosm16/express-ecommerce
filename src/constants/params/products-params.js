@@ -1,31 +1,21 @@
 const PRODUCTS_PARAMS_TO_PERSIST = Object.freeze([
 	'name',
-	'description',
 	'price',
+	'start_discount_date',
+	'end_discount_date',
+	'discount_percentage',
 	'quantity_in_stock',
 	'quantity_sold',
-	'discount_percent',
-	'discount_start_date',
-	'discount_end_date',
-	'width',
-	'height',
-	'length',
-	'sku',
 ]);
 
 const PRODUCTS_PARAMS_TO_EXPOSE = Object.freeze([
 	'name',
-	'description',
 	'price',
+	'start_discount_date',
+	'end_discount_date',
+	'discount_percentage',
 	'quantity_in_stock',
 	'quantity_sold',
-	'discount_percent',
-	'discount_start_date',
-	'discount_end_date',
-	'width',
-	'height',
-	'length',
-	'sku',
 ]);
 
 module.exports = {
