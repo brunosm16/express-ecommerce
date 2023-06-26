@@ -1,27 +1,20 @@
 const { celebrate, Segments, Joi } = require('celebrate');
+const { authorization } = require('../base-validators');
 
 module.exports = celebrate({
-	[Segments.HEADERS]: Joi.object()
-		.keys({
-			authorization: Joi.string().required(),
-		})
-		.unknown(),
+	...authorization.requiredAuthorizationHeader,
 	[Segments.BODY]: Joi.object().keys({
+		category_id: Joi.string().required(),
 		name: Joi.string().required(),
-		description: Joi.string().required(),
-		price: Joi.string().required(),
-		quantity_in_stock: Joi.string().required(),
-		quantity_sold: Joi.string().required(),
-		discount_percent: Joi.string().required(),
-		discount_start_date: Joi.string().isoDate().optional(),
-		discount_end_date: Joi.string().isoDate().when('discount_start_date', {
+		price: Joi.number().required(),
+		start_discount_date: Joi.string().isoDate().optional(),
+		end_discount_date: Joi.string().isoDate().when('start_discount_date', {
 			is: Joi.exist(),
 			then: Joi.required(),
 			otherwise: Joi.optional(),
 		}),
-		width: Joi.string().required(),
-		height: Joi.string().required(),
-		length: Joi.string().required(),
-		sku: Joi.string().required(),
+		discount_percentage: Joi.number().max(1).required(),
+		quantity_in_stock: Joi.number().required(),
+		quantity_sold: Joi.number().required(),
 	}),
 });

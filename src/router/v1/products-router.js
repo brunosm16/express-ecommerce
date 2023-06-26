@@ -3,10 +3,16 @@ const { adminAuth } = require('../../middlewares/jwt-auth');
 
 const productsValidator = require('../../validators/products');
 const productsController = require('../../controllers/products');
+const expressHandler = require('../../middlewares/express-handler');
 
 const productsRouter = express.Router();
 
-productsRouter.post('/', productsValidator.create, adminAuth, productsController.create);
+productsRouter.post(
+	'/',
+	productsValidator.create,
+	adminAuth,
+	expressHandler(productsController.create)
+);
 productsRouter.delete(
 	'/:id',
 	productsValidator.deleteById,

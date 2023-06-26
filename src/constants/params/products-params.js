@@ -6,6 +6,7 @@ const PRODUCTS_PARAMS_TO_PERSIST = Object.freeze([
 	'discount_percentage',
 	'quantity_in_stock',
 	'quantity_sold',
+	'category_id',
 ]);
 
 const PRODUCTS_PARAMS_TO_EXPOSE = Object.freeze([

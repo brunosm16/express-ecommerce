@@ -8,7 +8,7 @@ class ProductModel extends Model {
 				price: DataTypes.DECIMAL,
 				quantity_in_stock: DataTypes.INTEGER,
 				quantity_sold: DataTypes.INTEGER,
-				discount_percentage: DataTypes.INTEGER,
+				discount_percentage: DataTypes.FLOAT,
 				start_discount_date: DataTypes.DATE,
 				end_discount_date: DataTypes.DATE,
 			},

@@ -1,11 +1,3 @@
-const { makeResponseByError, makeOkResponse } = require('../../http/http-responses');
-const createProductService = require('../../services/products/create-product-service');
+const { persistProduct } = require('../../services/products/create-product');
 
-module.exports = async (req, res) => {
-	try {
-		const product = await createProductService.createProduct(req.body);
-		return makeOkResponse(res, product);
-	} catch (err) {
-		return makeResponseByError(res, err);
-	}
-};
+module.exports = async ({ body }) => persistProduct(body);
