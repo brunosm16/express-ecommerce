@@ -31,6 +31,11 @@ productsRouter.get(
 	adminAuth,
 	expressHandler(productsController.findById)
 );
-productsRouter.put('/:id', productsValidator.update, adminAuth, productsController.update);
+productsRouter.put(
+	'/:id',
+	productsValidator.update,
+	adminAuth,
+	expressHandler(productsController.update)
+);
 
 module.exports = productsRouter;
