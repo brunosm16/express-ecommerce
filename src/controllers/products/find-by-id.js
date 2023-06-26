@@ -1,12 +1,3 @@
-const { makeResponseByError, makeOkResponse } = require('../../http/http-responses');
-const findProductService = require('../../services/products/find-product-service');
+const { findProductById } = require('../../services/products/find-product');
 
-module.exports = async (req, res) => {
-	try {
-		const { id } = req.params;
-		const product = await findProductService.findProductById(id);
-		return makeOkResponse(res, product);
-	} catch (err) {
-		return makeResponseByError(res, err);
-	}
-};
+module.exports = async ({ params }) => findProductById(params?.id);

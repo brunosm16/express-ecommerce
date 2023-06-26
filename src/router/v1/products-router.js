@@ -19,8 +19,18 @@ productsRouter.delete(
 	adminAuth,
 	expressHandler(productsController.deleteById)
 );
-productsRouter.get('/', productsValidator.findAll, adminAuth, productsController.findAll);
-productsRouter.get('/:id', productsValidator.findById, adminAuth, productsController.findById);
+productsRouter.get(
+	'/',
+	productsValidator.findAll,
+	adminAuth,
+	expressHandler(productsController.findAll)
+);
+productsRouter.get(
+	'/:id',
+	productsValidator.findById,
+	adminAuth,
+	expressHandler(productsController.findById)
+);
 productsRouter.put('/:id', productsValidator.update, adminAuth, productsController.update);
 
 module.exports = productsRouter;
