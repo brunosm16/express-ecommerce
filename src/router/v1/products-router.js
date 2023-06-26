@@ -17,7 +17,7 @@ productsRouter.delete(
 	'/:id',
 	productsValidator.deleteById,
 	adminAuth,
-	productsController.deleteById
+	expressHandler(productsController.deleteById)
 );
 productsRouter.get('/', productsValidator.findAll, adminAuth, productsController.findAll);
 productsRouter.get('/:id', productsValidator.findById, adminAuth, productsController.findById);
